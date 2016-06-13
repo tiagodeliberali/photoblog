@@ -1,61 +1,57 @@
-<?php
-/**
- * The Header for our theme.
- *
- * Displays all of the <head> section and everything up till <div id="content">
- *
- * @package activello
- */
-?><!doctype html>
-	<!--[if !IE]>
-	<html class="no-js non-ie" <?php language_attributes(); ?>> <![endif]-->
-	<!--[if IE 7 ]>
-	<html class="no-js ie7" <?php language_attributes(); ?>> <![endif]-->
-	<!--[if IE 8 ]>
-	<html class="no-js ie8" <?php language_attributes(); ?>> <![endif]-->
-	<!--[if IE 9 ]>
-	<html class="no-js ie9" <?php language_attributes(); ?>> <![endif]-->
-	<!--[if gt IE 9]><!-->
-<html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
-<head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<!doctype html>
+<!--[if !IE]>
+	<html class="no-js non-ie"> <![endif]-->
+<!--[if IE 7 ]>
+	<html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>
+	<html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>
+	<html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-<?php wp_head(); ?>
+<head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+
+    <?php wp_head(); ?>
 
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
+    <div id="page" class="hfeed site">
 
-	<header id="masthead" class="site-header" role="banner">
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container">
-				<div class="row">
-					<div class="site-navigation-inner col-sm-12">
-						<div class="navbar-header">
-							<button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-								<span class="sr-only"><?php _e( 'Toggle navigation', 'activello' ); ?></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						<?php activello_header_menu(); // main navigation ?>
+        <header id="masthead" class="site-header" role="banner">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="row">
+                        <div class="site-navigation-inner col-sm-12">
+                            <div class="navbar-header">
+                                <button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only"><?php _e( 'Toggle navigation', 'activello' ); ?></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <?php activello_header_menu(); // main navigation ?>
 
-						<div class="nav-search"><?php 
+                                <div class="nav-search">
+                                    <?php 
                             add_filter('get_search_form', 'activello_header_search_filter',10,3);
                             echo get_search_form();
-                            remove_filter('get_search_form', 'activello_header_search_filter');?>							
-						</div>
-					</div>
-				</div>
-			</div>
-		</nav><!-- .site-navigation -->
+                            remove_filter('get_search_form', 'activello_header_search_filter');?>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- .site-navigation -->
 
-		<?php
+            <?php
 		$show_logo = true;
 		$show_title = false;
 		$show_tagline = true;
@@ -73,9 +69,9 @@
 			$show_title = true;
 		}?>
 
-		<div class="container">
-			<div id="logo">
-				<span class="site-name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php
+                <div class="container">
+                    <div id="logo">
+                        <span class="site-name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php
 					if( $show_logo && $logo ) {
                         echo wp_get_attachment_image($logo, 'full');
 					}
@@ -86,34 +82,39 @@
 						bloginfo( 'name' );
 					} ?>
 					</a>
-				</span><!-- end of .site-name -->
+				</span>
+                        <!-- end of .site-name -->
 
-				<?php if( $show_tagline && get_bloginfo( 'description' ) != "" ) : ?>
-					<div class="tagline"><?php bloginfo( 'description' ); ?></div>
-				<?php endif; ?>
-			</div><!-- end of #logo -->
+                        <?php if( $show_tagline && get_bloginfo( 'description' ) != "" ) : ?>
+                            <div class="tagline">
+                                <?php bloginfo( 'description' ); ?>
+                            </div>
+                            <?php endif; ?>
+                    </div>
+                    <!-- end of #logo -->
 
-			<?php if( ! is_front_page() || ! is_home() ) : ?>
-			<div id="line"></div>
-			<?php endif; ?>
-		</div>
+                    <?php if( ! is_front_page() || ! is_home() ) : ?>
+                        <div id="line"></div>
+                        <?php endif; ?>
+                </div>
 
-	</header><!-- #masthead -->
+        </header>
+        <!-- #masthead -->
 
 
-	<div id="content" class="site-content">
+        <div id="content" class="site-content">
 
-		<div class="top-section">
-			<?php activello_featured_slider(); ?>
-		</div>
+            <div class="top-section">
+                <?php activello_featured_slider(); ?>
+            </div>
 
-		<div class="container main-content-area">
+            <div class="container main-content-area">
 
-			<?php if( is_single() && has_category() ) : ?>
-			<div class="cat-title">
-				<?php echo get_the_category_list(); ?>
-			</div>
-			<?php endif; ?>
+                <?php if( is_single() && has_category() ) : ?>
+                    <div class="cat-title">
+                        <?php echo get_the_category_list(); ?>
+                    </div>
+                    <?php endif; ?>
                         <?php
                             global $post;
                             if( is_singular() && get_post_meta($post->ID, 'site_layout', true) ){
@@ -123,5 +124,5 @@
                                 $layout_class = get_theme_mod( 'activello_sidebar_position' );
                             }?>
 
-			<div class="row">
-				<div class="main-content-inner <?php echo activello_main_content_bootstrap_classes(); ?> <?php echo $layout_class; ?>">
+                            <div class="row">
+                                <div class="main-content-inner <?php echo activello_main_content_bootstrap_classes(); ?> <?php echo $layout_class; ?>">
