@@ -1,0 +1,505 @@
+﻿<!doctype html>
+<!--[if !IE]>
+    <html class="no-js non-ie" lang="en-US" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 7 ]>
+    <html class="no-js ie7" lang="en-US" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 8 ]>
+    <html class="no-js ie8" lang="en-US" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 9 ]>
+    <html class="no-js ie9" lang="en-US" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns#" ng-app="photoBlogApp" ng-controller="pageController">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="https://colorlib.com/activello/xmlrpc.php">
+
+    <title>{{ blog.title }}</title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <script src="//pc035860.github.io/angular-easyfb/angular-easyfb.min.js"></script>
+    <script src="//cdn.backand.net/backand/dist/1.8.2/backand.min.js"></script>
+    <script src="scripts/mainApp.js"></script>
+
+    <link rel='stylesheet' id='contact-form-7-css' href='https://colorlib.com/activello/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.4.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='woocommerce-layout-css' href='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=2.5.5' type='text/css' media='all' />
+    <link rel='stylesheet' id='woocommerce-smallscreen-css' href='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=2.5.5' type='text/css' media='only screen and (max-width: 768px)' />
+    <link rel='stylesheet' id='woocommerce-general-css' href='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=2.5.5' type='text/css' media='all' />
+    <link rel='stylesheet' id='activello-bootstrap-css' href='https://colorlib.com/activello/wp-content/themes/activello/inc/css/bootstrap.min.css?ver=4.5.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='activello-icons-css' href='https://colorlib.com/activello/wp-content/themes/activello/inc/css/font-awesome.min.css?ver=4.5.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='activello-fonts-css' href='//fonts.googleapis.com/css?family=Lora%3A400%2C400italic%2C700%2C700italic%7CMontserrat%3A400%2C700%7CMaven+Pro%3A400%2C700&#038;ver=4.5.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='flexslider-css-css' href='https://colorlib.com/activello/wp-content/themes/activello/inc/css/flexslider.css?ver=4.5.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='activello-style-css' href='https://colorlib.com/activello/wp-content/themes/activello/style.css?ver=4.5.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='jetpack_css-css' href='https://colorlib.com/activello/wp-content/plugins/jetpack/css/jetpack.css?ver=4.0.3' type='text/css' media='all' />
+
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-includes/js/jquery/jquery.js?ver=1.12.3'></script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0'></script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/themes/activello/inc/js/modernizr.min.js?ver=4.5.2'></script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/themes/activello/inc/js/bootstrap.min.js?ver=4.5.2'></script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/themes/activello/inc/js/functions.min.js?ver=4.5.2'></script>
+
+    <link rel='https://api.w.org/' href='https://colorlib.com/activello/wp-json/' />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://colorlib.com/activello/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://colorlib.com/activello/wp-includes/wlwmanifest.xml" />
+    <meta name="generator" content="WordPress 4.5.2" />
+    <meta name="generator" content="WooCommerce 2.5.5" />
+    <link rel='dns-prefetch' href='//v0.wordpress.com'>
+    <style type='text/css'>
+        img#wpstats {
+            display: none;
+        }
+    </style>
+    <style type="text/css"></style>
+    <style type="text/css">
+        #social li {
+            display: inline-block;
+        }
+
+        #social li,
+        #social ul {
+            border: 0 !important;
+            list-style: none;
+            padding-left: 0;
+            text-align: center;
+        }
+
+            #social li a[href*="twitter.com"] .fa:before,
+            .fa-twitter:before {
+                content: "\f099";
+            }
+
+            #social li a[href*="facebook.com"] .fa:before,
+            .fa-facebook-f:before,
+            .fa-facebook:before {
+                content: "\f09a";
+            }
+
+            #social li a[href*="github.com"] .fa:before,
+            .fa-github:before {
+                content: "\f09b";
+            }
+
+            #social li a[href*="/feed"] .fa:before,
+            .fa-rss:before {
+                content: "\f09e";
+            }
+
+            #social li a[href*="pinterest.com"] .fa:before,
+            .fa-pinterest:before {
+                content: "\f0d2";
+            }
+
+            #social li a[href*="plus.google.com"] .fa:before,
+            .fa-google-plus:before {
+                content: "\f0d5";
+            }
+
+            #social li a[href*="linkedin.com"] .fa:before,
+            .fa-linkedin:before {
+                content: "\f0e1";
+            }
+
+            #social li a[href*="youtube.com"] .fa:before,
+            .fa-youtube:before {
+                content: "\f167";
+            }
+
+            #social li a[href*="instagram.com"] .fa:before,
+            .fa-instagram:before {
+                content: "\f16d";
+            }
+
+            #social li a[href*="flickr.com"] .fa:before,
+            .fa-flickr:before {
+                content: "\f16e";
+            }
+
+            #social li a[href*="tumblr.com"] .fa:before,
+            .fa-tumblr:before {
+                content: "\f173";
+            }
+
+            #social li a[href*="dribbble.com"] .fa:before,
+            .fa-dribbble:before {
+                content: "\f17d";
+            }
+
+            #social li a[href*="skype.com"] .fa:before,
+            .fa-skype:before {
+                content: "\f17e";
+            }
+
+            #social li a[href*="foursquare.com"] .fa:before,
+            .fa-foursquare:before {
+                content: "\f180";
+            }
+
+            #social li a[href*="vimeo.com"] .fa:before,
+            .fa-vimeo-square:before {
+                content: "\f194";
+            }
+
+            #social li a[href*="spotify.com"] .fa:before,
+            .fa-spotify:before {
+                content: "\f1bc";
+            }
+
+            #social li a[href*="soundcloud.com"] .fa:before,
+            .fa-soundcloud:before {
+                content: "\f1be";
+            }
+    </style>
+</head>
+<body class="home blog has-sidebar-right">
+    <div id="page" class="hfeed site">
+
+        <header id="masthead" class="site-header" role="banner">
+
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="row">
+                        <div class="site-navigation-inner col-sm-12">
+                            <div class="navbar-header">
+                                <button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                <ul id="menu-all-pages" class="nav navbar-nav">
+                                    <li id="menu-item-1696" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-1696 active"><a title="Home" href="https://colorlib.com/activello/">Home</a></li>
+                                    <!--<li id="menu-item-1643" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1643 dropdown"><a title="Level 1" href="#" data-toggle="dropdown" class="dropdown-toggle">Level 1 </a>
+                                        <ul role="menu" class=" dropdown-menu">
+                                            <li id="menu-item-1644" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1644"><a title="Level 2" href="https://colorlib.com/activello/level-2/">Level 2</a></li>
+                                            <li id="menu-item-1645" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1645"><a title="Level 3" href="https://colorlib.com/activello/level-3/">Level 3</a></li>
+                                        </ul>
+                                    </li>-->
+                                </ul>
+                            </div>
+                            <div class="nav-search">
+                                <form action="https://colorlib.com/activello/" method="get">
+                                    <input type="text" name="s" value="" placeholder="Search">
+                                    <button type="submit" class="header-search-icon" name="submit" id="searchsubmit" value="Search"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- .site-navigation -->
+
+            <div class="container">
+                <div id="logo">
+                    <span class="site-name">
+                        <a class="navbar-brand" href="https://colorlib.com/activello/" title="Activello Theme Demo" rel="home"><img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					</a>
+                    </span>
+                    <!-- end of .site-name -->
+                    <div class="tagline">{{ blog.description }}</div>
+                </div>
+                <!-- end of #logo -->
+            </div>
+        </header>
+        <!-- #masthead -->
+
+        <div id="content" class="site-content">
+            <div class="top-section">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <img width="1920" height="550" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2012/03/photo-1437915015400-137312b61975-1920x550.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="photo-1437915015400-137312b61975" />
+                            <div class="flex-caption">
+                                <ul class="post-categories">
+                                    <li><a href="https://colorlib.com/activello/category/template-2/" rel="category tag">Template</a></li>
+                                </ul><a href="https://colorlib.com/activello/template-featured-image-vertical/"><h2 class="entry-title">Template: Featured Image (No Sidebar Layout)</h2></a>
+                                <div class="read-more"><a href="https://colorlib.com/activello/template-featured-image-vertical/">Read More</a></div>
+                            </div>
+                        </li>
+                        <li>
+                            <img width="1920" height="550" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1431578500526-4d9613015464-1920x550.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="photo-1431578500526-4d9613015464" />
+                            <div class="flex-caption">
+                                <ul class="post-categories">
+                                    <li><a href="https://colorlib.com/activello/category/template-2/" rel="category tag">Template</a></li>
+                                </ul><a href="https://colorlib.com/activello/template-featured-image-horizontal/"><h2 class="entry-title">Template: Featured Image (Full Width No Sidebar Layout)</h2></a>
+                                <div class="read-more"><a href="https://colorlib.com/activello/template-featured-image-horizontal/">Read More</a></div>
+                            </div>
+                        </li>
+                        <li>
+                            <img width="1920" height="550" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/oIpwxeeSPy1cnwYpqJ1w_Dufer-Collateral-test-1920x550.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="oIpwxeeSPy1cnwYpqJ1w_Dufer-Collateral-test" />
+                            <div class="flex-caption">
+                                <ul class="post-categories">
+                                    <li><a href="https://colorlib.com/activello/category/template-2/" rel="category tag">Template</a></li>
+                                </ul><a href="https://colorlib.com/activello/template-more-tag/"><h2 class="entry-title">Template: More Tag</h2></a>
+                                <div class="read-more"><a href="https://colorlib.com/activello/template-more-tag/">Read More</a></div>
+                            </div>
+                        </li>
+                        <li>
+                            <img width="1920" height="550" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/16386149745_f56818fbd4_o-1920x550.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="16386149745_f56818fbd4_o" />
+                            <div class="flex-caption">
+                                <ul class="post-categories">
+                                    <li><a href="https://colorlib.com/activello/category/template-2/" rel="category tag">Template</a></li>
+                                </ul><a href="https://colorlib.com/activello/template-excerpt-defined/"><h2 class="entry-title">Template: Excerpt (Defined)</h2></a>
+                                <div class="read-more"><a href="https://colorlib.com/activello/template-excerpt-defined/">Read More</a></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container main-content-area">
+                <div class="row">
+                    <div class="main-content-inner col-sm-12 col-md-8 side-right">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main page-1" role="main">
+                                <div class="article-container">
+                                    <article ng-repeat="post in posts"
+                                             id="{{ post.id }}" 
+                                             class="post-555 post type-post status-publish format-gallery has-post-thumbnail hentry category-post-formats tag-gallery tag-post-formats tag-shortcode post_format-post-format-gallery">
+                                        <div class="blog-item-wrap">
+                                            <div class="post-inner-content">
+                                                <header class="entry-header page-header">
+                                                    <li class="cat-item cat-item-38">
+                                                        <a href="/#/category/{{ post.category.id }}" title="{{ post.category.description }}">{{ post.category.name }}</a>
+                                                    </li>
+                                                    <h1 class="entry-title"><a href="https://colorlib.com/activello/post-format-gallery/" rel="bookmark">{{ post.title }}</a></h1>
+                                                    <div class="entry-meta">
+                                                        <span class="posted-on">
+                                                            Posted on <a href="#" rel="bookmark">
+                                                                <time class="entry-date published" datetime="{{ post.date }}">{{ post.date }}</time>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                    <!-- .entry-meta -->
+                                                </header>
+                                                <!-- .entry-header -->
+                                                <a href="/#/post/{{ post.id }}" title="{{ post.title }}">
+                                                    <img width="1170" height="550" src="{{ post.image.url }}" class="single-featured wp-post-image" alt="{{ post.image.description }}" />
+                                                </a>
+                                                <div class="entry-content">
+                                                    <p>{{ post.description }}</p>
+
+                                                    <div class="read-more">
+                                                        <a href="/#/post/{{ post.id }}" title="{{ post.title }}">Read More</a>
+                                                    </div>
+                                                </div>
+                                                <!-- .entry-content -->
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <!-- #post-## -->
+                                </div>
+                            </main>
+                            <!-- #main -->
+                        </div>
+                        <!-- #primary -->
+                    </div>
+
+                    <div id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
+                        <div class="inner">
+                            <aside id="text-2" class="widget widget_text">
+                                <h3 class="widget-title">About Me</h3>
+                                <div class="textwidget">
+                                    <p><img src="https://scontent-gru.xx.fbcdn.net/v/t1.0-9/12644947_10153943869296474_2740697872058079782_n.jpg?oh=2c792d108c3b229d031a98b181869cc5&oe=57C266CA" alt="About Me"></p>
+                                    <p>My name is <strong>Tiago Santos</strong> and I am an amateur photographer, specially pationated about people's portrait and urban photography. </p>
+                                </div>
+                            </aside>
+                            <aside id="activello-social-2" class="widget activello-social">
+                                <h3 class="widget-title">Follow Me</h3>
+                                <!-- social icons -->
+                                <div class="social-icons sticky-sidebar-social">
+                                    <nav id="social" class="social-icons">
+                                        <ul id="menu-social-items" class="social-menu">
+                                            <li id="menu-item-1734" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1734"><a href="https://www.facebook.com/tiagodeliberali" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.facebook.com/colorlib', 'Facebook');"><i class="social_icon fa"><span>Facebook</span></i></a></li>
+                                            <li id="menu-item-1735" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1735"><a href="http://twitter.com/tiagodeliberali" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://twitter.com/colorlib', 'Twitter');"><i class="social_icon fa"><span>Twitter</span></i></a></li>
+                                            <li id="menu-item-1736" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1736"><a href="https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew', 'youtube');"><i class="social_icon fa"><span>youtube</span></i></a></li>
+                                            <li id="menu-item-1737" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1737"><a href="https://plus.google.com/100289203607749737039" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://plus.google.com/100289203607749737039', 'Google+');"><i class="social_icon fa"><span>Google+</span></i></a></li>
+                                            <li id="menu-item-1738" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1738"><a href="http://instagram.com" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://instagram.com', 'Instagram');"><i class="social_icon fa"><span>Instagram</span></i></a></li>
+                                            <li id="menu-item-1739" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1739"><a href="https://github.com/tiagodeliberali/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://github.com/puikinsh/', 'Github');"><i class="social_icon fa"><span>Github</span></i></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- end social icons -->
+                            </aside>
+                            <aside id="activello_recent_posts-2" class="widget activello-recent-posts">
+                                <h3 class="widget-title">Recent Posts</h3>
+                                <!-- recent posts -->
+                                <div class="recent-posts-wrapper">
+                                    <!-- post -->
+                                    <div class="post" ng-repeat="post in posts">
+                                        <!-- image -->
+                                        <div class="post-image gallery">
+                                            <a href="/#/category/{{ post.category.id }}">
+                                                <img width="150" height="150"
+                                                     src="{{ post.image.url }}"
+                                                     class="attachment-thumbnail size-thumbnail wp-post-image"
+                                                     alt="{{ post.image.description }}"
+                                                     srcset="{{ post.image.url }}"
+                                                     sizes="(max-width: 150px) 100vw, 150px" />
+                                            </a>
+                                        </div>
+                                        <!-- end post image -->
+                                        <!-- content -->
+                                        <div class="post-content">
+                                            <a href="/#/category/{{ post.category.id }}">{{ post.title }}</a>
+                                            <span class="date">- {{ post.date }}</span>
+                                        </div>
+                                        <!-- end content -->
+                                    </div>
+                                    <!-- end post -->
+                                </div>
+                                <!-- end posts wrapper -->
+                            </aside>
+                            <aside id="search-2" class="widget widget_search">
+                                <form role="search" method="get" class="form-search" action="https://colorlib.com/activello/">
+                                    <div class="input-group">
+                                        <label class="screen-reader-text" for="s">Search for:</label>
+                                        <input type="text" class="form-control search-query" placeholder="Search&hellip;" value="" name="s" title="Search for:" />
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-default" name="submit" id="searchsubmit" value="Search">Search</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </aside>
+                            <aside id="activello-cats-2" class="widget activello-cats">
+                                <h3 class="widget-title">Categories</h3>
+                                <div class="cats-widget">
+                                    <ul>
+                                        <li class="cat-item cat-item-38">
+                                            <a href="https://colorlib.com/activello/category/post-formats/" title="Portraits.">Portraits</a> <span>11</span>
+                                        </li>
+                                        <li class="cat-item cat-item-49">
+                                            <a href="https://colorlib.com/activello/category/template-2/" title="Baby">Baby</a> <span>5</span>
+                                        </li>
+                                        <li class="cat-item cat-item-9">
+                                            <a href="https://colorlib.com/activello/category/cat-a/">Travel</a> <span>3</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- end widget content -->
+                            </aside>
+                        </div>
+                    </div>
+                    <!-- #secondary -->
+                </div>
+                <!-- close .*-inner (main-content or sidebar, depending if sidebar is used) -->
+            </div>
+            <!-- close .row -->
+        </div>
+        <!-- close .container -->
+    </div>
+    <!-- close .site-content -->
+    <div id="footer-area">
+        <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="site-info container">
+                <div class="row">
+                    <nav id="social" class="social-icons">
+                        <ul id="menu-social-items" class="social-menu">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1734"><a href="https://www.facebook.com/tiagodeliberali" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.facebook.com/colorlib', 'Facebook');"><i class="social_icon fa"><span>Facebook</span></i></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1735"><a href="http://twitter.com/tiagodeliberali" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://twitter.com/colorlib', 'Twitter');"><i class="social_icon fa"><span>Twitter</span></i></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1736"><a href="https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew', 'youtube');"><i class="social_icon fa"><span>youtube</span></i></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1737"><a href="https://plus.google.com/100289203607749737039" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://plus.google.com/100289203607749737039', 'Google+');"><i class="social_icon fa"><span>Google+</span></i></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1738"><a href="http://instagram.com" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://instagram.com', 'Instagram');"><i class="social_icon fa"><span>Instagram</span></i></a></li>
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1739"><a href="https://github.com/tiagodeliberali/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://github.com/puikinsh/', 'Github');"><i class="social_icon fa"><span>Github</span></i></a></li>
+                        </ul>
+                    </nav>
+                    <div class="copyright col-md-12">
+                        Activello. Theme by <a href="http://colorlib.com/" target="_blank">Colorlib</a> Powered by <a href="http://wordpress.org/" target="_blank">WordPress</a>
+                    </div>
+                </div>
+            </div>
+            <!-- .site-info -->
+            <div class="scroll-to-top"><i class="fa fa-angle-up"></i></div>
+            <!-- .scroll-to-top -->
+        </footer>
+        <!-- #colophon -->
+    </div>
+    </div>
+    <!-- #page -->
+    <div style="display:none">
+    </div>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/plugins/jetpack/modules/shortcodes/js/jquery.cycle.js?ver=2.9999.8'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var jetpackSlideshowSettings = {
+            "spinner": "https:\/\/colorlib.com\/activello\/wp-content\/plugins\/jetpack\/modules\/shortcodes\/img\/slideshow-loader.gif"
+        };
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/plugins/jetpack/modules/shortcodes/js/slideshow-shortcode.js?ver=20121214.1'></script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var _wpcf7 = {
+            "loaderUrl": "https:\/\/colorlib.com\/activello\/wp-content\/plugins\/contact-form-7\/images\/ajax-loader.gif",
+            "recaptchaEmpty": "Please verify that you are not a robot.",
+            "sending": "Sending ..."
+        };
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.4.2'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var wc_add_to_cart_params = {
+            "ajax_url": "\/activello\/wp-admin\/admin-ajax.php",
+            "wc_ajax_url": "\/activello\/?wc-ajax=%%endpoint%%",
+            "i18n_view_cart": "View Cart",
+            "cart_url": "https:\/\/colorlib.com\/activello\/cart\/",
+            "is_cart": "",
+            "cart_redirect_after_add": "no"
+        };
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=2.5.5'></script>
+    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var woocommerce_params = {
+            "ajax_url": "\/activello\/wp-admin\/admin-ajax.php",
+            "wc_ajax_url": "\/activello\/?wc-ajax=%%endpoint%%"
+        };
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=2.5.5'></script>
+    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.min.js?ver=1.4.1'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var wc_cart_fragments_params = {
+            "ajax_url": "\/activello\/wp-admin\/admin-ajax.php",
+            "wc_ajax_url": "\/activello\/?wc-ajax=%%endpoint%%",
+            "fragment_name": "wc_fragments"
+        };
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=2.5.5'></script>
+    <script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201624'></script>
+    <script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2016Junaa'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var WPGroHo = {
+            "my_hash": ""
+        };
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.5.2'></script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/themes/activello/inc/js/skip-link-focus-fix.js?ver=20140222'></script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-includes/js/wp-embed.min.js?ver=4.5.2'></script>
+    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/themes/activello/inc/js/flexslider.min.js?ver=20140222'></script>
+    <script type='text/javascript' src='https://stats.wp.com/e-201624.js' async defer></script>
+    <script type='text/javascript'>
+        _stq = window._stq || [];
+        _stq.push(['view', {
+            v: 'ext',
+            j: '1:4.0.3',
+            blog: '102598196',
+            post: '0',
+            tz: '0',
+            srv: 'colorlib.com'
+        }]);
+        _stq.push(['clickTrackerInit', '102598196', '0']);
+    </script>
+</body>
+</html>
