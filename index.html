@@ -273,7 +273,7 @@
                                         <!-- content -->
                                         <div class="post-content">
                                             <a href="/#/category/{{ post.category.id }}">{{ post.title }}</a>
-                                            <span class="date">- {{ post.date }}</span>
+                                            <span class="date">- {{ post.date | date:'longDate' }}</span>
                                         </div>
                                         <!-- end content -->
                                     </div>
@@ -287,7 +287,7 @@
                                 <div class="cats-widget">
                                     <ul>
                                         <li class="cat-item cat-item-38" ng-repeat="category in categories">
-                                            <a href="/#/category/{{ post.category.id }}" title="{{ category.description }}">{{ category.name }}</a> <span>{{ category.posts }}</span>
+                                            <a href="/#/category/{{ category.id }}" title="{{ category.description }}">{{ category.name }}</a> <span>{{ category.posts }}</span>
                                         </li>
                                     </ul>
                                 </div>

@@ -12,7 +12,7 @@
                     <div class="entry-meta">
                         <span class="posted-on">
                             Posted on <a href="#" rel="bookmark">
-                                <time class="entry-date published" datetime="{{ post.date }}">{{ post.date }}</time>
+                                <time class="entry-date published" datetime="{{ post.date }}">{{ post.date | date:'longDate' }}</time>
                             </a>
                         </span>
                     </div>
