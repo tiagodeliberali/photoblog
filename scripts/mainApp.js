@@ -5,36 +5,23 @@
     $routeProvider
 
     .when('/', {
+        headerType: 'flexslider',
         templateUrl: 'pages/home.html',
         controller: 'homeController'
     })
 
     .when('/post/:postId', {
+        headerType: 'pagetitle',
         templateUrl: 'pages/post.html',
         controller: 'postController'
-    })
-
-    .when('/login', {
-        templateUrl: 'pages/login.html',
-        controller: 'mainController'
-    })
-
-    .when('/start', {
-        templateUrl: 'pages/start.html',
-        controller: 'mainController'
-    })
-
-    .when('/result', {
-        templateUrl: 'pages/result.html',
-        controller: 'resultController'
-    })
-
-    .when('/test/:testId', {
-        templateUrl: 'pages/test.html',
-        controller: 'testController'
-    })
-
+    });
 })
+
+.run(['$rootScope', function($rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+        $rootScope.headerType = current.$$route.headerType;
+    });
+}])
 
 .service('dataService', [function () {
     this.getBlogInfo = function () {
@@ -106,17 +93,12 @@
     $scope.blog = dataService.getBlogInfo();
     $scope.posts = dataService.getPosts();
     $scope.categories = dataService.getCategories();
-
-    $scope.showHeader = function (headerType) {
-        return $rootScope.headerType = headerType;
-    }
 }])
 
 .controller('homeController', ['$rootScope', '$scope', function ($rootScope, $scope) {
-    $rootScope.headerType = 'flexslider';
+    
 }])
 
 .controller('postController', ['$rootScope', '$scope', function ($rootScope, $scope) {
-    $rootScope.headerType = 'pagetitle';
-
+    
 }])
