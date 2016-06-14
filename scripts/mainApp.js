@@ -17,9 +17,13 @@
     });
 })
 
-.run(['$rootScope', function($rootScope) {
+.run(['$rootScope',  function ($rootScope) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.headerType = current.$$route.headerType;
+
+        if (current.params.postId) {
+            $rootScope.headerValue = current.params.postId;
+        }
     });
 }])
 
@@ -37,9 +41,9 @@
     this.getPosts = function () {
         var posts = new Array();
         posts.push({
-            id: 1,
+            id: 0,
             category: {
-                id: 1,
+                id: 0,
                 name: 'Baby and children',
                 description: 'Themes related to babies and children'
             },
@@ -58,28 +62,28 @@
         var categories = new Array();
 
         categories.push({
-            id: 1,
+            id: 0,
             name: 'Baby and children',
             description: 'Themes related to babies and children',
             posts: 1
         });
 
         categories.push({
-            id: 2,
+            id: 1,
             name: 'Portraits',
             description: 'People and their worlds',
             posts: 0
         });
 
         categories.push({
-            id: 3,
+            id: 2,
             name: 'Travel',
             description: 'Inspired by travels I did',
             posts: 0
         });
 
         categories.push({
-            id: 4,
+            id: 3,
             name: 'Cityscape',
             description: 'Day by day exploration of SP',
             posts: 0
@@ -93,6 +97,10 @@
     $scope.blog = dataService.getBlogInfo();
     $scope.posts = dataService.getPosts();
     $scope.categories = dataService.getCategories();
+
+    $scope.getTitle = function (id) {
+        return $scope.posts[id].title;
+    }
 }])
 
 .controller('homeController', ['$rootScope', '$scope', function ($rootScope, $scope) {

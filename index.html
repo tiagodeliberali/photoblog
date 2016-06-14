@@ -160,7 +160,7 @@
             <div class="container">
                 <div id="logo">
                     <span class="site-name">
-                        <a class="navbar-brand" href="https://colorlib.com/activello/" title="Activello Theme Demo" rel="home"><img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					</a>
+                        <a class="navbar-brand" href="/#/" title="Activello Theme Demo" rel="home"><img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					</a>
                     </span>
                     <!-- end of .site-name -->
                     <div class="tagline">{{ blog.description }}</div>
@@ -215,6 +215,12 @@
             </div>
 
             <div class="container main-content-area">
+                <div class="cat-title" ng-show="headerType == 'pagetitle'">
+                    <div id="line"></div>
+                    <ul class="post-categories">
+                        <li><a href="https://colorlib.com/activello/category/post-formats/" rel="category tag" ng-bind="getTitle(headerValue)"></a></li>
+                    </ul>
+                </div>
                 <div class="row">
                     <div class="main-content-inner col-sm-12 col-md-8 side-right">
                         <div id="primary" class="content-area">
