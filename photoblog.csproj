@@ -67,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="pages\home.html" />
+    <Content Include="pages\post.html" />
     <Content Include="scripts\mainApp.js" />
     <Content Include="Web.config" />
   </ItemGroup>

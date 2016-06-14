@@ -1,0 +1,37 @@
+﻿<div class="article-container">
+    <article ng-repeat="post in posts"
+             id="{{ post.id }}"
+             class="post-555 post type-post status-publish format-gallery has-post-thumbnail hentry category-post-formats tag-gallery tag-post-formats tag-shortcode post_format-post-format-gallery">
+        <div class="blog-item-wrap">
+            <div class="post-inner-content">
+                <header class="entry-header page-header">
+                    <li class="cat-item cat-item-38">
+                        <a href="/#/category/{{ post.category.id }}" title="{{ post.category.description }}">{{ post.category.name }}</a>
+                    </li>
+                    <h1 class="entry-title"><a href="/#/post/{{ post.id }}" rel="bookmark">{{ post.title }}</a></h1>
+                    <div class="entry-meta">
+                        <span class="posted-on">
+                            Posted on <a href="#" rel="bookmark">
+                                <time class="entry-date published" datetime="{{ post.date }}">{{ post.date }}</time>
+                            </a>
+                        </span>
+                    </div>
+                    <!-- .entry-meta -->
+                </header>
+                <!-- .entry-header -->
+                <a href="/#/post/{{ post.id }}" title="{{ post.title }}">
+                    <img width="1170" height="550" src="{{ post.image.url }}" class="single-featured wp-post-image" alt="{{ post.image.description }}" />
+                </a>
+                <div class="entry-content">
+                    <p>{{ post.description }}</p>
+
+                    <div class="read-more">
+                        <a href="/#/post/{{ post.id }}" title="{{ post.title }}">Read More</a>
+                    </div>
+                </div>
+                <!-- .entry-content -->
+            </div>
+        </div>
+    </article>
+    <!-- #post-## -->
+</div>
