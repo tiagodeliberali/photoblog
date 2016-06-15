@@ -160,7 +160,7 @@
             <div class="container">
                 <div id="logo">
                     <span class="site-name">
-                        <a class="navbar-brand" href="/#/" title="Activello Theme Demo" rel="home"><img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					</a>
+                        <a class="navbar-brand" href="{{ getHomeUrl() }}" title="Activello Theme Demo" rel="home"><img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					</a>
                     </span>
                     <!-- end of .site-name -->
                     <div class="tagline">{{ blog.description }}</div>
@@ -218,7 +218,7 @@
                 <div class="cat-title" ng-show="headerType == 'pagetitle'">
                     <div id="line"></div>
                     <ul class="post-categories">
-                        <li><a href="https://colorlib.com/activello/category/post-formats/" rel="category tag" ng-bind="getTitle(headerValue)"></a></li>
+                        <li><a href="https://colorlib.com/activello/category/post-formats/" rel="category tag" ng-bind="getCategoryTitle(headerValue)"></a></li>
                     </ul>
                 </div>
                 <div class="row">
@@ -266,7 +266,7 @@
                                     <div class="post" ng-repeat="post in posts">
                                         <!-- image -->
                                         <div class="post-image gallery">
-                                            <a href="/#/category/{{ post.category.id }}">
+                                            <a href="{{ getCategoryUrl(post.category.id) }}">
                                                 <img width="150" height="150"
                                                      src="{{ post.image.url }}"
                                                      class="attachment-thumbnail size-thumbnail wp-post-image"
@@ -278,7 +278,7 @@
                                         <!-- end post image -->
                                         <!-- content -->
                                         <div class="post-content">
-                                            <a href="/#/category/{{ post.category.id }}">{{ post.title }}</a>
+                                            <a href="{{ getCategoryUrl(post.category.id) }}">{{ post.title }}</a>
                                             <span class="date">- {{ post.date | date:'longDate' }}</span>
                                         </div>
                                         <!-- end content -->
@@ -293,7 +293,7 @@
                                 <div class="cats-widget">
                                     <ul>
                                         <li class="cat-item cat-item-38" ng-repeat="category in categories">
-                                            <a href="/#/category/{{ category.id }}" title="{{ category.description }}">{{ category.name }}</a> <span>{{ category.posts }}</span>
+                                            <a href="{{ getCategoryUrl(category.id) }}" title="{{ category.description }}">{{ category.name }}</a> <span>{{ category.posts }}</span>
                                         </li>
                                     </ul>
                                 </div>

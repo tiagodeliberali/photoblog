@@ -98,15 +98,27 @@
     $scope.posts = dataService.getPosts();
     $scope.categories = dataService.getCategories();
 
-    $scope.getTitle = function (id) {
-        return $scope.posts[id].title;
+    $scope.getCategoryTitle = function (id) {
+        return $scope.posts[id].category.name;
+    }
+
+    $scope.getCategoryUrl = function (id) {
+        return '/#/category/' + id;
+    }
+
+    $scope.getPostUrl = function (id) {
+        return '/#/post/' + id;
+    }
+
+    $scope.getHomeUrl = function () {
+        return '/#/';
     }
 }])
 
-.controller('homeController', ['$rootScope', '$scope', function ($rootScope, $scope) {
+.controller('homeController', ['$scope', function ($scope) {
     
 }])
 
-.controller('postController', ['$rootScope', '$scope', function ($rootScope, $scope) {
-    
+.controller('postController', ['$scope', '$routeParams', function ($scope, $routeParams) {
+    $scope.post = $scope.posts[$routeParams.postId];
 }])

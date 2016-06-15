@@ -6,27 +6,25 @@
             <div class="post-inner-content">
                 <header class="entry-header page-header">
                     <li class="cat-item cat-item-38">
-                        <a href="/#/category/{{ post.category.id }}" title="{{ post.category.description }}">{{ post.category.name }}</a>
+                        <a href="{{ getCategoryUrl(post.category.id) }}" title="{{ post.category.description }}">{{ post.category.name }}</a>
                     </li>
-                    <h1 class="entry-title"><a href="/#/post/{{ post.id }}" rel="bookmark">{{ post.title }}</a></h1>
+                    <h1 class="entry-title"><a href="{{ getPostUrl(post.id) }}" rel="bookmark">{{ post.title }}</a></h1>
                     <div class="entry-meta">
                         <span class="posted-on">
-                            Posted on <a href="#" rel="bookmark">
-                                <time class="entry-date published" datetime="{{ post.date }}">{{ post.date | date:'longDate' }}</time>
-                            </a>
+                            Posted on <time class="entry-date published" datetime="{{ post.date }}">{{ post.date | date:'longDate' }}</time>
                         </span>
                     </div>
                     <!-- .entry-meta -->
                 </header>
                 <!-- .entry-header -->
-                <a href="/#/post/{{ post.id }}" title="{{ post.title }}">
+                <a href="{{ getPostUrl(post.id) }}" title="{{ post.title }}">
                     <img width="1170" height="550" src="{{ post.image.url }}" class="single-featured wp-post-image" alt="{{ post.image.description }}" />
                 </a>
                 <div class="entry-content">
                     <p>{{ post.description }}</p>
 
                     <div class="read-more">
-                        <a href="/#/post/{{ post.id }}" title="{{ post.title }}">Read More</a>
+                        <a href="{{ getPostUrl(post.id) }}" title="{{ post.title }}">Read More</a>
                     </div>
                 </div>
                 <!-- .entry-content -->
