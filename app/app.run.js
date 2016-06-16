@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
@@ -8,7 +8,7 @@
     appRun.$inject = ['$rootScope'];
 
     function appRun($rootScope) {
-        $rootScope.$on('$routeChangeSuccess', RouteSuccess(event, current, previous));
+        $rootScope.$on('$routeChangeSuccess', RouteSuccess);
     }
 
     function RouteSuccess(event, current, previous) {

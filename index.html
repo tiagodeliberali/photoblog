@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <!--[if !IE]>
     <html class="no-js non-ie" lang="en-US" prefix="og: http://ogp.me/ns#"> <![endif]-->
 <!--[if IE 7 ]>
@@ -10,6 +10,7 @@
 <!--[if gt IE 9]><!-->
 <html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns#" ng-app="photoBlogApp" ng-controller="pageController as page">
 <!--<![endif]-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +23,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
     <script src="//pc035860.github.io/angular-easyfb/angular-easyfb.min.js"></script>
     <script src="//cdn.backand.net/backand/dist/1.8.2/backand.min.js"></script>
-    <script src="scripts/mainApp.js"></script>
+    <script src="script/app.js"></script>
 
     <link rel='stylesheet' id='contact-form-7-css' href='https://colorlib.com/activello/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.4.2' type='text/css' media='all' />
     <link rel='stylesheet' id='woocommerce-layout-css' href='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=2.5.5' type='text/css' media='all' />
@@ -57,7 +58,7 @@
         #social li {
             display: inline-block;
         }
-
+        
         #social li,
         #social ul {
             border: 0 !important;
@@ -65,94 +66,95 @@
             padding-left: 0;
             text-align: center;
         }
-
-            #social li a[href*="twitter.com"] .fa:before,
-            .fa-twitter:before {
-                content: "\f099";
-            }
-
-            #social li a[href*="facebook.com"] .fa:before,
-            .fa-facebook-f:before,
-            .fa-facebook:before {
-                content: "\f09a";
-            }
-
-            #social li a[href*="github.com"] .fa:before,
-            .fa-github:before {
-                content: "\f09b";
-            }
-
-            #social li a[href*="/feed"] .fa:before,
-            .fa-rss:before {
-                content: "\f09e";
-            }
-
-            #social li a[href*="pinterest.com"] .fa:before,
-            .fa-pinterest:before {
-                content: "\f0d2";
-            }
-
-            #social li a[href*="plus.google.com"] .fa:before,
-            .fa-google-plus:before {
-                content: "\f0d5";
-            }
-
-            #social li a[href*="linkedin.com"] .fa:before,
-            .fa-linkedin:before {
-                content: "\f0e1";
-            }
-
-            #social li a[href*="youtube.com"] .fa:before,
-            .fa-youtube:before {
-                content: "\f167";
-            }
-
-            #social li a[href*="instagram.com"] .fa:before,
-            .fa-instagram:before {
-                content: "\f16d";
-            }
-
-            #social li a[href*="flickr.com"] .fa:before,
-            .fa-flickr:before {
-                content: "\f16e";
-            }
-
-            #social li a[href*="tumblr.com"] .fa:before,
-            .fa-tumblr:before {
-                content: "\f173";
-            }
-
-            #social li a[href*="dribbble.com"] .fa:before,
-            .fa-dribbble:before {
-                content: "\f17d";
-            }
-
-            #social li a[href*="skype.com"] .fa:before,
-            .fa-skype:before {
-                content: "\f17e";
-            }
-
-            #social li a[href*="foursquare.com"] .fa:before,
-            .fa-foursquare:before {
-                content: "\f180";
-            }
-
-            #social li a[href*="vimeo.com"] .fa:before,
-            .fa-vimeo-square:before {
-                content: "\f194";
-            }
-
-            #social li a[href*="spotify.com"] .fa:before,
-            .fa-spotify:before {
-                content: "\f1bc";
-            }
-
-            #social li a[href*="soundcloud.com"] .fa:before,
-            .fa-soundcloud:before {
-                content: "\f1be";
-            }
+        
+        #social li a[href*="twitter.com"] .fa:before,
+        .fa-twitter:before {
+            content: "\f099";
+        }
+        
+        #social li a[href*="facebook.com"] .fa:before,
+        .fa-facebook-f:before,
+        .fa-facebook:before {
+            content: "\f09a";
+        }
+        
+        #social li a[href*="github.com"] .fa:before,
+        .fa-github:before {
+            content: "\f09b";
+        }
+        
+        #social li a[href*="/feed"] .fa:before,
+        .fa-rss:before {
+            content: "\f09e";
+        }
+        
+        #social li a[href*="pinterest.com"] .fa:before,
+        .fa-pinterest:before {
+            content: "\f0d2";
+        }
+        
+        #social li a[href*="plus.google.com"] .fa:before,
+        .fa-google-plus:before {
+            content: "\f0d5";
+        }
+        
+        #social li a[href*="linkedin.com"] .fa:before,
+        .fa-linkedin:before {
+            content: "\f0e1";
+        }
+        
+        #social li a[href*="youtube.com"] .fa:before,
+        .fa-youtube:before {
+            content: "\f167";
+        }
+        
+        #social li a[href*="instagram.com"] .fa:before,
+        .fa-instagram:before {
+            content: "\f16d";
+        }
+        
+        #social li a[href*="flickr.com"] .fa:before,
+        .fa-flickr:before {
+            content: "\f16e";
+        }
+        
+        #social li a[href*="tumblr.com"] .fa:before,
+        .fa-tumblr:before {
+            content: "\f173";
+        }
+        
+        #social li a[href*="dribbble.com"] .fa:before,
+        .fa-dribbble:before {
+            content: "\f17d";
+        }
+        
+        #social li a[href*="skype.com"] .fa:before,
+        .fa-skype:before {
+            content: "\f17e";
+        }
+        
+        #social li a[href*="foursquare.com"] .fa:before,
+        .fa-foursquare:before {
+            content: "\f180";
+        }
+        
+        #social li a[href*="vimeo.com"] .fa:before,
+        .fa-vimeo-square:before {
+            content: "\f194";
+        }
+        
+        #social li a[href*="spotify.com"] .fa:before,
+        .fa-spotify:before {
+            content: "\f1bc";
+        }
+        
+        #social li a[href*="soundcloud.com"] .fa:before,
+        .fa-soundcloud:before {
+            content: "\f1be";
+        }
     </style>
 </head>
+
 <body class="home blog has-sidebar-right">
     <div id="page" class="hfeed site">
 
@@ -218,7 +220,9 @@
                 <div class="cat-title" ng-show="headerType == 'pagetitle'">
                     <div id="line"></div>
                     <ul class="post-categories">
-                        <li><a href="https://colorlib.com/activello/category/post-formats/" rel="category tag" ng-bind="page.getCategoryTitle(headerValue)"></a></li>
+                        <li>
+                            <a href="https://colorlib.com/activello/category/post-formats/" rel="category tag" ng-bind="page.getCategoryTitle(headerValue)"></a>
+                        </li>
                     </ul>
                 </div>
                 <div class="row">
@@ -267,12 +271,7 @@
                                         <!-- image -->
                                         <div class="post-image gallery">
                                             <a href="{{ getCategoryUrl(post.category.id) }}">
-                                                <img width="150" height="150"
-                                                     src="{{ post.image.url }}"
-                                                     class="attachment-thumbnail size-thumbnail wp-post-image"
-                                                     alt="{{ post.image.description }}"
-                                                     srcset="{{ post.image.url }}"
-                                                     sizes="(max-width: 150px) 100vw, 150px" />
+                                                <img width="150" height="150" src="{{ post.image.url }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="{{ post.image.description }}" srcset="{{ post.image.url }}" sizes="(max-width: 150px) 100vw, 150px" />
                                             </a>
                                         </div>
                                         <!-- end post image -->
@@ -420,4 +419,5 @@
         _stq.push(['clickTrackerInit', '102598196', '0']);
     </script>
 </body>
+
 </html>
