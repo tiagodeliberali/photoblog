@@ -8,7 +8,7 @@
 <!--[if IE 9 ]>
     <html class="no-js ie9" lang="en-US" prefix="og: http://ogp.me/ns#"> <![endif]-->
 <!--[if gt IE 9]><!-->
-<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns#" ng-app="photoBlogApp" ng-controller="mainController">
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns#" ng-app="photoBlogApp" ng-controller="pageController as page">
 <!--<![endif]-->
 <head>
     <meta charset="UTF-8">
@@ -160,10 +160,10 @@
             <div class="container">
                 <div id="logo">
                     <span class="site-name">
-                        <a class="navbar-brand" href="{{ getHomeUrl() }}" title="Activello Theme Demo" rel="home"><img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					</a>
+                        <a class="navbar-brand" href="{{ page.pagegetHomeUrl() }}" title="Activello Theme Demo" rel="home"><img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					</a>
                     </span>
                     <!-- end of .site-name -->
-                    <div class="tagline">{{ blog.description }}</div>
+                    <div class="tagline">{{ page.blog.description }}</div>
                 </div>
                 <!-- end of #logo -->
             </div>
@@ -218,7 +218,7 @@
                 <div class="cat-title" ng-show="headerType == 'pagetitle'">
                     <div id="line"></div>
                     <ul class="post-categories">
-                        <li><a href="https://colorlib.com/activello/category/post-formats/" rel="category tag" ng-bind="getCategoryTitle(headerValue)"></a></li>
+                        <li><a href="https://colorlib.com/activello/category/post-formats/" rel="category tag" ng-bind="page.getCategoryTitle(headerValue)"></a></li>
                     </ul>
                 </div>
                 <div class="row">
@@ -237,8 +237,8 @@
                             <aside id="text-2" class="widget widget_text">
                                 <h3 class="widget-title">About Me</h3>
                                 <div class="textwidget">
-                                    <p><img src="{{ blog.pictureMe }}" alt="About Me"></p>
-                                    <p>{{ blog.aboutMe }}</p>
+                                    <p><img src="{{ page.blog.pictureMe }}" alt="About Me"></p>
+                                    <p>{{ page.blog.aboutMe }}</p>
                                 </div>
                             </aside>
                             <aside id="activello-social-2" class="widget activello-social">
