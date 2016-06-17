@@ -1,16 +1,16 @@
-﻿<article id="post-555"
-         class="post-555 post type-post status-publish format-gallery has-post-thumbnail hentry category-post-formats tag-gallery tag-post-formats tag-shortcode post_format-post-format-gallery">
+<article id="post_{{ post.post.id }}"
+         class="post type-post status-publish format-gallery has-post-thumbnail hentry category-post-formats tag-gallery tag-post-formats tag-shortcode post_format-post-format-gallery">
     <div class="blog-item-wrap">
         <div class="post-inner-content">
             <header class="entry-header page-header">
-                <h1 class="entry-title">{{ post.title }}</h1>
+                <h1 class="entry-title">{{ post.post.title }}</h1>
 
                 <div class="entry-meta">
-                    <span class="posted-on">Posted on <time class="entry-date published" datetime="2015-11-12T07:24:14+00:00">{{ post.date | date: 'longDate' }}</time></span>
+                    <span class="posted-on">Posted on <time class="entry-date published" datetime="2015-11-12T07:24:14+00:00">{{ post.post.date | date: 'longDate' }}</time></span>
                 </div><!-- .entry-meta -->
             </header><!-- .entry-header -->
 
-            <a title="{{ post.title }}">
+            <a title="{{ post.post.post.title }}">
                 <img width="1170" height="550"
                      src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1429734160945-4f85244d6a5a-1170x550.jpg"
                      class="single-featured wp-post-image"
@@ -28,7 +28,7 @@
 
             <div class="entry-content">
 
-                <p>{{ post.description }}</p>
+                <p>{{ post.post.description }}</p>
 
                 <div class="tiled-gallery type-rectangular tiled-gallery-unresized"
                      data-original-width="697"
