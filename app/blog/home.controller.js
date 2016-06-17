@@ -1,13 +1,15 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
         .module('photoBlogApp')
         .controller('homeController', homeController);
 
-    homeController.$inject = [];
+    homeController.$inject = ['dataService'];
     
-    function homeController() {
-
+    function homeController(dataService) {
+        var vm = this;
+        
+        vm.posts = dataService.getPosts();
     }
 })();

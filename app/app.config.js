@@ -12,14 +12,14 @@
 
             .when('/', {
             headerType: 'flexslider',
-            templateUrl: 'pages/home.html',
+            templateUrl: 'app/blog/home.html',
             controller: 'homeController',
             controllerAs: 'home'
         })
 
         .when('/post/:postId', {
             headerType: 'pagetitle',
-            templateUrl: 'pages/post.html',
+            templateUrl: 'app/blog/post.html',
             controller: 'postController',
             controllerAs: 'post'
         });

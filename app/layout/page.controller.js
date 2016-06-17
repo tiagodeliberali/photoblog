@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
@@ -20,7 +20,13 @@
         vm.getHomeUrl = getHomeUrl;
 
         function getCategoryTitle(id) {
-            return vm.posts[id].category.name;
+            var categoryTitle = '<vazio>';
+            
+            if (id != undefined && vm.posts[id] != undefined) {
+                 categoryTitle = vm.posts[id].category.name;
+            }
+            
+            return categoryTitle;
         }
 
         function getCategoryUrl(id) {

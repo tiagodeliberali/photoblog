@@ -16,40 +16,47 @@
     function appConfig($routeProvider) {
         $routeProvider
 
-        .when('/', {
+            .when('/', {
             headerType: 'flexslider',
-            templateUrl: 'pages/home.html',
-            controller: 'homeController'
+            templateUrl: 'app/blog/home.html',
+            controller: 'homeController',
+            controllerAs: 'home'
         })
 
         .when('/post/:postId', {
             headerType: 'pagetitle',
-            templateUrl: 'pages/post.html',
-            controller: 'postController'
+            templateUrl: 'app/blog/post.html',
+            controller: 'postController',
+            controllerAs: 'post'
         });
     }
 })();
 (function () {
     'use strict';
 
+    var rootScope;
+        
     angular
         .module('photoBlogApp')
         .run(appRun);
 
     appRun.$inject = ['$rootScope'];
-
+    
     function appRun($rootScope) {
-        $rootScope.$on('$routeChangeSuccess', RouteSuccess);
+        rootScope = $rootScope;
+        
+        rootScope.$on('$routeChangeSuccess', RouteSuccess);
     }
 
     function RouteSuccess(event, current, previous) {
-        $rootScope.headerType = current.$$route.headerType;
+        rootScope.headerType = current.$$route.headerType;
 
         if (current.params.postId) {
-            $rootScope.headerValue = current.params.postId;
+            rootScope.headerValue = current.params.postId;
         }
     }
 })();
+
 (function () {
     'use strict';
 
@@ -57,10 +64,12 @@
         .module('photoBlogApp')
         .controller('homeController', homeController);
 
-    homeController.$inject = [];
+    homeController.$inject = ['dataService'];
     
-    function homeController() {
-
+    function homeController(dataService) {
+        var vm = this;
+        
+        vm.posts = dataService.getPosts();
     }
 })();
 (function () {
@@ -102,7 +111,13 @@
         vm.getHomeUrl = getHomeUrl;
 
         function getCategoryTitle(id) {
-            return vm.posts[id].category.name;
+            var categoryTitle = '<vazio>';
+            
+            if (id != undefined && vm.posts[id] != undefined) {
+                 categoryTitle = vm.posts[id].category.name;
+            }
+            
+            return categoryTitle;
         }
 
         function getCategoryUrl(id) {
