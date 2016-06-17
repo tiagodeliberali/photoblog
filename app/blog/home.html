@@ -1,30 +1,28 @@
-﻿<div class="article-container">
-    <article ng-repeat="post in posts"
-             id="{{ post.id }}"
-             class="post-555 post type-post status-publish format-gallery has-post-thumbnail hentry category-post-formats tag-gallery tag-post-formats tag-shortcode post_format-post-format-gallery">
+<div class="article-container">
+    <article ng-repeat="post in posts" id="{{ home.post.id }}" class="post-555 post type-post status-publish format-gallery has-post-thumbnail hentry category-post-formats tag-gallery tag-post-formats tag-shortcode post_format-post-format-gallery">
         <div class="blog-item-wrap">
             <div class="post-inner-content">
                 <header class="entry-header page-header">
                     <li class="cat-item cat-item-38">
-                        <a href="{{ getCategoryUrl(post.category.id) }}" title="{{ post.category.description }}">{{ post.category.name }}</a>
+                        <a href="{{ page.getCategoryUrl(post.category.id) }}" title="{{ home.post.category.description }}">{{ home.post.category.name }}</a>
                     </li>
-                    <h1 class="entry-title"><a href="{{ getPostUrl(post.id) }}" rel="bookmark">{{ post.title }}</a></h1>
+                    <h1 class="entry-title"><a href="{{ page.getPostUrl(post.id) }}" rel="bookmark">{{ home.post.title }}</a></h1>
                     <div class="entry-meta">
                         <span class="posted-on">
-                            Posted on <time class="entry-date published" datetime="{{ post.date }}">{{ post.date | date:'longDate' }}</time>
+                            Posted on <time class="entry-date published" datetime="{{ home.post.date }}">{{ home.post.date | date:'longDate' }}</time>
                         </span>
                     </div>
                     <!-- .entry-meta -->
                 </header>
                 <!-- .entry-header -->
-                <a href="{{ getPostUrl(post.id) }}" title="{{ post.title }}">
-                    <img width="1170" height="550" src="{{ post.image.url }}" class="single-featured wp-post-image" alt="{{ post.image.description }}" />
+                <a href="{{ page.getPostUrl(post.id) }}" title="{{ home.post.title }}">
+                    <img width="1170" height="550" src="{{ home.post.image.url }}" class="single-featured wp-post-image" alt="{{ home.post.image.description }}" />
                 </a>
                 <div class="entry-content">
-                    <p>{{ post.description }}</p>
+                    <p>{{ home.post.description }}</p>
 
                     <div class="read-more">
-                        <a href="{{ getPostUrl(post.id) }}" title="{{ post.title }}">Read More</a>
+                        <a href="{{ page.getPostUrl(post.id) }}" title="{{ home.post.title }}">Read More</a>
                     </div>
                 </div>
                 <!-- .entry-content -->

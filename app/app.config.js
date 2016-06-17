@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
@@ -10,16 +10,18 @@
     function appConfig($routeProvider) {
         $routeProvider
 
-        .when('/', {
+            .when('/', {
             headerType: 'flexslider',
             templateUrl: 'pages/home.html',
-            controller: 'homeController'
+            controller: 'homeController',
+            controllerAs: 'home'
         })
 
         .when('/post/:postId', {
             headerType: 'pagetitle',
             templateUrl: 'pages/post.html',
-            controller: 'postController'
+            controller: 'postController',
+            controllerAs: 'post'
         });
     }
 })();
