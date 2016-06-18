@@ -20,9 +20,6 @@
     <title ng-bind="page.blog.title"></title>
 
     <link rel='stylesheet' id='contact-form-7-css' href='https://colorlib.com/activello/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.4.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='woocommerce-layout-css' href='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=2.5.5' type='text/css' media='all' />
-    <link rel='stylesheet' id='woocommerce-smallscreen-css' href='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=2.5.5' type='text/css' media='only screen and (max-width: 768px)' />
-    <link rel='stylesheet' id='woocommerce-general-css' href='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=2.5.5' type='text/css' media='all' />
     <link rel='stylesheet' id='activello-bootstrap-css' href='https://colorlib.com/activello/wp-content/themes/activello/inc/css/bootstrap.min.css?ver=4.5.2' type='text/css' media='all' />
     <link rel='stylesheet' id='activello-icons-css' href='https://colorlib.com/activello/wp-content/themes/activello/inc/css/font-awesome.min.css?ver=4.5.2' type='text/css' media='all' />
     <link rel='stylesheet' id='activello-fonts-css' href='//fonts.googleapis.com/css?family=Lora%3A400%2C400italic%2C700%2C700italic%7CMontserrat%3A400%2C700%7CMaven+Pro%3A400%2C700&#038;ver=4.5.2' type='text/css' media='all' />
@@ -162,7 +159,9 @@
             <div class="container">
                 <div id="logo">
                     <span class="site-name">
-                        <a class="navbar-brand" href="{{ page.getHomeUrl() }}" title="Activello Theme Demo" rel="home"><img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					</a>
+                        <a class="navbar-brand" href="{{ page.getHomeUrl() }}" title="Activello Theme Demo" rel="home">
+                            <img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					
+                        </a>
                     </span>
                     <!-- end of .site-name -->
                     <div class="tagline">{{ page.blog.description }}</div>
@@ -241,7 +240,7 @@
                             <aside id="text-2" class="widget widget_text">
                                 <h3 class="widget-title">About Me</h3>
                                 <div class="textwidget">
-                                    <p><img src="{{ page.blog.pictureMe }}" alt="About Me"></p>
+                                    <p><img ng-src="{{ page.blog.pictureMe }}" alt="About Me"></p>
                                     <p>{{ page.blog.aboutMe }}</p>
                                 </div>
                             </aside>
@@ -271,7 +270,7 @@
                                         <!-- image -->
                                         <div class="post-image gallery">
                                             <a href="{{ getCategoryUrl(post.category.id) }}">
-                                                <img width="150" height="150" src="{{ post.image.url }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="{{ post.image.description }}" srcset="{{ post.image.url }}" sizes="(max-width: 150px) 100vw, 150px" />
+                                                <img width="150" height="150" ng-src="{{ post.image.url }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="{{ post.image.description }}" sizes="(max-width: 150px) 100vw, 150px" />
                                             </a>
                                         </div>
                                         <!-- end post image -->
@@ -357,41 +356,6 @@
         };
         /* ]]> */
     </script>
-    <script type='text/javascript' src='https://colorlib.com/activello/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.4.2'></script>
-    <script type='text/javascript'>
-        /* <![CDATA[ */
-        var wc_add_to_cart_params = {
-            "ajax_url": "\/activello\/wp-admin\/admin-ajax.php",
-            "wc_ajax_url": "\/activello\/?wc-ajax=%%endpoint%%",
-            "i18n_view_cart": "View Cart",
-            "cart_url": "https:\/\/colorlib.com\/activello\/cart\/",
-            "is_cart": "",
-            "cart_redirect_after_add": "no"
-        };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=2.5.5'></script>
-    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
-    <script type='text/javascript'>
-        /* <![CDATA[ */
-        var woocommerce_params = {
-            "ajax_url": "\/activello\/wp-admin\/admin-ajax.php",
-            "wc_ajax_url": "\/activello\/?wc-ajax=%%endpoint%%"
-        };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=2.5.5'></script>
-    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.min.js?ver=1.4.1'></script>
-    <script type='text/javascript'>
-        /* <![CDATA[ */
-        var wc_cart_fragments_params = {
-            "ajax_url": "\/activello\/wp-admin\/admin-ajax.php",
-            "wc_ajax_url": "\/activello\/?wc-ajax=%%endpoint%%",
-            "fragment_name": "wc_fragments"
-        };
-        /* ]]> */
-    </script>
-    <script type='text/javascript' src='//colorlib.com/activello/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=2.5.5'></script>
     <script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201624'></script>
     <script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2016Junaa'></script>
     <script type='text/javascript'>
