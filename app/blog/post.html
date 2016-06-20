@@ -1,5 +1,4 @@
-<article id="post_{{ post.post.id }}"
-         class="post type-post status-publish format-gallery has-post-thumbnail hentry category-post-formats tag-gallery tag-post-formats tag-shortcode post_format-post-format-gallery">
+<article id="post_{{ post.post.id }}" class="post type-post status-publish format-gallery has-post-thumbnail hentry category-post-formats tag-gallery tag-post-formats tag-shortcode post_format-post-format-gallery">
     <div class="blog-item-wrap">
         <div class="post-inner-content">
             <header class="entry-header page-header">
@@ -7,53 +6,30 @@
 
                 <div class="entry-meta">
                     <span class="posted-on">Posted on <time class="entry-date published" datetime="2015-11-12T07:24:14+00:00">{{ post.post.date | date: 'longDate' }}</time></span>
-                </div><!-- .entry-meta -->
-            </header><!-- .entry-header -->
+                </div>
+                <!-- .entry-meta -->
+            </header>
+            <!-- .entry-header -->
 
             <a title="{{ post.post.post.title }}">
-                <img width="1170" height="550"
-                     src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1429734160945-4f85244d6a5a-1170x550.jpg"
-                     class="single-featured wp-post-image"
-                     alt="photo-1429734160945-4f85244d6a5a"
-                     data-attachment-id="1703"
-                     data-orig-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1429734160945-4f85244d6a5a.jpg"
-                     data-orig-size="4545,3000"
-                     data-comments-opened="1"
-                     data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}"
-                     data-image-title="photo-1429734160945-4f85244d6a5a"
-                     data-image-description=""
-                     data-medium-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1429734160945-4f85244d6a5a-300x198.jpg"
-                     data-large-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1429734160945-4f85244d6a5a-1024x676.jpg" />
+                <img width="1170" height="550" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1429734160945-4f85244d6a5a-1170x550.jpg" class="single-featured wp-post-image" alt="photo-1429734160945-4f85244d6a5a" data-attachment-id="1703" data-orig-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1429734160945-4f85244d6a5a.jpg" data-orig-size="4545,3000" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="photo-1429734160945-4f85244d6a5a" data-image-description="" data-medium-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1429734160945-4f85244d6a5a-300x198.jpg" data-large-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1429734160945-4f85244d6a5a-1024x676.jpg" />
             </a>
 
             <div class="entry-content">
 
                 <p>{{ post.post.description }}</p>
 
-                <div class="tiled-gallery type-rectangular tiled-gallery-unresized"
-                     data-original-width="697"
-                     data-carousel-extra='{&quot;blog_id&quot;:10,&quot;permalink&quot;:&quot;https:\/\/colorlib.com\/activello\/post-format-gallery\/&quot;,&quot;likes_blog_id&quot;:102598196}'
-                     itemscope itemtype="http://schema.org/ImageGallery">
-                    <div class="gallery-row"
-                         style="width: 697px; height: 311px;"
-                         data-original-width="697" data-original-height="311">
-                        <div class="gallery-group images-1"
-                             style="width: 466px; height: 311px;"
-                             data-original-width="466"
-                             data-original-height="311">
+                <ng-gallery images="ctrl.images" thumbs-num="11">
+                </ng-gallery>
+
+                <div class="tiled-gallery type-rectangular tiled-gallery-unresized" data-original-width="697" data-carousel-extra='{&quot;blog_id&quot;:10,&quot;permalink&quot;:&quot;https:\/\/colorlib.com\/activello\/post-format-gallery\/&quot;,&quot;likes_blog_id&quot;:102598196}' itemscope itemtype="http://schema.org/ImageGallery">
+                    <div class="gallery-row" style="width: 697px; height: 311px;" data-original-width="697" data-original-height="311">
+                        <div class="gallery-group images-1" style="width: 466px; height: 311px;" data-original-width="466" data-original-height="311">
                             <div class="tiled-gallery-item tiled-gallery-item-large" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                                 <a href="https://colorlib.com/activello/post-format-gallery/35h-2/" border="0" itemprop="url">
                                     <meta itemprop="width" content="462">
                                     <meta itemprop="height" content="307">
-                                    <img data-attachment-id="1765"
-                                         data-orig-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg"
-                                         data-orig-size="1000,664" data-comments-opened="1"
-                                         data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}"
-                                         data-image-title="35H" data-image-description=""
-                                         data-medium-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1-300x199.jpg"
-                                         data-large-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg"
-                                         src="https://i1.wp.com/colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg?resize=462%2C307&#038;ssl=1"
-                                         data-original-width="462" data-original-height="307" itemprop="http://schema.org/image" title="35H" alt="35H" style="width: 462px; height: 307px;" data-recalc-dims="1" />
+                                    <img data-attachment-id="1765" data-orig-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg" data-orig-size="1000,664" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="35H" data-image-description="" data-medium-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1-300x199.jpg" data-large-file="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg" src="https://i1.wp.com/colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg?resize=462%2C307&#038;ssl=1" data-original-width="462" data-original-height="307" itemprop="http://schema.org/image" title="35H" alt="35H" style="width: 462px; height: 307px;" data-recalc-dims="1" />
                                 </a>
                             </div>
                         </div>
@@ -131,7 +107,8 @@
                     <h3 class="jp-relatedposts-headline"><em>Related</em></h3>
                 </div>
 
-            </div><!-- .entry-content -->
+            </div>
+            <!-- .entry-content -->
             <div class="entry-footer">
 
                 <!-- tags -->
@@ -139,15 +116,19 @@
                     <a href="https://colorlib.com/activello/tag/gallery/">gallery</a> <a href="https://colorlib.com/activello/tag/post-formats/">Post Formats</a> <a href="https://colorlib.com/activello/tag/shortcode/">shortcode</a>
                 </div>
                 <!-- end tags -->
-            </div><!-- .entry-footer -->
+            </div>
+            <!-- .entry-footer -->
         </div>
     </div>
-</article><!-- #post-## -->
+</article>
+<!-- #post-## -->
 
 
 <nav class="navigation post-navigation" role="navigation">
     <h1 class="screen-reader-text">Post navigation</h1>
     <div class="nav-links">
         <div class="nav-previous"><a href="https://colorlib.com/activello/template-featured-image-vertical/" rel="prev"><i class="fa fa-chevron-left"></i> Template: Featured Image (No Sidebar Layout)</a></div>
-    </div><!-- .nav-links -->
-</nav><!-- .navigation -->
+    </div>
+    <!-- .nav-links -->
+</nav>
+<!-- .navigation -->
