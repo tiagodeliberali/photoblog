@@ -1,10 +1,10 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
         .module('photoBlogApp')
         .service('dataService', dataService);
-    
+
     dataService.$inject = [];
 
     function dataService() {
@@ -25,7 +25,7 @@
             return blogInfo;
         }
 
-        function getPosts () {
+        function getPosts() {
             var posts = new Array();
 
             posts.push({
@@ -41,7 +41,39 @@
                 image: {
                     url: 'https://drscdn.500px.org/photo/153246471/q%3D80_h%3D450/648e96cf4f0f7383270ea9c40f4abe42',
                     description: 'Alice focused on the game'
-                }
+                },
+                galery: [
+                    {
+                        thumb: 'images/thumbs/1.jpg',
+                        img: 'images/1.jpg',
+                        description: 'Image 1'
+                    },
+                    {
+                        thumb: 'images/thumbs/2.jpg',
+                        img: 'images/2.jpg',
+                        description: 'Image 2'
+                    },
+                    {
+                        thumb: 'images/thumbs/3.jpg',
+                        img: 'images/3.jpg',
+                        description: 'Image 3'
+                    },
+                    {
+                        thumb: 'images/thumbs/3.jpg',
+                        img: 'images/3.jpg',
+                        description: 'Image 3'
+                    },
+                    {
+                        thumb: 'images/thumbs/3.jpg',
+                        img: 'images/3.jpg',
+                        description: 'Image 3'
+                    },
+                    {
+                        thumb: 'images/thumbs/3.jpg',
+                        img: 'images/4.jpg',
+                        description: 'Image 4'
+                    }
+                ]
             });
 
             return posts;
