@@ -42,36 +42,36 @@
                     url: 'https://drscdn.500px.org/photo/153246471/q%3D80_h%3D450/648e96cf4f0f7383270ea9c40f4abe42',
                     description: 'Alice focused on the game'
                 },
-                galery: [
+                gallery: [
                     {
-                        thumb: 'images/thumbs/1.jpg',
-                        img: 'images/1.jpg',
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
                         description: 'Image 1'
                     },
                     {
-                        thumb: 'images/thumbs/2.jpg',
-                        img: 'images/2.jpg',
-                        description: 'Image 2'
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
                     },
                     {
-                        thumb: 'images/thumbs/3.jpg',
-                        img: 'images/3.jpg',
-                        description: 'Image 3'
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
                     },
                     {
-                        thumb: 'images/thumbs/3.jpg',
-                        img: 'images/3.jpg',
-                        description: 'Image 3'
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
                     },
                     {
-                        thumb: 'images/thumbs/3.jpg',
-                        img: 'images/3.jpg',
-                        description: 'Image 3'
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
                     },
                     {
-                        thumb: 'images/thumbs/3.jpg',
-                        img: 'images/4.jpg',
-                        description: 'Image 4'
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
                     }
                 ]
             });

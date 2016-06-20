@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('photoBlogApp', ['ezfb', 'backand', 'ngRoute']);
+        .module('photoBlogApp', ['ezfb', 'backand', 'ngRoute', 'jkuri.gallery']);
 })();
 (function () {
     'use strict';
@@ -139,7 +139,7 @@
     angular
         .module('photoBlogApp')
         .service('dataService', dataService);
-    
+
     dataService.$inject = [];
 
     function dataService() {
@@ -160,7 +160,7 @@
             return blogInfo;
         }
 
-        function getPosts () {
+        function getPosts() {
             var posts = new Array();
 
             posts.push({
@@ -176,7 +176,39 @@
                 image: {
                     url: 'https://drscdn.500px.org/photo/153246471/q%3D80_h%3D450/648e96cf4f0f7383270ea9c40f4abe42',
                     description: 'Alice focused on the game'
-                }
+                },
+                gallery: [
+                    {
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
+                    },
+                    {
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
+                    },
+                    {
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
+                    },
+                    {
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
+                    },
+                    {
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
+                    },
+                    {
+                        thumb: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        img: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/35H1.jpg',
+                        description: 'Image 1'
+                    }
+                ]
             });
 
             return posts;
