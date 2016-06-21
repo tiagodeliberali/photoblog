@@ -1,9 +1,10 @@
 {
-    "name": "my-project-name",
-    "version": "0.1.0",
-    "devDependencies": {
-        "grunt": "^1.0.1",
-        "grunt-contrib-concat": "^1.0.1",
-        "grunt-contrib-uglify": "^1.0.1"
-    }
+  "name": "photoblog",
+  "version": "0.1.0",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-uncss": "^1.0.5"
+  }
 }
