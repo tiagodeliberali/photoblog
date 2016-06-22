@@ -15,10 +15,11 @@ gulp.task('compress', function() {
     .pipe(gulp.dest('./script'));
 });
 
-gulp.task('removecss', function() {
-  return gulp.src('site.css')
-        .pipe(uncss({
-            html: ['index.html', 'app/**/*.html']
-        }))
-        .pipe(gulp.dest('./style'));
+gulp.task('uncss', function() {
+  return gulp.src('./style/*.css')
+        .pipe(concat('./result/main.css'))
+        //.pipe(uncss({
+        //    html: ['index.html', 'app/**/*.html']
+        //}))
+        .pipe(gulp.dest('.'));
 });
