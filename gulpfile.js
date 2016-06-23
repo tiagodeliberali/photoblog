@@ -4,7 +4,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
 gulp.task('concat', function () {
-    return gulp.src(['./app/app.module.js', 'app/**/*.js'])
+    return gulp.src(['./app/app.module.js', 'app/**/*.js', './script/functions.min.js', './script/ngGallery.js'])
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./script/'));
 });
