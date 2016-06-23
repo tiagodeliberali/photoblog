@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('photoBlogApp', ['ezfb', 'backand', 'ngRoute', 'jkuri.gallery']);
+        .module('photoBlogApp', ['ngRoute', 'jkuri.gallery']);
 })();
 (function () {
     'use strict';
@@ -106,6 +106,106 @@
 (function () {
     'use strict';
 
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogAboutme', photoblogAboutme);
+
+    function photoblogAboutme() {
+        var directive = {
+            templateUrl: '/app/directives/aboutme.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogCategories', photoblogCategories);
+
+    function photoblogCategories() {
+        var directive = {
+            templateUrl: '/app/directives/categories.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogFooter', photoblogFooter);
+
+    function photoblogFooter() {
+        var directive = {
+            templateUrl: '/app/directives/footer.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogRecentPosts', photoblogRecentPosts);
+
+    function photoblogRecentPosts() {
+        var directive = {
+            templateUrl: '/app/directives/recentposts.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogSlides', photoblogSlides);
+
+    function photoblogSlides() {
+        var directive = {
+            templateUrl: '/app/directives/slides.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
     angular
         .module('photoBlogApp')
         .controller('pageController', pageController);
@@ -159,7 +259,8 @@
                 title: 'Six Photo Project',
                 description: 'A six photos theme project, inspired by LensWork.com',
                 aboutMe: 'My name is Tiago Santos and I am an amateur photographer, specially pationated about people\'s portrait and urban photography.',
-                pictureMe: 'https://scontent-gru.xx.fbcdn.net/v/t1.0-9/12644947_10153943869296474_2740697872058079782_n.jpg?oh=2c792d108c3b229d031a98b181869cc5&oe=57C266CA'
+                pictureMe: 'https://scontent-gru.xx.fbcdn.net/v/t1.0-9/12644947_10153943869296474_2740697872058079782_n.jpg?oh=2c792d108c3b229d031a98b181869cc5&oe=57C266CA',
+                logo: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png'
             };
 
             return blogInfo;

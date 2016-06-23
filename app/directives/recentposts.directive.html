@@ -1,0 +1,24 @@
+<aside id="activello_recent_posts-2" class="widget activello-recent-posts">
+    <h3 class="widget-title">Recent Posts</h3>
+    <!-- recent posts -->
+    <div class="recent-posts-wrapper">
+        <!-- post -->
+        <div class="post" ng-repeat="post in page.posts">
+            <!-- image -->
+            <div class="post-image gallery">
+                <a href="{{ getCategoryUrl(post.category.id) }}">
+                    <img width="150" height="150" ng-src="{{ page.getCategoryThumb(post.images[0].img) }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="{{ post.title }}" sizes="(max-width: 150px) 100vw, 150px" />
+                </a>
+            </div>
+            <!-- end post image -->
+            <!-- content -->
+            <div class="post-content">
+                <a href="{{ getCategoryUrl(post.category.id) }}">{{ post.title }}</a>
+                <span class="date">- {{ post.date | date:'longDate' }}</span>
+            </div>
+            <!-- end content -->
+        </div>
+        <!-- end post -->
+    </div>
+    <!-- end posts wrapper -->
+</aside>

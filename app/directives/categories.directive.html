@@ -1,0 +1,11 @@
+<aside id="activello-cats-2" class="widget activello-cats">
+    <h3 class="widget-title">Categories</h3>
+    <div class="cats-widget">
+        <ul>
+            <li class="cat-item cat-item-38" ng-repeat="category in page.categories">
+                <a href="{{ getCategoryUrl(category.id) }}" title="{{ category.description }}">{{ category.name }}</a> <span>{{ category.posts }}</span>
+            </li>
+        </ul>
+    </div>
+    <!-- end widget content -->
+</aside>
