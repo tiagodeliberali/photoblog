@@ -21,14 +21,10 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
-    <script src="//pc035860.github.io/angular-easyfb/angular-easyfb.min.js"></script>
-    <script src="//cdn.backand.net/backand/dist/1.8.2/backand.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/78c75d6031.js"></script>
-    
-    
+
     <script src="script/app.js"></script>
-    
 </head>
 
 <body class="home blog has-sidebar-right">
@@ -38,8 +34,8 @@
             <div class="container">
                 <div id="logo">
                     <span class="site-name">
-                        <a class="navbar-brand" href="{{ page.getHomeUrl() }}" title="Activello Theme Demo" rel="home">
-                            <img width="207" height="28" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png" class="attachment-full size-full" alt="logo" />					
+                        <a class="navbar-brand" href="{{ page.getHomeUrl() }}" title="{{ page.blog.description }}" rel="home">
+                            <img width="207" height="28" ng-src="{{ page.blog.logo }}" class="attachment-full size-full" alt="logo" />
                         </a>
                     </span>
                     <!-- end of .site-name -->
@@ -53,44 +49,7 @@
         <div id="content" class="site-content">
             <div class="top-section">
                 <div class="flexslider" ng-show="headerType == 'flexslider'">
-                    <ul class="slides">
-                        <li>
-                            <img width="1920" height="550" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2012/03/photo-1437915015400-137312b61975-1920x550.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="photo-1437915015400-137312b61975" />
-                            <div class="flex-caption">
-                                <ul class="post-categories">
-                                    <li><a href="https://colorlib.com/activello/category/template-2/" rel="category tag">Template</a></li>
-                                </ul><a href="https://colorlib.com/activello/template-featured-image-vertical/"><h2 class="entry-title">Template: Featured Image (No Sidebar Layout)</h2></a>
-                                <div class="read-more"><a href="https://colorlib.com/activello/template-featured-image-vertical/">Read More</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <img width="1920" height="550" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/photo-1431578500526-4d9613015464-1920x550.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="photo-1431578500526-4d9613015464" />
-                            <div class="flex-caption">
-                                <ul class="post-categories">
-                                    <li><a href="https://colorlib.com/activello/category/template-2/" rel="category tag">Template</a></li>
-                                </ul><a href="https://colorlib.com/activello/template-featured-image-horizontal/"><h2 class="entry-title">Template: Featured Image (Full Width No Sidebar Layout)</h2></a>
-                                <div class="read-more"><a href="https://colorlib.com/activello/template-featured-image-horizontal/">Read More</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <img width="1920" height="550" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/oIpwxeeSPy1cnwYpqJ1w_Dufer-Collateral-test-1920x550.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="oIpwxeeSPy1cnwYpqJ1w_Dufer-Collateral-test" />
-                            <div class="flex-caption">
-                                <ul class="post-categories">
-                                    <li><a href="https://colorlib.com/activello/category/template-2/" rel="category tag">Template</a></li>
-                                </ul><a href="https://colorlib.com/activello/template-more-tag/"><h2 class="entry-title">Template: More Tag</h2></a>
-                                <div class="read-more"><a href="https://colorlib.com/activello/template-more-tag/">Read More</a></div>
-                            </div>
-                        </li>
-                        <li>
-                            <img width="1920" height="550" src="https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/16386149745_f56818fbd4_o-1920x550.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="16386149745_f56818fbd4_o" />
-                            <div class="flex-caption">
-                                <ul class="post-categories">
-                                    <li><a href="https://colorlib.com/activello/category/template-2/" rel="category tag">Template</a></li>
-                                </ul><a href="https://colorlib.com/activello/template-excerpt-defined/"><h2 class="entry-title">Template: Excerpt (Defined)</h2></a>
-                                <div class="read-more"><a href="https://colorlib.com/activello/template-excerpt-defined/">Read More</a></div>
-                            </div>
-                        </li>
-                    </ul>
+                    <photoblog-slides></photoblog-slides>
                 </div>
             </div>
 
@@ -99,7 +58,7 @@
                     <div id="line"></div>
                     <ul class="post-categories">
                         <li>
-                            <a href="https://colorlib.com/activello/category/post-formats/" rel="category tag" ng-bind="page.getCategoryTitle(headerValue)"></a>
+                            <a rel="category tag" ng-bind="page.getCategoryTitle(headerValue)"></a>
                         </li>
                     </ul>
                 </div>
@@ -110,111 +69,27 @@
                             <main id="main" class="site-main page-1" role="main">
                                 <ng-view></ng-view>
                             </main>
-                            <!-- #main -->
                         </div>
-                        <!-- #primary -->
                     </div>
 
                     <div id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
                         <div class="inner">
-                            <aside id="text-2" class="widget widget_text">
-                                <h3 class="widget-title">About Me</h3>
-                                <div class="textwidget">
-                                    <p><img ng-src="{{ page.blog.pictureMe }}" alt="About Me"></p>
-                                    <p>{{ page.blog.aboutMe }}</p>
-                                </div>
-                            </aside>
+                            <photoblog-aboutme></photoblog-aboutme>
 
-                            <aside id="activello-social-2" class="widget activello-social">
-                                <h3 class="widget-title">Follow Me</h3>
-                                <!-- social icons -->
-                                <div class="social-icons sticky-sidebar-social">
-                                    <nav id="social" class="social-icons">
-                                        <ul id="menu-social-items" class="social-menu">
-                                            <li id="menu-item-1734" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1734"><a href="https://www.facebook.com/tiagodeliberali" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.facebook.com/colorlib', 'Facebook');"><i class="social_icon fa"><span>Facebook</span></i></a></li>
-                                            <li id="menu-item-1735" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1735"><a href="http://twitter.com/tiagodeliberali" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://twitter.com/colorlib', 'Twitter');"><i class="social_icon fa"><span>Twitter</span></i></a></li>
-                                            <li id="menu-item-1736" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1736"><a href="https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew', 'youtube');"><i class="social_icon fa"><span>youtube</span></i></a></li>
-                                            <li id="menu-item-1737" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1737"><a href="https://plus.google.com/100289203607749737039" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://plus.google.com/100289203607749737039', 'Google+');"><i class="social_icon fa"><span>Google+</span></i></a></li>
-                                            <li id="menu-item-1738" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1738"><a href="http://instagram.com" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://instagram.com', 'Instagram');"><i class="social_icon fa"><span>Instagram</span></i></a></li>
-                                            <li id="menu-item-1739" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1739"><a href="https://github.com/tiagodeliberali/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://github.com/puikinsh/', 'Github');"><i class="social_icon fa"><span>Github</span></i></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <!-- end social icons -->
-                            </aside>
+                            <photoblog-recent-posts></photoblog-recent-posts>
 
-                            <aside id="activello_recent_posts-2" class="widget activello-recent-posts">
-                                <h3 class="widget-title">Recent Posts</h3>
-                                <!-- recent posts -->
-                                <div class="recent-posts-wrapper">
-                                    <!-- post -->
-                                    <div class="post" ng-repeat="post in page.posts">
-                                        <!-- image -->
-                                        <div class="post-image gallery">
-                                            <a href="{{ getCategoryUrl(post.category.id) }}">
-                                                <img width="150" height="150" ng-src="{{ page.getCategoryThumb(post.images[0].img) }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="{{ post.title }}" sizes="(max-width: 150px) 100vw, 150px" />
-                                            </a>
-                                        </div>
-                                        <!-- end post image -->
-                                        <!-- content -->
-                                        <div class="post-content">
-                                            <a href="{{ getCategoryUrl(post.category.id) }}">{{ post.title }}</a>
-                                            <span class="date">- {{ post.date | date:'longDate' }}</span>
-                                        </div>
-                                        <!-- end content -->
-                                    </div>
-                                    <!-- end post -->
-                                </div>
-                                <!-- end posts wrapper -->
-                            </aside>
-
-                            <aside id="activello-cats-2" class="widget activello-cats">
-                                <h3 class="widget-title">Categories</h3>
-                                <div class="cats-widget">
-                                    <ul>
-                                        <li class="cat-item cat-item-38" ng-repeat="category in page.categories">
-                                            <a href="{{ getCategoryUrl(category.id) }}" title="{{ category.description }}">{{ category.name }}</a> <span>{{ category.posts }}</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- end widget content -->
-                            </aside>
+                            <photoblog-categories></photoblog-categories>
                         </div>
                     </div>
-                    <!-- #secondary -->
                 </div>
-                <!-- close .*-inner (main-content or sidebar, depending if sidebar is used) -->
+
             </div>
-            <!-- close .row -->
+
         </div>
-        <!-- close .container -->
+
     </div>
     <!-- close .site-content -->
-    <div id="footer-area">
-        <footer id="colophon" class="site-footer" role="contentinfo">
-            <div class="site-info container">
-                <div class="row">
-                    <nav id="social" class="social-icons">
-                        <ul id="menu-social-items" class="social-menu">
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1734"><a href="https://www.facebook.com/tiagodeliberali" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.facebook.com/colorlib', 'Facebook');"><i class="social_icon fa"><span>Facebook</span></i></a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1735"><a href="http://twitter.com/tiagodeliberali" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://twitter.com/colorlib', 'Twitter');"><i class="social_icon fa"><span>Twitter</span></i></a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1736"><a href="https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://www.youtube.com/channel/UCOaovjLNXdIch2vLFsw_uew', 'youtube');"><i class="social_icon fa"><span>youtube</span></i></a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1737"><a href="https://plus.google.com/100289203607749737039" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://plus.google.com/100289203607749737039', 'Google+');"><i class="social_icon fa"><span>Google+</span></i></a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1738"><a href="http://instagram.com" onclick="__gaTracker('send', 'event', 'outbound-widget', 'http://instagram.com', 'Instagram');"><i class="social_icon fa"><span>Instagram</span></i></a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1739"><a href="https://github.com/tiagodeliberali/" onclick="__gaTracker('send', 'event', 'outbound-widget', 'https://github.com/puikinsh/', 'Github');"><i class="social_icon fa"><span>Github</span></i></a></li>
-                        </ul>
-                    </nav>
-                    <div class="copyright col-md-12">
-                        Activello. Theme by <a href="http://colorlib.com/" target="_blank">Colorlib</a> Powered by <a href="http://wordpress.org/" target="_blank">WordPress</a>
-                    </div>
-                </div>
-            </div>
-            <!-- .site-info -->
-            <div class="scroll-to-top"><i class="fa fa-angle-up"></i></div>
-            <!-- .scroll-to-top -->
-        </footer>
-        <!-- #colophon -->
-    </div>
+    <photoblog-footer></photoblog-footer>
 
     <!-- #page -->
     <div style="display:none">
