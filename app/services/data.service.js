@@ -38,40 +38,29 @@
                 title: 'Alice´s world',
                 description: 'An overview about important thing in the world of Alice',
                 date: new Date(2016, 6, 13),
-                image: {
-                    url: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/v1466538132/p001_alice_02.jpg',
-                    thumb: 'http://res.cloudinary.com/drzxualok/image/upload/c_lfill,h_80,w_80/v1466538132/p001_alice_02.jpg',
-                    description: 'Joy'
-                },
-                gallery: [
+                images: [
                     {
-                        thumb: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/v1466538132/p001_alice_02.jpg',
-                        img: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/v1466538132/p001_alice_02.jpg',
+                        img: 'v1466538132/p001_alice_02.jpg',
                         description: 'Joy'
                     },
                     {
-                        thumb: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/v1466538129/p001_alice_03.jpg',
-                        img: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/v1466538129/p001_alice_03.jpg',
+                        img: 'v1466538129/p001_alice_03.jpg',
                         description: 'Hurry'
                     },
                     {
-                        thumb: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/v1466538125/p001_alice_07.jpg',
-                        img: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/v1466538125/p001_alice_07.jpg',
+                        img: 'v1466538125/p001_alice_07.jpg',
                         description: 'Fashion'
                     },
                     {
-                        thumb: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/v1466538126/p001_alice_04.jpg',
-                        img: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/v1466538126/p001_alice_04.jpg',
+                        img: 'v1466538126/p001_alice_04.jpg',
                         description: 'Friendship'
                     },
                     {
-                        thumb: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/v1466538127/p001_alice_05.jpg',
-                        img: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/v1466538127/p001_alice_05.jpg',
+                        img: 'v1466538127/p001_alice_05.jpg',
                         description: 'Happiness'
                     },
                     {
-                        thumb: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/v1466538127/p001_alice_01.jpg',
-                        img: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/v1466538127/p001_alice_01.jpg',
+                        img: 'v1466538127/p001_alice_01.jpg',
                         description: 'Break'
                     }
                 ]

@@ -12,14 +12,14 @@
             <!-- .entry-header -->
 
             <a title="{{ post.post.post.title }}">
-                <img width="1170" height="550" ng-src="{{ post.post.image.url }}" class="single-featured wp-post-image" alt="{{ post.post.image.description }}" />
+                <img width="1170" height="550" ng-src="{{ page.getPostImage(post.post.images[0].img) }}" class="single-featured wp-post-image" alt="{{ post.post.image.description }}" />
             </a>
 
             <div class="entry-content">
 
                 <p>{{ post.post.description }}</p>
 
-                <ng-gallery images="post.post.gallery" thumbs-num="6">
+                <ng-gallery images="post.gallery" thumbs-num="6">
                 </ng-gallery>
 
                 <div class="sharedaddy sd-sharing-enabled">

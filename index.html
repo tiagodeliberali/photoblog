@@ -152,7 +152,7 @@
                                         <!-- image -->
                                         <div class="post-image gallery">
                                             <a href="{{ getCategoryUrl(post.category.id) }}">
-                                                <img width="150" height="150" ng-src="{{ post.image.thumb }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="{{ post.image.description }}" sizes="(max-width: 150px) 100vw, 150px" />
+                                                <img width="150" height="150" ng-src="{{ page.getCategoryThumb(post.images[0].img) }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="{{ post.title }}" sizes="(max-width: 150px) 100vw, 150px" />
                                             </a>
                                         </div>
                                         <!-- end post image -->
