@@ -5,9 +5,9 @@
         .module('photoBlogApp')
         .controller('postController', postController);
 
-    postController.$inject = ['$routeParams', 'dataService'];
+    postController.$inject = ['$routeParams', 'dataService', 'urlService'];
 
-    function postController($routeParams, dataService) {
+    function postController($routeParams, dataService, urlService) {
         var postId = $routeParams.postId;
 
         var vm = this;
@@ -20,8 +20,8 @@
 
             for (var i in vm.post.images) {
                 gallery.push({
-                    thumb: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/' + vm.post.images[i].img,
-                    img: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/' + vm.post.images[i].img
+                    thumb: urlService.getGalleryThumb(vm.post.images[i].img),
+                    img: urlService.getGalleryImage(vm.post.images[i].img)
                 });
             }
 

@@ -79,9 +79,9 @@
         .module('photoBlogApp')
         .controller('postController', postController);
 
-    postController.$inject = ['$routeParams', 'dataService'];
+    postController.$inject = ['$routeParams', 'dataService', 'urlService'];
 
-    function postController($routeParams, dataService) {
+    function postController($routeParams, dataService, urlService) {
         var postId = $routeParams.postId;
 
         var vm = this;
@@ -94,8 +94,8 @@
 
             for (var i in vm.post.images) {
                 gallery.push({
-                    thumb: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/' + vm.post.images[i].img,
-                    img: 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/' + vm.post.images[i].img
+                    thumb: urlService.getGalleryThumb(vm.post.images[i].img),
+                    img: urlService.getGalleryImage(vm.post.images[i].img)
                 });
             }
 
@@ -110,9 +110,9 @@
         .module('photoBlogApp')
         .controller('pageController', pageController);
 
-    pageController.$inject = ['dataService'];
+    pageController.$inject = ['dataService', 'urlService'];
 
-    function pageController(dataService) {
+    function pageController(dataService, urlService) {
         var vm = this;
 
         vm.blog = dataService.getBlogInfo();
@@ -120,14 +120,12 @@
         vm.categories = dataService.getCategories();
 
         vm.getCategoryTitle = getCategoryTitle;
-        vm.getCategoryUrl = getCategoryUrl;
-        vm.getPostUrl = getPostUrl;
-        vm.getHomeUrl = getHomeUrl;
+        vm.getCategoryUrl = urlService.getCategoryUrl;
+        vm.getPostUrl = urlService.getPostUrl;
+        vm.getHomeUrl = urlService.getHomeUrl;
 
-        vm.getCategoryThumb = getCategoryThumb;
-        vm.getGalleryThumb = getGalleryThumb;
-        vm.getGalleryImage = getGalleryImage;
-        vm.getPostImage = getPostImage;
+        vm.getCategoryThumb = urlService.getCategoryThumb;
+        vm.getPostImage = urlService.getPostImage;
 
         function getCategoryTitle(id) {
             var categoryTitle = '<vazio>';
@@ -137,34 +135,6 @@
             }
 
             return categoryTitle;
-        }
-
-        function getCategoryUrl(id) {
-            return '/#/category/' + id;
-        }
-
-        function getPostUrl(id) {
-            return '/#/post/' + id;
-        }
-
-        function getHomeUrl() {
-            return '/#/';
-        }
-
-        function getCategoryThumb(imageId) {
-            return 'http://res.cloudinary.com/drzxualok/image/upload/c_lfill,h_80,w_80/' + imageId;
-        }
-
-        function getGalleryThumb(imageId) {
-            return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/' + imageId;
-        }
-
-        function getGalleryImage(imageId) {
-            return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/' + imageId;
-        }
-
-        function getPostImage(imageId) {
-            return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/' + imageId;
         }
     }
 })();
@@ -271,6 +241,55 @@
             });
 
             return categories;
+        }
+    }
+})();
+(function () {
+    'use strict';
+
+    angular
+        .module('photoBlogApp')
+        .service('urlService', urlService);
+
+    urlService.$inject = [];
+
+    function urlService() {
+        return {
+            getCategoryUrl: getCategoryUrl,
+            getPostUrl: getPostUrl,
+            getHomeUrl: getHomeUrl,
+            getCategoryThumb: getCategoryThumb,
+            getGalleryThumb: getGalleryThumb,
+            getGalleryImage: getGalleryImage,
+            getPostImage: getPostImage,
+        };
+
+        function getCategoryUrl(id) {
+            return '/#/category/' + id;
+        }
+
+        function getPostUrl(id) {
+            return '/#/post/' + id;
+        }
+
+        function getHomeUrl() {
+            return '/#/';
+        }
+
+        function getCategoryThumb(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_lfill,h_80,w_80/' + imageId;
+        }
+
+        function getGalleryThumb(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/' + imageId;
+        }
+
+        function getGalleryImage(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/' + imageId;
+        }
+
+        function getPostImage(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/' + imageId;
         }
     }
 })();
