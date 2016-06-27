@@ -6,14 +6,15 @@
         <div class="post" ng-repeat="post in page.posts">
             <!-- image -->
             <div class="post-image gallery">
-                <a href="{{ getCategoryUrl(post.category.id) }}">
-                    <img width="150" height="150" ng-src="{{ page.getCategoryThumb(post.images[0].img) }}" class="attachment-thumbnail size-thumbnail wp-post-image" alt="{{ post.title }}" sizes="(max-width: 150px) 100vw, 150px" />
+                <a href="{{ page.getPostUrl(post.id) }}">
+                    <img width="150" height="150" ng-src="{{ page.getCategoryThumb(post.images[0].img) }}" 
+                        class="attachment-thumbnail size-thumbnail wp-post-image" alt="{{ post.title }}" sizes="(max-width: 150px) 100vw, 150px" />
                 </a>
             </div>
             <!-- end post image -->
             <!-- content -->
             <div class="post-content">
-                <a href="{{ getCategoryUrl(post.category.id) }}">{{ post.title }}</a>
+                <a href="{{ page.getPostUrl(post.id) }}">{{ post.title }}</a>
                 <span class="date">- {{ post.date | date:'longDate' }}</span>
             </div>
             <!-- end content -->

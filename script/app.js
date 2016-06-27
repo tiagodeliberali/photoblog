@@ -107,6 +107,42 @@
 (function () {
     'use strict';
 
+    angular
+        .module('photoBlogApp')
+        .controller('pageController', pageController);
+
+    pageController.$inject = ['dataService', 'urlService'];
+
+    function pageController(dataService, urlService) {
+        var vm = this;
+
+        vm.blog = dataService.getBlogInfo();
+        vm.posts = dataService.getPosts();
+        vm.categories = dataService.getCategories();
+
+        vm.getCategoryTitle = getCategoryTitle;
+        vm.getCategoryUrl = urlService.getCategoryUrl;
+        vm.getPostUrl = urlService.getPostUrl;
+        vm.getHomeUrl = urlService.getHomeUrl;
+        vm.getHomeSlideUrl = urlService.getHomeSlideUrl;
+
+        vm.getCategoryThumb = urlService.getCategoryThumb;
+        vm.getPostImage = urlService.getPostImage;
+
+        function getCategoryTitle(id) {
+            var categoryTitle = '<vazio>';
+
+            if (id != undefined && vm.posts[id] != undefined) {
+                categoryTitle = vm.posts[id].category.name;
+            }
+
+            return categoryTitle;
+        }
+    }
+})();
+(function () {
+    'use strict';
+
     /**
      * @desc order directive that is specific to the order module at a company named Acme
      * @example <div acme-order-calendar-range></div>
@@ -358,40 +394,9 @@
         function getPostImage(imageId) {
             return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/' + imageId;
         }
-    }
-})();
-(function () {
-    'use strict';
 
-    angular
-        .module('photoBlogApp')
-        .controller('pageController', pageController);
-
-    pageController.$inject = ['dataService', 'urlService'];
-
-    function pageController(dataService, urlService) {
-        var vm = this;
-
-        vm.blog = dataService.getBlogInfo();
-        vm.posts = dataService.getPosts();
-        vm.categories = dataService.getCategories();
-
-        vm.getCategoryTitle = getCategoryTitle;
-        vm.getCategoryUrl = urlService.getCategoryUrl;
-        vm.getPostUrl = urlService.getPostUrl;
-        vm.getHomeUrl = urlService.getHomeUrl;
-
-        vm.getCategoryThumb = urlService.getCategoryThumb;
-        vm.getPostImage = urlService.getPostImage;
-
-        function getCategoryTitle(id) {
-            var categoryTitle = '<vazio>';
-
-            if (id != undefined && vm.posts[id] != undefined) {
-                categoryTitle = vm.posts[id].category.name;
-            }
-
-            return categoryTitle;
+        function getHomeSlideUrl(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/' + imageId;
         }
     }
 })();

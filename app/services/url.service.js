@@ -45,5 +45,9 @@
         function getPostImage(imageId) {
             return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/' + imageId;
         }
+
+        function getHomeSlideUrl(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/' + imageId;
+        }
     }
 })();

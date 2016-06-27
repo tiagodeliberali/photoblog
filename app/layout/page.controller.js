@@ -18,6 +18,7 @@
         vm.getCategoryUrl = urlService.getCategoryUrl;
         vm.getPostUrl = urlService.getPostUrl;
         vm.getHomeUrl = urlService.getHomeUrl;
+        vm.getHomeSlideUrl = urlService.getHomeSlideUrl;
 
         vm.getCategoryThumb = urlService.getCategoryThumb;
         vm.getPostImage = urlService.getPostImage;
