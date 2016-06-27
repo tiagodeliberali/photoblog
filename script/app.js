@@ -95,7 +95,8 @@
             for (var i in vm.post.images) {
                 gallery.push({
                     thumb: urlService.getGalleryThumb(vm.post.images[i].img),
-                    img: urlService.getGalleryImage(vm.post.images[i].img)
+                    img: urlService.getGalleryImage(vm.post.images[i].img),
+                    description: vm.post.images[i].description
                 });
             }
 
@@ -208,41 +209,6 @@
 
     angular
         .module('photoBlogApp')
-        .controller('pageController', pageController);
-
-    pageController.$inject = ['dataService', 'urlService'];
-
-    function pageController(dataService, urlService) {
-        var vm = this;
-
-        vm.blog = dataService.getBlogInfo();
-        vm.posts = dataService.getPosts();
-        vm.categories = dataService.getCategories();
-
-        vm.getCategoryTitle = getCategoryTitle;
-        vm.getCategoryUrl = urlService.getCategoryUrl;
-        vm.getPostUrl = urlService.getPostUrl;
-        vm.getHomeUrl = urlService.getHomeUrl;
-
-        vm.getCategoryThumb = urlService.getCategoryThumb;
-        vm.getPostImage = urlService.getPostImage;
-
-        function getCategoryTitle(id) {
-            var categoryTitle = '<vazio>';
-
-            if (id != undefined && vm.posts[id] != undefined) {
-                categoryTitle = vm.posts[id].category.name;
-            }
-
-            return categoryTitle;
-        }
-    }
-})();
-(function () {
-    'use strict';
-
-    angular
-        .module('photoBlogApp')
         .service('dataService', dataService);
 
     dataService.$inject = [];
@@ -259,8 +225,8 @@
                 title: 'Six Photo Project',
                 description: 'A six photos theme project, inspired by LensWork.com',
                 aboutMe: 'My name is Tiago Santos and I am an amateur photographer, specially pationated about people\'s portrait and urban photography.',
-                pictureMe: 'https://scontent-gru.xx.fbcdn.net/v/t1.0-9/12644947_10153943869296474_2740697872058079782_n.jpg?oh=2c792d108c3b229d031a98b181869cc5&oe=57C266CA',
-                logo: 'https://cdn.colorlib.com/activello/wp-content/uploads/sites/10/2015/11/logo.png'
+                pictureMe: 'http://res.cloudinary.com/drzxualok/image/upload/c_scale,w_599/v1466987949/profile.jpg',
+                logo: './images/logo.png'
             };
 
             return blogInfo;
@@ -391,6 +357,41 @@
 
         function getPostImage(imageId) {
             return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/' + imageId;
+        }
+    }
+})();
+(function () {
+    'use strict';
+
+    angular
+        .module('photoBlogApp')
+        .controller('pageController', pageController);
+
+    pageController.$inject = ['dataService', 'urlService'];
+
+    function pageController(dataService, urlService) {
+        var vm = this;
+
+        vm.blog = dataService.getBlogInfo();
+        vm.posts = dataService.getPosts();
+        vm.categories = dataService.getCategories();
+
+        vm.getCategoryTitle = getCategoryTitle;
+        vm.getCategoryUrl = urlService.getCategoryUrl;
+        vm.getPostUrl = urlService.getPostUrl;
+        vm.getHomeUrl = urlService.getHomeUrl;
+
+        vm.getCategoryThumb = urlService.getCategoryThumb;
+        vm.getPostImage = urlService.getPostImage;
+
+        function getCategoryTitle(id) {
+            var categoryTitle = '<vazio>';
+
+            if (id != undefined && vm.posts[id] != undefined) {
+                categoryTitle = vm.posts[id].category.name;
+            }
+
+            return categoryTitle;
         }
     }
 })();

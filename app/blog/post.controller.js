@@ -21,7 +21,8 @@
             for (var i in vm.post.images) {
                 gallery.push({
                     thumb: urlService.getGalleryThumb(vm.post.images[i].img),
-                    img: urlService.getGalleryImage(vm.post.images[i].img)
+                    img: urlService.getGalleryImage(vm.post.images[i].img),
+                    description: vm.post.images[i].description
                 });
             }
 
