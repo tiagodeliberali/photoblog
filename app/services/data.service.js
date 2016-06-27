@@ -37,7 +37,7 @@
                     description: 'Themes related to babies and children'
                 },
                 title: 'Alice´s world',
-                description: 'An overview about important thing in the world of Alice',
+                description: 'What is important on the life of a baby? Here is a small overview about some important moments for Alice, shared by myself as father and photographer',
                 date: new Date(2016, 6, 13),
                 images: [
                     {

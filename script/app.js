@@ -124,10 +124,10 @@
         vm.getCategoryUrl = urlService.getCategoryUrl;
         vm.getPostUrl = urlService.getPostUrl;
         vm.getHomeUrl = urlService.getHomeUrl;
-        vm.getHomeSlideUrl = urlService.getHomeSlideUrl;
 
         vm.getCategoryThumb = urlService.getCategoryThumb;
         vm.getPostImage = urlService.getPostImage;
+        vm.getHomeSlideImage = urlService.getHomeSlideImage;
 
         function getCategoryTitle(id) {
             var categoryTitle = '<vazio>';
@@ -279,7 +279,7 @@
                     description: 'Themes related to babies and children'
                 },
                 title: 'Alice´s world',
-                description: 'An overview about important thing in the world of Alice',
+                description: 'What is important on the life of a baby? Here is a small overview about some important moments for Alice, shared by myself as father and photographer',
                 date: new Date(2016, 6, 13),
                 images: [
                     {
@@ -365,6 +365,7 @@
             getGalleryThumb: getGalleryThumb,
             getGalleryImage: getGalleryImage,
             getPostImage: getPostImage,
+            getHomeSlideImage: getHomeSlideImage,
         };
 
         function getCategoryUrl(id) {
@@ -395,7 +396,7 @@
             return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/' + imageId;
         }
 
-        function getHomeSlideUrl(imageId) {
+        function getHomeSlideImage(imageId) {
             return 'http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/' + imageId;
         }
     }
