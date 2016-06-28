@@ -17,7 +17,7 @@ gulp.task('concat-debug', function() {
         .pipe(gulp.dest('./script/'));
 });
 
-gulp.task('uncss', function() {
+gulp.task('css', function() {
     return gulp.src('./style/third_party/*.css')
         .pipe(concat('./style/main.css'))
         .pipe(cleanCSS({
