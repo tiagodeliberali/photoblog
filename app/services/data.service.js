@@ -19,7 +19,7 @@
                 title: 'Six Photo Project',
                 description: 'A six photos theme project, inspired by LensWork.com',
                 aboutMe: 'My name is Tiago Santos and I am an amateur photographer, specially pationated about people\'s portrait and urban photography.',
-                pictureMe: 'http://res.cloudinary.com/drzxualok/image/upload/c_scale,w_599/v1466987949/profile.jpg',
+                pictureMe: 'http://res.cloudinary.com/drzxualok/image/upload/c_scale,w_333/v1466987949/profile.jpg',
                 logo: './images/logo.png'
             };
 
