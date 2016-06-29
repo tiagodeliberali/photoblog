@@ -12,7 +12,7 @@
             .translations('en', getEN())
             .translations('pt', getPT())
             .uniformLanguageTag('bcp47')
-            .registerAvailableLanguageKeys(['en', 'de'], {
+            .registerAvailableLanguageKeys(['en', 'pt'], {
                 'en*': 'en',
                 'pt*': 'pt'
             })
