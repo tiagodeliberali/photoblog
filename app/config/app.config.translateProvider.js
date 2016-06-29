@@ -10,8 +10,12 @@
     function appConfig($translateProvider) {
         $translateProvider
             .translations('en', getEN())
-            .translations('pt-BR', getPT())
+            .translations('pt', getPT())
             .uniformLanguageTag('bcp47')
+            .registerAvailableLanguageKeys(['en', 'de'], {
+                'en*': 'en',
+                'pt*': 'pt'
+            })
             .determinePreferredLanguage()
             .fallbackLanguage('en');
 
