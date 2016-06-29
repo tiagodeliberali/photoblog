@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('photoBlogApp', ['ngRoute', 'jkuri.gallery', 'ezfb']);
+        .module('photoBlogApp', ['ngRoute', 'jkuri.gallery', 'ezfb', 'pascalprecht.translate']);
 })();

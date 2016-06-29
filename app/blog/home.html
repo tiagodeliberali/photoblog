@@ -9,7 +9,7 @@
                     <h1 class="entry-title"><a href="{{ page.getPostUrl(post.id) }}" rel="bookmark">{{ post.title }}</a></h1>
                     <div class="entry-meta">
                         <span class="posted-on">
-                            Posted on <time class="entry-date published" datetime="{{ post.date }}">{{ post.date | date:'longDate' }}</time>
+                            {{'POSTEDON' | translate}} <time class="entry-date published" datetime="{{ post.date }}">{{ post.date | date:'longDate' }}</time>
                         </span>
                     </div>
                     <!-- .entry-meta -->
@@ -20,7 +20,7 @@
                 </a>
                 <div class="entry-content">
                     <div class="read-more">
-                        <a href="{{ page.getPostUrl(post.id) }}" title="{{ post.title }}">See Photos</a>
+                        <a href="{{ page.getPostUrl(post.id) }}" title="{{ post.title }}">{{'SEEPHOTOS' | translate}}</a>
                     </div>
                 </div>
                 <!-- .entry-content -->

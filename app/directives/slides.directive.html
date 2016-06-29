@@ -1,24 +1,11 @@
-<!--<ul class="slides">
+<ul class="slides">
     <li ng-repeat="post in page.posts">
-        <img width="1920" height="550" ng-src="{{ page.getHomeSlideImage(post.images[0].img) }}" class="attachment-activello-slider size-activello-slider wp-post-image" alt="{{ post.description }}" />
+        <img width="1920" height="550" ng-src="{{ page.getHomeSlideImage(post.images[0].img) }}" class="attachment-activello-slider size-activello-slider wp-post-image" alt="{{ post.title }}" />
         <div class="flex-caption">
             <ul class="post-categories">
                 <li><a href="{{ page.getCategoryUrl(post.category.id) }}" rel="category tag">{{ post.category.name }}</a></li>
             </ul><a href="{{ page.getPostUrl(post.id) }}"><h2 class="entry-title">{{ post.title }}</h2></a>
-            <div class="read-more"><a href="{{ page.getPostUrl(post.id) }}">Read More</a></div>
-        </div>
-    </li>
-</ul>
-REMOVED SCRIPT HERE JUST TO ALLOW A FASTER PAGE LOAD. LEFT THE COMMENT TO HAVE THE HEADER AS REFERENCE.
--->
-<ul class="slides">
-    <li ng-repeat="post in page.posts" class="ng-scope">
-        <img width="1920" height="550" ng-src="http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/v1466538132/p001_alice_02.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="What is important on the life of a baby? Here is a small overview about some important moments for Alice, shared by myself as father and photographer" src="http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/v1466538132/p001_alice_02.jpg">
-        <div class="flex-caption">
-            <ul class="post-categories">
-                <li><a href="/#/category/0" rel="category tag" class="ng-binding">Baby and children</a></li>
-            </ul><a href="/#/post/0"><h2 class="entry-title ng-binding">Alice´s world</h2></a>
-            <div class="read-more"><a href="/#/post/0">Read More</a></div>
+            <div class="read-more"><a href="{{ page.getPostUrl(post.id) }}">{{'SEEPHOTOS' | translate}}</a></div>
         </div>
     </li>
 </ul>

@@ -5,9 +5,9 @@
         .module('photoBlogApp')
         .config(appConfig);
 
-    appConfig.$inject = ['$routeProvider', 'ezfbProvider'];
+    appConfig.$inject = ['$routeProvider'];
 
-    function appConfig($routeProvider, ezfbProvider) {
+    function appConfig($routeProvider) {
         $routeProvider
 
         .when('/', {
@@ -22,12 +22,6 @@
             templateUrl: 'app/blog/post.html',
             controller: 'postController',
             controllerAs: 'post'
-        });
-
-        ezfbProvider.setLocale('pt_BR');
-        ezfbProvider.setInitParams({
-            appId: '1643932782590470',
-            version: 'v2.6'
         });
     }
 })();

@@ -5,7 +5,7 @@
                 <h1 class="entry-title">{{ post.post.title }}</h1>
 
                 <div class="entry-meta">
-                    <span class="posted-on">Posted on <time class="entry-date published" datetime="2015-11-12T07:24:14+00:00">{{ post.post.date | date: 'longDate' }}</time></span>
+                    <span class="posted-on">{{'POSTEDON' | translate}} <time class="entry-date published" datetime="2015-11-12T07:24:14+00:00">{{ post.post.date | date: 'longDate' }}</time></span>
                 </div>
                 <!-- .entry-meta -->
             </header>
@@ -24,7 +24,7 @@
 
                 <div class="sharedaddy sd-sharing-enabled">
                     <div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
-                        <h3 class="sd-title">Share this:</h3>
+                        <h3 class="sd-title">{{'SHARETHIS' | translate}}:</h3>
                         <div class="sd-content">
                             <div class="fb-like" 
                                 onrender="widget.rendered = true" 
