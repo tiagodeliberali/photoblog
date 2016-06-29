@@ -26,20 +26,11 @@
                     <div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing">
                         <h3 class="sd-title">Share this:</h3>
                         <div class="sd-content">
-                            <afb:like 
-                                href="http://wlepinski.github.io/angularjs-facebook-sdk/" 
-                                layout="button_count" action="like" show-faces="true" share="false" 
-                                on-edge-created="onEdgeCreated(url);" on-edge-removed="onEdgeRemoved(url);">
-                            </afb:like>
-                            <!--<ul>
-                                <li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-555" class="share-pinterest sd-button share-icon" href="https://colorlib.com/activello/post-format-gallery/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span>Pinterest</span></a></li>
-                                <li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-555" class="share-linkedin sd-button share-icon" href="https://colorlib.com/activello/post-format-gallery/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span>LinkedIn</span></a></li>
-                                <li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-555" class="share-facebook sd-button share-icon" href="https://colorlib.com/activello/post-format-gallery/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li>
-                                <li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-555" class="share-twitter sd-button share-icon" href="https://colorlib.com/activello/post-format-gallery/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li>
-                                <li class="share-email"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon" href="https://colorlib.com/activello/post-format-gallery/?share=email" target="_blank" title="Click to email this to a friend"><span>Email</span></a></li>
-                                <li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon" href="https://colorlib.com/activello/post-format-gallery/#print" target="_blank" title="Click to print"><span>Print</span></a></li>
-                                <li class="share-end"></li>
-                            </ul>-->
+                            <div class="fb-like" 
+                                onrender="widget.rendered = true" 
+                                data-href="{{ post.getCurrentUrl() }}" 
+                                data-layout="button_count" data-action="like" data-show-faces="true" data-share="true">
+                            </div>
                         </div>
                     </div>
                 </div>

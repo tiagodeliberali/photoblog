@@ -14,6 +14,7 @@
 
         vm.post = dataService.getPosts()[postId];
         vm.gallery = getGallery();
+        vm.getCurrentUrl = urlService.getCurrentUrl;
 
         function getGallery() {
             var gallery = new Array();

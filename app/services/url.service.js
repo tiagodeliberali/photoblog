@@ -5,9 +5,9 @@
         .module('photoBlogApp')
         .service('urlService', urlService);
 
-    urlService.$inject = [];
+    urlService.$inject = ['$location'];
 
-    function urlService() {
+    function urlService($location) {
         return {
             getCategoryUrl: getCategoryUrl,
             getPostUrl: getPostUrl,
@@ -17,6 +17,7 @@
             getGalleryImage: getGalleryImage,
             getPostImage: getPostImage,
             getHomeSlideImage: getHomeSlideImage,
+            getCurrentUrl: getCurrentUrl
         };
 
         function getCategoryUrl(id) {
@@ -49,6 +50,10 @@
 
         function getHomeSlideImage(imageId) {
             return 'http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/' + imageId;
+        }
+
+        function getCurrentUrl() {
+            return $location.absUrl();
         }
     }
 })();

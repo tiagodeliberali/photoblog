@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('photoBlogApp', ['ngRoute', 'jkuri.gallery', 'angularjs-facebook-sdk']);
+        .module('photoBlogApp', ['ngRoute', 'jkuri.gallery', 'ezfb']);
 })();
