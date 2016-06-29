@@ -5,10 +5,9 @@
 
     angular
         .module('photoBlogApp')
-        .run(appRun)
-        .run(facebookInit);
+        .run(appRun);
 
-    appRun.$inject = ['$rootScope', 'angularjs-facebook-sdk'];
+    appRun.$inject = ['$rootScope'];
 
     function appRun($rootScope) {
         rootScope = $rootScope;
@@ -22,11 +21,5 @@
         if (current.params.postId) {
             rootScope.headerValue = current.params.postId;
         }
-    }
-
-    function facebookInit(facebookConfig) {
-        facebookConfig.init().then(function() {
-            console.log('Facebook SDK is loaded.');
-        });
     }
 })();

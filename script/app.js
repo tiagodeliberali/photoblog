@@ -1,1 +1,642 @@
-!function(){"use strict";angular.module("photoBlogApp",["ngRoute","jkuri.gallery","angularjs-facebook-sdk"])}(),function(){"use strict";function e(e){e.when("/",{headerType:"flexslider",templateUrl:"app/blog/home.html",controller:"homeController",controllerAs:"home"}).when("/post/:postId",{headerType:"pagetitle",templateUrl:"app/blog/post.html",controller:"postController",controllerAs:"post"})}function t(e){e.setAppId(0x5d725ed8a7a06),e.setLanguage("en-US"),e.setDebug(!0),e.autoInit(!1),e.setOptions({status:!0})}angular.module("photoBlogApp").config(e).config(t),e.$inject=["$routeProvider","angularjs-facebook-sdk"]}(),function(){"use strict";function e(e){o=e,o.$on("$routeChangeSuccess",t)}function t(e,t,n){o.headerType=t.$$route.headerType,t.params.postId&&(o.headerValue=t.params.postId)}function n(e){e.init().then(function(){console.log("Facebook SDK is loaded.")})}var o;angular.module("photoBlogApp").run(e).run(n),e.$inject=["$rootScope","angularjs-facebook-sdk"]}(),function(){"use strict";function e(e){var t=this;t.posts=e.getPosts()}angular.module("photoBlogApp").controller("homeController",e),e.$inject=["dataService"]}(),function(){"use strict";function e(e,t,n){function o(){var e=new Array;for(var t in i.post.images)e.push({thumb:n.getGalleryThumb(i.post.images[t].img),img:n.getGalleryImage(i.post.images[t].img),description:i.post.images[t].description});return e}var r=e.postId,i=this;i.post=t.getPosts()[r],i.gallery=o()}angular.module("photoBlogApp").controller("postController",e),e.$inject=["$routeParams","dataService","urlService"]}(),function(){"use strict";function e(){var e={templateUrl:"/app/directives/aboutme.directive.html",restrict:"EA"};return e}angular.module("photoBlogApp").directive("photoblogAboutme",e)}(),function(){"use strict";function e(){var e={templateUrl:"/app/directives/categories.directive.html",restrict:"EA"};return e}angular.module("photoBlogApp").directive("photoblogCategories",e)}(),function(){"use strict";function e(){var e={templateUrl:"/app/directives/footer.directive.html",restrict:"EA"};return e}angular.module("photoBlogApp").directive("photoblogFooter",e)}(),function(){"use strict";function e(){var e={templateUrl:"/app/directives/recentposts.directive.html",restrict:"EA"};return e}angular.module("photoBlogApp").directive("photoblogRecentPosts",e)}(),function(){"use strict";function e(){var e={templateUrl:"/app/directives/slides.directive.html",restrict:"EA"};return e}angular.module("photoBlogApp").directive("photoblogSlides",e)}(),function(){"use strict";function e(e,t){function n(e){var t="<vazio>";return void 0!=e&&void 0!=o.posts[e]&&(t=o.posts[e].category.name),t}var o=this;o.blog=e.getBlogInfo(),o.posts=e.getPosts(),o.categories=e.getCategories(),o.getCategoryTitle=n,o.getCategoryUrl=t.getCategoryUrl,o.getPostUrl=t.getPostUrl,o.getHomeUrl=t.getHomeUrl,o.getCategoryThumb=t.getCategoryThumb,o.getPostImage=t.getPostImage,o.getHomeSlideImage=t.getHomeSlideImage}angular.module("photoBlogApp").controller("pageController",e),e.$inject=["dataService","urlService"]}(),function(){"use strict";function e(){function e(){var e={title:"Six Photo Project",description:"A six photos theme project, inspired by LensWork.com",aboutMe:"My name is Tiago Santos and I am an amateur photographer, specially pationated about people's portrait and urban photography.",pictureMe:"http://res.cloudinary.com/drzxualok/image/upload/c_scale,w_333/v1466987949/profile.jpg",logo:"./images/logo.png"};return e}function t(){var e=new Array;return e.push({id:0,category:{id:0,name:"Baby and children",description:"Themes related to babies and children"},title:"Alice´s world",description:"What is important on the life of a baby? Here is a small overview about some important moments for Alice, shared by myself as father and photographer",date:new Date(2016,6,13),images:[{img:"v1466538132/p001_alice_02.jpg",description:"Joy"},{img:"v1466538129/p001_alice_03.jpg",description:"Hurry"},{img:"v1466538125/p001_alice_07.jpg",description:"Fashion"},{img:"v1466538126/p001_alice_04.jpg",description:"Friendship"},{img:"v1466538127/p001_alice_05.jpg",description:"Happiness"},{img:"v1466538127/p001_alice_01.jpg",description:"Break"}]}),e}function n(){var e=new Array;return e.push({id:0,name:"Baby and children",description:"Themes related to babies and children",posts:1}),e.push({id:1,name:"Portraits",description:"People and their worlds",posts:0}),e.push({id:2,name:"Travel",description:"Inspired by travels I did",posts:0}),e.push({id:3,name:"Cityscape",description:"Day by day exploration of SP",posts:0}),e}return{getBlogInfo:e,getPosts:t,getCategories:n}}angular.module("photoBlogApp").service("dataService",e),e.$inject=[]}(),function(){"use strict";function e(){function e(e){return"/#/category/"+e}function t(e){return"/#/post/"+e}function n(){return"/#/"}function o(e){return"http://res.cloudinary.com/drzxualok/image/upload/c_lfill,h_80,w_80/"+e}function r(e){return"http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/"+e}function i(e){return"http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/"+e}function a(e){return"http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/"+e}function c(e){return"http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/"+e}return{getCategoryUrl:e,getPostUrl:t,getHomeUrl:n,getCategoryThumb:o,getGalleryThumb:r,getGalleryImage:i,getPostImage:a,getHomeSlideImage:c}}angular.module("photoBlogApp").service("urlService",e),e.$inject=[]}(),function(){"use-strict";function e(e,t,n,o){function r(e,t){e.baseClass=e["class"]||i.baseClass,e.thumbClass=e.thumbClass||i.thumbClass,e.thumbsNum=e.thumbsNum||3}var i={baseClass:"ng-gallery",thumbClass:"ng-thumb",templateUrl:"ng-gallery.html"},a={enter:13,esc:27,left:37,right:39},c=i.templateUrl;return o.put(c,'<div class="{{ baseClass }}">  <div ng-repeat="i in images">    <img ng-src="{{ i.thumb }}" class="{{ thumbClass }}" ng-click="openGallery($index)" alt="Image {{ $index + 1 }}" />  </div></div><div class="ng-overlay" ng-show="opened"></div><div class="ng-gallery-content" unselectable="on" ng-show="opened" ng-swipe-left="nextImage()" ng-swipe-right="prevImage()">  <div class="uil-ring-css" ng-show="loading"><div></div></div><a href="{{getImageDownloadSrc()}}" target="_blank" ng-show="showImageDownloadButton()" class="download-image"><i class="fa fa-download"></i></a>  <a class="close-popup" ng-click="closeGallery()"><i class="fa fa-close"></i></a>  <a class="nav-left" ng-click="prevImage()"><i class="fa fa-angle-left"></i></a>  <img ondragstart="return false;" draggable="false" ng-src="{{ img }}" ng-click="nextImage()" ng-show="!loading" class="effect" />  <a class="nav-right" ng-click="nextImage()"><i class="fa fa-angle-right"></i></a>  <span class="info-text">{{ index + 1 }}/{{ images.length }} - {{ description }}</span>  <div class="ng-thumbnails-wrapper">    <div class="ng-thumbnails slide-left">      <div ng-repeat="i in images">        <img ng-src="{{ i.thumb }}" ng-class="{\'active\': index === $index}" ng-click="changeImage($index)" />      </div>    </div>  </div></div>'),{restrict:"EA",scope:{images:"=",thumbsNum:"@",hideOverflow:"="},controller:["$scope",function(e){e.$on("openGallery",function(t,n){e.openGallery(n.index)})}],templateUrl:function(e,t){return t.templateUrl||i.templateUrl},link:function(o,i,c){r(o,c),o.thumbsNum>=11&&(o.thumbsNum=11);var s=e.find("body"),l=angular.element(i[0].querySelectorAll(".ng-thumbnails-wrapper")),u=angular.element(i[0].querySelectorAll(".ng-thumbnails"));o.index=0,o.opened=!1,o.thumb_wrapper_width=0,o.thumbs_width=0;var d=function(e){var t=n.defer(),r=new Image;return r.onload=function(){o.loading=!1,typeof this.complete!==!1&&0!==this.naturalWidth||t.reject(),t.resolve(r)},r.onerror=function(){t.reject()},r.src=o.images[e].img,o.loading=!0,t.promise},g=function(e){d(o.index).then(function(e){o.img=e.src,f(o.index)}),o.description=o.images[e].description||""};o.showImageDownloadButton=function(){if(null!=o.images[o.index]&&null!=o.images[o.index].downloadSrc){var e=o.images[o.index];return angular.isDefined(e.downloadSrc)&&0<e.downloadSrc.length}},o.getImageDownloadSrc=function(){return null!=o.images[o.index]&&null!=o.images[o.index].downloadSrc?o.images[o.index].downloadSrc:void 0},o.changeImage=function(e){o.index=e,g(e)},o.nextImage=function(){o.index+=1,o.index===o.images.length&&(o.index=0),g(o.index)},o.prevImage=function(){o.index-=1,o.index<0&&(o.index=o.images.length-1),g(o.index)},o.openGallery=function(e){void 0!==typeof e&&(o.index=e,g(o.index)),o.opened=!0,o.hideOverflow&&$("body").css({overflow:"hidden"}),t(function(){var e=p();o.thumbs_width=e.width;var t=e.width+1;u.css({width:t+"px"}),l.css({width:e.visible_width+"px"}),f(o.index)})},o.closeGallery=function(){o.opened=!1,o.hideOverflow&&$("body").css({overflow:""})},s.bind("keydown",function(e){if(o.opened){var t=e.which;t===a.esc?o.closeGallery():t===a.right||t===a.enter?o.nextImage():t===a.left&&o.prevImage(),o.$apply()}});var p=function(){var e=0,t=0;return angular.forEach(u.find("img"),function(n){e+=n.clientWidth,e+=10,t=n.clientWidth+10}),{width:e,visible_width:t*o.thumbsNum}},f=function(e){t(function(){var t=o.images.length,n=o.thumbs_width,r=parseInt(n/t,10),i=e+1,a=Math.ceil(t/i);l[0].scrollLeft=0,l[0].scrollLeft=i*r-a*r},100)}}}}angular.module("jkuri.gallery",[]).directive("ngGallery",e),e.$inject=["$document","$timeout","$q","$templateCache"]}(),!function(e,t){function n(e){return{restrict:"E",replace:!0,template:"<fb:activity ng-attr-app-id ng-attr-site ng-attr-action ng-attr-colorscheme ng-attr-header></fb:activity>",scope:{appId:"@appId",site:"@site",action:"@action",colorschema:"@colorschema",header:"@header"},link:function(t,n){e.ready.then(function(){FB.XFBML.parse(n[0])})}}}function o(e){return{restrict:"E",replace:!0,template:"<fb:comments ng-attr-href ng-attr-numposts ng-attr-colorscheme></fb:comments>",scope:{href:"@href",colorschema:"@colorschema",numposts:"@numposts",commentCreated:"&onCommentCreated",commentRemoved:"&onCommentRemoved"},link:function(t,n){function o(e){e.href===t.href&&t.commentCreated(e)}function r(e){e.href===t.href&&t.commentRemoved(e)}e.ready.then(function(){FB.XFBML.parse(n[0]),e.Event.subscribe("comment.create",o),e.Event.subscribe("comment.remove",r)}),t.$on("$destroy",function(){e.Event.unsubscribe("comment.create",o),e.Event.unsubscribe("comment.remove",r)})}}}function r(e){return{restrict:"E",replace:!0,template:"<fb:facepile ng-attr-href ng-attr-action ng-attr-width ng-attr-max-rows ng-attr-colorscheme ng-attr-size ng-attr-show-count></fb:facepile>",scope:{href:"@href",action:"@action",colorschema:"@colorschema",showCount:"@showCount",height:"@height",width:"@width",maxRows:"@maxRows",size:"@size"},link:function(t,n){e.ready.then(function(){FB.XFBML.parse(n[0])})}}}function i(e){return{restrict:"E",replace:!0,template:"<fb:follow ng-attr-href ng-attr-colorscheme ng-attr-layout ng-attr-show-faces></fb:follow>",scope:{href:"@href",colorschema:"@colorschema",layout:"@layout",showFaces:"@showFaces"},link:function(t,n){e.ready.then(function(){FB.XFBML.parse(n[0])})}}}function a(e){return{restrict:"E",replace:!0,template:"<fb:like ng-attr-href ng-attr-layout ng-attr-action ng-attr-show-faces ng-attr-share></fb:like>",scope:{href:"@href",layout:"@layout",action:"@action",show_faces:"@showFaces",share:"@share",edgeCreated:"&onEdgeCreated",edgeRemoved:"&onEdgeRemoved"},link:function(t,n,o){function r(e,o){o===n[0]&&t.edgeCreated({url:e})}function i(e,o){o===n[0]&&t.edgeRemoved({url:e})}e.ready.then(function(){FB.XFBML.parse(n[0]),e.Event.subscribe("edge.create",r),e.Event.subscribe("edge.remove",i)}),t.$on("$destroy",function(){e.Event.unsubscribe("edge.create",r),e.Event.unsubscribe("edge.remove",i)})}}}function c(e){return{restrict:"E",replace:!0,template:"<fb:like-box ng-attr-href ng-attr-colorscheme ng-attr-show-faces ng-attr-header ng-attr-stream ng-attr-show-border></fb:like-box>",scope:{href:"@href",colorschema:"@colorschema",showFaces:"@showFaces",header:"@header",stream:"@stream",showBorder:"@showBorder"},link:function(t,n){e.ready.then(function(){FB.XFBML.parse(n[0])})}}}function s(e){return{restrict:"E",replace:!0,template:'<button ng-click="dispatchLogin();">{{label}}</button>',scope:{label:"@label",scope:"@scope",enableProfileSelector:"@enableProfileSelector",profileSelectorIds:"@profileSelectorIds"},compile:function(t,n){var o={};return n.scope&&(o.scope=n.scope),n.enableProfileSelector&&(o.enable_profile_selector=!0),n.profileSelectorIds&&(o.profile_selector_ids=!0),function(t,n){t.dispatchLogin=function(){e.login(o)}}}}}function l(e){return{restrict:"E",replace:!0,template:'<button ng-click="dispatchLogout();">{{label}}</button>',scope:{label:"@label"},link:function(t,n){t.dispatchLogout=function(){e.logout()}}}}function u(e){return{restrict:"E",replace:!0,template:"<fb:name ng-attr-uid></fb:name>",scope:{uid:"@uid"},link:function(t,n){e.ready.then(function(){FB.XFBML.parse(n[0])})}}}function d(e){return{restrict:"E",replace:!0,template:"<fb:post ng-attr-href ng-attr-width></fb:post>",scope:{href:"@href",width:"@width"},link:function(t,n){e.ready.then(function(){FB.XFBML.parse(n[0])})}}}function g(e){return{restrict:"E",replace:!0,template:"<img ng-attr-width ng-attr-height />",scope:{uid:"@uid",type:"@type",width:"@width",height:"@height"},compile:function(t,n){return function(t,n){e.ready.then(function(){var o=t.uid?t.uid+"/picture":"/me/picture",r=e.api(o,{redirect:!1,type:t.type,width:t.width,height:t.height});r.then(function(e){e&&!e.error&&n.attr("src",e.data.url)})})}}}}function p(e){return{restrict:"E",replace:!0,template:"<fb:send ng-attr-href ng-attr-color-schema ng-attr-width ng-attr-height></fb:send>",scope:{href:"@href",colorschema:"@colorschema",width:"@width",height:"@height",messageSend:"@onMessageSend"},link:function(t,n){function o(e){e===t.href&&t.messageSend({url:e})}e.ready.then(function(){FB.XFBML.parse(n[0]),e.Event.subscribe("message.send",o)}),t.$on("$destroy",function(){e.Event.unsubscribe("message.send",o)})}}}function f(e){return{restrict:"E",replace:!0,template:"<fb:share-button ng-attr-href ng-attr-type></fb:share-button>",scope:{href:"@href",type:"@type"},link:function(t,n){e.ready.then(function(){FB.XFBML.parse(n[0])})}}}function m(e,t,n){return n.$new(),{ready:e.initialization,Event:{subscribe:function(e,t){var o=function(){var e=Array.prototype.slice.call(arguments,0);n.$apply(function(){t.apply(null,e)})};t.$$eventHandler=o,FB.Event.subscribe(e,o)},unsubscribe:function(e,t){FB.Event.unsubscribe(e,t.$$eventHandler)}},api:function(e,o,r){var i=Array.prototype.slice.call(arguments,0),a=t.defer();return this.ready.then(function(){i.push(function(e){n.$apply(function(){a.resolve(e)})}),FB.api.apply(null,i)}),a.promise},ui:function(e){var o=Array.prototype.slice.call(arguments,0),r=t.defer();return this.ready.then(function(){o.push(function(e){n.$apply(function(){r.resolve(e)})}),FB.ui.apply(null,o)}),r.promise},login:function(e){e=e||{};var o=t.defer();return this.ready.then(function(){FB.login(function(){var e=arguments;n.$apply(function(){o.resolve.apply(this,e)})},e)}),o.promise},logout:function(){var e=t.defer();return this.ready.then(function(){FB.logout(function(){e.resolve.apply(this,arguments)})}),e.promise},getLoginStatus:function(){var e=t.defer();return this.ready.then(function(){FB.getLoginStatus(function(){e.resolve.apply(this,arguments)})}),e.promise}}}angular.module("angularjs-facebook-sdk.config",[]).value("angularjs-facebook-sdk.config",{debug:!0}),angular.module("angularjs-facebook-sdk.directives",[]),angular.module("angularjs-facebook-sdk.services",[]),angular.module("angularjs-facebook-sdk",["angularjs-facebook-sdk.config","angularjs-facebook-sdk.directives","angularjs-facebook-sdk.services"]),angular.module("angularjs-facebook-sdk").run(["facebookConfig",function(e){e.autoInit&&e.init()}]),n.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbActivity",n),o.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbComments",o),r.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbFacepile",r),i.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbFollow",i),a.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbLike",a),c.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbLikeBox",c),s.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbLogin",s),l.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbLogout",l),u.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbName",u),d.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbPost",d),g.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbProfilePic",g),p.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbSend",p),f.$inject=["facebookService"],angular.module("angularjs-facebook-sdk.directives").directive("afbShareButton",f),angular.module("angularjs-facebook-sdk.services").provider("facebookConfig",function(){function e(e,s,l){var u={appId:n,version:o,status:!0,xfbml:!0},d=l.defer(),g=angular.extend(u,r);return g.version!=o&&(o=g.version),s.fbAsyncInit=function(){FB.init(g),e.$apply(function(){d.resolve()})},{appId:n,sdkVersion:o,lang:i,debug:a,autoInit:c,initialization:d.promise,init:function(){return function(e,t,n){var r,c=e.getElementsByTagName(t)[0];e.getElementById(n)||(r=e.createElement(t),r.id=n,r.src="//connect.facebook.net/"+i+(a?"/all/debug.js":"v2"==o.substring(0,2)?"/sdk.js":"/all.js"),c.parentNode.insertBefore(r,c))}(t,"script","facebook-jssdk"),d.promise}}}var n=null,o="v2.2",r={},i="en_US",a=!1,c=!0;this.setAppId=function(e){n=e},this.setSdkVersion=function(e){o=e},this.setLanguage=function(e){i=e},this.setDebug=function(e){a=e},this.setOptions=function(e){r=e},this.autoInit=function(e){c=e},e.$inject=["$rootScope","$window","$q"],this.$get=e}),m.$inject=["facebookConfig","$q","$rootScope"],angular.module("angularjs-facebook-sdk.services").factory("facebookService",m)}(window,document);
+(function () {
+    'use strict';
+
+    angular
+        .module('photoBlogApp', ['ngRoute', 'jkuri.gallery', 'ezfb']);
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('photoBlogApp')
+        .config(appConfig);
+
+    appConfig.$inject = ['$routeProvider', 'ezfbProvider'];
+
+    function appConfig($routeProvider, ezfbProvider) {
+        $routeProvider
+
+        .when('/', {
+            headerType: 'flexslider',
+            templateUrl: 'app/blog/home.html',
+            controller: 'homeController',
+            controllerAs: 'home'
+        })
+
+        .when('/post/:postId', {
+            headerType: 'pagetitle',
+            templateUrl: 'app/blog/post.html',
+            controller: 'postController',
+            controllerAs: 'post'
+        });
+
+        ezfbProvider.setLocale('pt_BR');
+        ezfbProvider.setInitParams({
+            appId: '1643932782590470',
+            version: 'v2.6'
+        });
+    }
+})();
+(function() {
+    'use strict';
+
+    var rootScope;
+
+    angular
+        .module('photoBlogApp')
+        .run(appRun);
+
+    appRun.$inject = ['$rootScope'];
+
+    function appRun($rootScope) {
+        rootScope = $rootScope;
+
+        rootScope.$on('$routeChangeSuccess', RouteSuccess);
+    }
+
+    function RouteSuccess(event, current, previous) {
+        rootScope.headerType = current.$$route.headerType;
+
+        if (current.params.postId) {
+            rootScope.headerValue = current.params.postId;
+        }
+    }
+})();
+(function () {
+    'use strict';
+
+    angular
+        .module('photoBlogApp')
+        .controller('homeController', homeController);
+
+    homeController.$inject = ['dataService'];
+    
+    function homeController(dataService) {
+        var vm = this;
+        
+        vm.posts = dataService.getPosts();
+    }
+})();
+(function () {
+    'use strict';
+
+    angular
+        .module('photoBlogApp')
+        .controller('postController', postController);
+
+    postController.$inject = ['$routeParams', 'dataService', 'urlService'];
+
+    function postController($routeParams, dataService, urlService) {
+        var postId = $routeParams.postId;
+
+        var vm = this;
+
+        vm.post = dataService.getPosts()[postId];
+        vm.gallery = getGallery();
+        vm.getCurrentUrl = urlService.getCurrentUrl;
+
+        function getGallery() {
+            var gallery = new Array();
+
+            for (var i in vm.post.images) {
+                gallery.push({
+                    thumb: urlService.getGalleryThumb(vm.post.images[i].img),
+                    img: urlService.getGalleryImage(vm.post.images[i].img),
+                    description: vm.post.images[i].description
+                });
+            }
+
+            return gallery;
+        }
+    }
+})();
+(function () {
+    'use strict';
+
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogAboutme', photoblogAboutme);
+
+    function photoblogAboutme() {
+        var directive = {
+            templateUrl: '/app/directives/aboutme.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogCategories', photoblogCategories);
+
+    function photoblogCategories() {
+        var directive = {
+            templateUrl: '/app/directives/categories.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogFooter', photoblogFooter);
+
+    function photoblogFooter() {
+        var directive = {
+            templateUrl: '/app/directives/footer.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogRecentPosts', photoblogRecentPosts);
+
+    function photoblogRecentPosts() {
+        var directive = {
+            templateUrl: '/app/directives/recentposts.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
+    /**
+     * @desc order directive that is specific to the order module at a company named Acme
+     * @example <div acme-order-calendar-range></div>
+     */
+    angular
+        .module('photoBlogApp')
+        .directive('photoblogSlides', photoblogSlides);
+
+    function photoblogSlides() {
+        var directive = {
+            templateUrl: '/app/directives/slides.directive.html',
+            restrict: 'EA'
+        };
+
+        return directive;
+    }
+})();
+(function () {
+    'use strict';
+
+    angular
+        .module('photoBlogApp')
+        .controller('pageController', pageController);
+
+    pageController.$inject = ['dataService', 'urlService'];
+
+    function pageController(dataService, urlService) {
+        var vm = this;
+
+        vm.blog = dataService.getBlogInfo();
+        vm.posts = dataService.getPosts();
+        vm.categories = dataService.getCategories();
+
+        vm.getCategoryTitle = getCategoryTitle;
+        vm.getCategoryUrl = urlService.getCategoryUrl;
+        vm.getPostUrl = urlService.getPostUrl;
+        vm.getHomeUrl = urlService.getHomeUrl;
+
+        vm.getCategoryThumb = urlService.getCategoryThumb;
+        vm.getPostImage = urlService.getPostImage;
+        vm.getHomeSlideImage = urlService.getHomeSlideImage;
+
+        function getCategoryTitle(id) {
+            var categoryTitle = '<vazio>';
+
+            if (id != undefined && vm.posts[id] != undefined) {
+                categoryTitle = vm.posts[id].category.name;
+            }
+
+            return categoryTitle;
+        }
+    }
+})();
+(function () {
+    'use strict';
+
+    angular
+        .module('photoBlogApp')
+        .service('dataService', dataService);
+
+    dataService.$inject = [];
+
+    function dataService() {
+        return {
+            getBlogInfo: getBlogInfo,
+            getPosts: getPosts,
+            getCategories: getCategories
+        };
+
+        function getBlogInfo() {
+            var blogInfo = {
+                title: 'Six Photo Project',
+                description: 'A six photos theme project, inspired by LensWork.com',
+                aboutMe: 'My name is Tiago Santos and I am an amateur photographer, specially pationated about people\'s portrait and urban photography.',
+                pictureMe: 'http://res.cloudinary.com/drzxualok/image/upload/c_scale,w_333/v1466987949/profile.jpg',
+                logo: './images/logo.png'
+            };
+
+            return blogInfo;
+        }
+
+        function getPosts() {
+            var posts = new Array();
+
+            posts.push({
+                id: 0,
+                category: {
+                    id: 0,
+                    name: 'Baby and children',
+                    description: 'Themes related to babies and children'
+                },
+                title: 'Alice´s world',
+                description: 'What is important on the life of a baby? Here is a small overview about some important moments for Alice, shared by myself as father and photographer',
+                date: new Date(2016, 6, 13),
+                images: [
+                    {
+                        img: 'v1466538132/p001_alice_02.jpg',
+                        description: 'Joy'
+                    },
+                    {
+                        img: 'v1466538129/p001_alice_03.jpg',
+                        description: 'Hurry'
+                    },
+                    {
+                        img: 'v1466538125/p001_alice_07.jpg',
+                        description: 'Fashion'
+                    },
+                    {
+                        img: 'v1466538126/p001_alice_04.jpg',
+                        description: 'Friendship'
+                    },
+                    {
+                        img: 'v1466538127/p001_alice_05.jpg',
+                        description: 'Happiness'
+                    },
+                    {
+                        img: 'v1466538127/p001_alice_01.jpg',
+                        description: 'Break'
+                    }
+                ]
+            });
+
+            return posts;
+        }
+
+        function getCategories() {
+            var categories = new Array();
+
+            categories.push({
+                id: 0,
+                name: 'Baby and children',
+                description: 'Themes related to babies and children',
+                posts: 1
+            });
+
+            categories.push({
+                id: 1,
+                name: 'Portraits',
+                description: 'People and their worlds',
+                posts: 0
+            });
+
+            categories.push({
+                id: 2,
+                name: 'Travel',
+                description: 'Inspired by travels I did',
+                posts: 0
+            });
+
+            categories.push({
+                id: 3,
+                name: 'Cityscape',
+                description: 'Day by day exploration of SP',
+                posts: 0
+            });
+
+            return categories;
+        }
+    }
+})();
+(function () {
+    'use strict';
+
+    angular
+        .module('photoBlogApp')
+        .service('urlService', urlService);
+
+    urlService.$inject = ['$location'];
+
+    function urlService($location) {
+        return {
+            getCategoryUrl: getCategoryUrl,
+            getPostUrl: getPostUrl,
+            getHomeUrl: getHomeUrl,
+            getCategoryThumb: getCategoryThumb,
+            getGalleryThumb: getGalleryThumb,
+            getGalleryImage: getGalleryImage,
+            getPostImage: getPostImage,
+            getHomeSlideImage: getHomeSlideImage,
+            getCurrentUrl: getCurrentUrl
+        };
+
+        function getCategoryUrl(id) {
+            return '/#/category/' + id;
+        }
+
+        function getPostUrl(id) {
+            return '/#/post/' + id;
+        }
+
+        function getHomeUrl() {
+            return '/#/';
+        }
+
+        function getCategoryThumb(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_lfill,h_80,w_80/' + imageId;
+        }
+
+        function getGalleryThumb(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_150/' + imageId;
+        }
+
+        function getGalleryImage(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,w_2000/' + imageId;
+        }
+
+        function getPostImage(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/' + imageId;
+        }
+
+        function getHomeSlideImage(imageId) {
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/' + imageId;
+        }
+
+        function getCurrentUrl() {
+            return $location.absUrl();
+        }
+    }
+})();
+(function () {
+    'use-strict';
+
+    angular.module('jkuri.gallery', []).directive('ngGallery', ngGallery);
+
+    ngGallery.$inject = ['$document', '$timeout', '$q', '$templateCache'];
+
+    function ngGallery($document, $timeout, $q, $templateCache) {
+
+        var defaults = {
+            baseClass: 'ng-gallery',
+            thumbClass: 'ng-thumb',
+            templateUrl: 'ng-gallery.html'
+        };
+
+        var keys_codes = {
+            enter: 13,
+            esc: 27,
+            left: 37,
+            right: 39
+        };
+
+        function setScopeValues(scope, attrs) {
+            scope.baseClass = scope.class || defaults.baseClass;
+            scope.thumbClass = scope.thumbClass || defaults.thumbClass;
+            scope.thumbsNum = scope.thumbsNum || 3; // should be odd
+        }
+
+        var template_url = defaults.templateUrl;
+        // Set the default template
+        $templateCache.put(template_url,
+            '<div class="{{ baseClass }}">' +
+            '  <div ng-repeat="i in images">' +
+            '    <img ng-src="{{ i.thumb }}" class="{{ thumbClass }}" ng-click="openGallery($index)" alt="Image {{ $index + 1 }}" />' +
+            '  </div>' +
+            '</div>' +
+            '<div class="ng-overlay" ng-show="opened">' +
+            '</div>' +
+            '<div class="ng-gallery-content" unselectable="on" ng-show="opened" ng-swipe-left="nextImage()" ng-swipe-right="prevImage()">' +
+            '  <div class="uil-ring-css" ng-show="loading"><div></div></div>' +
+            '<a href="{{getImageDownloadSrc()}}" target="_blank" ng-show="showImageDownloadButton()" class="download-image"><i class="fa fa-download"></i></a>' +
+            '  <a class="close-popup" ng-click="closeGallery()"><i class="fa fa-close"></i></a>' +
+            '  <a class="nav-left" ng-click="prevImage()"><i class="fa fa-angle-left"></i></a>' +
+            '  <img ondragstart="return false;" draggable="false" ng-src="{{ img }}" ng-click="nextImage()" ng-show="!loading" class="effect" />' +
+            '  <a class="nav-right" ng-click="nextImage()"><i class="fa fa-angle-right"></i></a>' +
+            '  <span class="info-text">{{ index + 1 }}/{{ images.length }} - {{ description }}</span>' +
+            '  <div class="ng-thumbnails-wrapper">' +
+            '    <div class="ng-thumbnails slide-left">' +
+            '      <div ng-repeat="i in images">' +
+            '        <img ng-src="{{ i.thumb }}" ng-class="{\'active\': index === $index}" ng-click="changeImage($index)" />' +
+            '      </div>' +
+            '    </div>' +
+            '  </div>' +
+            '</div>'
+        );
+
+        return {
+            restrict: 'EA',
+            scope: {
+                images: '=',
+                thumbsNum: '@',
+                hideOverflow: '='
+            },
+            controller: [
+                '$scope',
+                function ($scope) {
+                    $scope.$on('openGallery', function (e, args) {
+                        $scope.openGallery(args.index);
+                    });
+                }
+            ],
+            templateUrl: function (element, attrs) {
+                return attrs.templateUrl || defaults.templateUrl;
+            },
+            link: function (scope, element, attrs) {
+                setScopeValues(scope, attrs);
+
+                if (scope.thumbsNum >= 11) {
+                    scope.thumbsNum = 11;
+                }
+
+                var $body = $document.find('body');
+                var $thumbwrapper = angular.element(element[0].querySelectorAll('.ng-thumbnails-wrapper'));
+                var $thumbnails = angular.element(element[0].querySelectorAll('.ng-thumbnails'));
+
+                scope.index = 0;
+                scope.opened = false;
+
+                scope.thumb_wrapper_width = 0;
+                scope.thumbs_width = 0;
+
+                var loadImage = function (i) {
+                    var deferred = $q.defer();
+                    var image = new Image();
+
+                    image.onload = function () {
+                        scope.loading = false;
+                        if (typeof this.complete === false || this.naturalWidth === 0) {
+                            deferred.reject();
+                        }
+                        deferred.resolve(image);
+                    };
+
+                    image.onerror = function () {
+                        deferred.reject();
+                    };
+
+                    image.src = scope.images[i].img;
+                    scope.loading = true;
+
+                    return deferred.promise;
+                };
+
+                var showImage = function (i) {
+                    loadImage(scope.index).then(function (resp) {
+                        scope.img = resp.src;
+                        smartScroll(scope.index);
+                    });
+                    scope.description = scope.images[i].description || '';
+                };
+
+                scope.showImageDownloadButton = function () {
+                    if (scope.images[scope.index] == null || scope.images[scope.index].downloadSrc == null) return
+                    var image = scope.images[scope.index];
+                    return angular.isDefined(image.downloadSrc) && 0 < image.downloadSrc.length;
+                };
+
+                scope.getImageDownloadSrc = function () {
+                    if (scope.images[scope.index] == null || scope.images[scope.index].downloadSrc == null) return
+                    return scope.images[scope.index].downloadSrc;
+                };
+
+                scope.changeImage = function (i) {
+                    scope.index = i;
+                    showImage(i);
+                };
+
+                scope.nextImage = function () {
+                    scope.index += 1;
+                    if (scope.index === scope.images.length) {
+                        scope.index = 0;
+                    }
+                    showImage(scope.index);
+                };
+
+                scope.prevImage = function () {
+                    scope.index -= 1;
+                    if (scope.index < 0) {
+                        scope.index = scope.images.length - 1;
+                    }
+                    showImage(scope.index);
+                };
+
+                scope.openGallery = function (i) {
+                    if (typeof i !== undefined) {
+                        scope.index = i;
+                        showImage(scope.index);
+                    }
+                    scope.opened = true;
+                    if (scope.hideOverflow) {
+                        $('body').css({overflow: 'hidden'});
+                    }
+
+                    $timeout(function () {
+                        var calculatedWidth = calculateThumbsWidth();
+                        scope.thumbs_width = calculatedWidth.width;
+                        //Add 1px, otherwise some browsers move the last image into a new line
+                        var thumbnailsWidth = calculatedWidth.width + 1;
+                        $thumbnails.css({width: thumbnailsWidth + 'px'});
+                        $thumbwrapper.css({width: calculatedWidth.visible_width + 'px'});
+                        smartScroll(scope.index);
+                    });
+                };
+
+                scope.closeGallery = function () {
+                    scope.opened = false;
+                    if (scope.hideOverflow) {
+                        $('body').css({overflow: ''});
+                    }
+                };
+
+                $body.bind('keydown', function (event) {
+                    if (!scope.opened) {
+                        return;
+                    }
+                    var which = event.which;
+                    if (which === keys_codes.esc) {
+                        scope.closeGallery();
+                    } else if (which === keys_codes.right || which === keys_codes.enter) {
+                        scope.nextImage();
+                    } else if (which === keys_codes.left) {
+                        scope.prevImage();
+                    }
+
+                    scope.$apply();
+                });
+
+                var calculateThumbsWidth = function () {
+                    var width = 0,
+                        visible_width = 0;
+                    angular.forEach($thumbnails.find('img'), function (thumb) {
+                        width += thumb.clientWidth;
+                        width += 10; // margin-right
+                        visible_width = thumb.clientWidth + 10;
+                    });
+                    return {
+                        width: width,
+                        visible_width: visible_width * scope.thumbsNum
+                    };
+                };
+
+                var smartScroll = function (index) {
+                    $timeout(function () {
+                        var len = scope.images.length,
+                            width = scope.thumbs_width,
+                            item_scroll = parseInt(width / len, 10),
+                            i = index + 1,
+                            s = Math.ceil(len / i);
+
+                        $thumbwrapper[0].scrollLeft = 0;
+                        $thumbwrapper[0].scrollLeft = i * item_scroll - (s * item_scroll);
+                    }, 100);
+                };
+
+            }
+        };
+    }
+})();

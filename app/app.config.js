@@ -3,15 +3,14 @@
 
     angular
         .module('photoBlogApp')
-        .config(appConfig)
-        .config(facebookConfig);
+        .config(appConfig);
 
-    appConfig.$inject = ['$routeProvider', 'angularjs-facebook-sdk'];
+    appConfig.$inject = ['$routeProvider', 'ezfbProvider'];
 
-    function appConfig($routeProvider) {
+    function appConfig($routeProvider, ezfbProvider) {
         $routeProvider
 
-            .when('/', {
+        .when('/', {
             headerType: 'flexslider',
             templateUrl: 'app/blog/home.html',
             controller: 'homeController',
@@ -24,20 +23,11 @@
             controller: 'postController',
             controllerAs: 'post'
         });
-    }
 
-    function facebookConfig(facebookConfigProvider) {
-        facebookConfigProvider.setAppId(1643932782590470);
-        facebookConfigProvider.setLanguage('en-US');
-        facebookConfigProvider.setDebug(true);
-
-        // When autoInit is setted to false you need to initialize
-        // the facebookConfig service manually inside a run block.
-        facebookConfigProvider.autoInit(false);
-
-        // Same: developers.facebook.com/docs/javascript/reference/FB.init/
-        facebookConfigProvider.setOptions({
-            status: true
+        ezfbProvider.setLocale('pt_BR');
+        ezfbProvider.setInitParams({
+            appId: '1643932782590470',
+            version: 'v2.6'
         });
     }
 })();
