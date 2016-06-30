@@ -138,25 +138,34 @@
                 var entity = entityList[i];
                 var translatedInfo = entity[language];
 
-                for (var key in translatedInfo) {
-                    if (translatedInfo[key] !== undefined) {
-                        if (translatedInfo[key] instanceof Array) {
-                            for (var arrayElement in translatedInfo[key]) {
-                                if (translatedInfo[key][arrayElement] !== undefined) {
-                                    for (var j in translatedInfo[key][arrayElement]) {
-                                        entity[key][arrayElement][j] = translatedInfo[key][arrayElement][j];
-                                    }
-                                }
-                            }
-                        }
-                        else {
-                            entity[key] = translatedInfo[key];
-                        }
-                    }
-                }
+                copyProperties(translatedInfo, entity);
             }
 
             return entityList;
+        }
+
+        function copyProperties(fromEntity, toEntity) {
+            for (var key in fromEntity) {
+                if (fromEntity[key] === undefined) {
+                    continue;
+                }
+
+                if (fromEntity[key] instanceof Array) {
+                    copyArrayProperties(fromEntity[key], toEntity[key]);
+                } else {
+                    toEntity[key] = fromEntity[key];
+                }
+            }
+        }
+
+        function copyArrayProperties(fromEntityArray, toEntityArray) {
+            for (var i in fromEntityArray) {
+                if (fromEntityArray[i] === undefined) {
+                    continue;
+                }
+
+                copyProperties(fromEntityArray[i], toEntityArray[i]);
+            }
         }
 
         function getLanguage() {
