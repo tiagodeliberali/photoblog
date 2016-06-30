@@ -43,18 +43,7 @@
         <div id="content" class="site-content">
             <div class="top-section">
                 <div class="flexslider" ng-show="headerType == 'flexslider'">
-                    <ul class="slides">
-                        <li ng-repeat="post in page.posts" class="ng-scope">
-                            <img width="1920" height="550" ng-src="http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/v1466538132/p001_alice_02.jpg" class="attachment-activello-slider size-activello-slider wp-post-image" alt="Alice's world'"
-                                src="http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/v1466538132/p001_alice_02.jpg">
-                            <div class="flex-caption">
-                                <ul class="post-categories">
-                                    <li><a href="/#/category/0" rel="category tag" class="ng-binding">Baby and children</a></li>
-                                </ul><a href="/#/post/0"><h2 class="entry-title ng-binding">Alice´s world</h2></a>
-                                <div class="read-more"><a href="/#/post/0">See Photos</a></div>
-                            </div>
-                        </li>
-                    </ul>
+                    <photoblog-slides></photoblog-slides>
                 </div>
             </div>
 
