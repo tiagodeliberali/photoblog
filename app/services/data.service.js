@@ -36,8 +36,8 @@
                     }]
                 },
                 pt: {
-                    title: 'Mundo de Alice',
-                    description: 'O que é importante na vida de um bebê? Um pouco sobre momentos importantes para a alice, compartilhados por mim como pai e fotógrafo',
+                    title: 'O Mundo de Alice',
+                    description: 'O que é importante no mundo de uma criança? Aqui temos uma amostra de momentos importantes para a Alice, compartilhados por mim como fotógrafo e pai',
                     images: [{
                         description: 'Alegria'
                     }, {
