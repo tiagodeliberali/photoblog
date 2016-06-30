@@ -14,6 +14,8 @@
         location = $location;
         window = $window;
 
+        ga('create', 'UA-80122651-1', 'auto');
+
         rootScope.$on('$routeChangeSuccess', RouteSuccess);
     }
 
