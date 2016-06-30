@@ -79,54 +79,41 @@
             categories.push({
                 en: {
                     name: 'Baby and children',
-                    description: 'Themes related to babies and children',
+                    description: 'Childhood universe',
                 },
                 pt: {
                     name: 'Bebês e crianças',
-                    description: 'Temas relacionados a bebês e crianças',
+                    description: 'O universo infantil',
                 },
                 id: 0,
                 posts: 1
             });
 
-            categories.push({
-                en: {
-                    name: 'Portraits',
-                    description: 'People and their worlds',
-                },
-                pt: {
-                    name: 'Retratos',
-                    description: 'Pessoas e seus mundos',
-                },
-                id: 1,
-                posts: 0
-            });
+            // categories.push({
+            //     en: {
+            //         name: 'Portraits',
+            //         description: 'People and their worlds',
+            //     },
+            //     pt: {
+            //         name: 'Retratos',
+            //         description: 'Pessoas e seus mundos',
+            //     },
+            //     id: 1,
+            //     posts: 0
+            // });
 
-            categories.push({
-                en: {
-                    name: 'Travel',
-                    description: 'Inspired by travels I did',
-                },
-                pt: {
-                    name: 'Viagem',
-                    description: 'Inspirado em minhas viagens',
-                },
-                id: 2,
-                posts: 0
-            });
-
-            categories.push({
-                en: {
-                    name: 'Cityscape',
-                    description: 'Day by day at SP',
-                },
-                pt: {
-                    name: 'Cidades',
-                    description: 'Dia a dia em SP',
-                },
-                id: 3,
-                posts: 0
-            });
+            // categories.push({
+            //     en: {
+            //         name: 'Travel',
+            //         description: 'Inspired by travels I did',
+            //     },
+            //     pt: {
+            //         name: 'Viagem',
+            //         description: 'Inspirado em minhas viagens',
+            //     },
+            //     id: 2,
+            //     posts: 0
+            // });
 
             return getTranslatedEntityList(categories);
         }
