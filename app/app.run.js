@@ -22,8 +22,8 @@
     function RouteSuccess(event, current, previous) {
         rootScope.headerType = current.$$route.headerType;
 
-        if (ga !== undefined && location !== undefined) {
-            ga('send', 'pageview', { page: location.href });
+        if (ga !== undefined && location !== undefined && location.url !== undefined) {
+            ga('send', 'pageview', { page: location.url() });
         }
 
         if (current.params.postId) {

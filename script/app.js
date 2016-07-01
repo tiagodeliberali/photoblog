@@ -28,8 +28,8 @@
     function RouteSuccess(event, current, previous) {
         rootScope.headerType = current.$$route.headerType;
 
-        if (ga !== undefined && location !== undefined) {
-            ga('send', 'pageview', { page: location.href });
+        if (ga !== undefined && location !== undefined && location.url !== undefined) {
+            ga('send', 'pageview', { page: location.url() });
         }
 
         if (current.params.postId) {
@@ -186,6 +186,41 @@
 (function () {
     'use strict';
 
+    angular
+        .module('photoBlogApp')
+        .controller('pageController', pageController);
+
+    pageController.$inject = ['dataService', 'urlService'];
+
+    function pageController(dataService, urlService) {
+        var vm = this;
+
+        vm.posts = dataService.getPosts();
+        vm.categories = dataService.getCategories();
+
+        vm.getCategoryTitle = getCategoryTitle;
+        vm.getCategoryUrl = urlService.getCategoryUrl;
+        vm.getPostUrl = urlService.getPostUrl;
+        vm.getHomeUrl = urlService.getHomeUrl;
+        
+        vm.getCategoryThumb = urlService.getCategoryThumb;
+        vm.getPostImage = urlService.getPostImage;
+        vm.getHomeSlideImage = urlService.getHomeSlideImage;
+
+        function getCategoryTitle(id) {
+            var categoryTitle = '<vazio>';
+
+            if (id != undefined && vm.posts[id] != undefined) {
+                categoryTitle = vm.posts[id].category.name;
+            }
+
+            return categoryTitle;
+        }
+    }
+})();
+(function () {
+    'use strict';
+
     /**
      * @desc order directive that is specific to the order module at a company named Acme
      * @example <div acme-order-calendar-range></div>
@@ -301,41 +336,6 @@
         };
 
         return directive;
-    }
-})();
-(function () {
-    'use strict';
-
-    angular
-        .module('photoBlogApp')
-        .controller('pageController', pageController);
-
-    pageController.$inject = ['dataService', 'urlService'];
-
-    function pageController(dataService, urlService) {
-        var vm = this;
-
-        vm.posts = dataService.getPosts();
-        vm.categories = dataService.getCategories();
-
-        vm.getCategoryTitle = getCategoryTitle;
-        vm.getCategoryUrl = urlService.getCategoryUrl;
-        vm.getPostUrl = urlService.getPostUrl;
-        vm.getHomeUrl = urlService.getHomeUrl;
-        
-        vm.getCategoryThumb = urlService.getCategoryThumb;
-        vm.getPostImage = urlService.getPostImage;
-        vm.getHomeSlideImage = urlService.getHomeSlideImage;
-
-        function getCategoryTitle(id) {
-            var categoryTitle = '<vazio>';
-
-            if (id != undefined && vm.posts[id] != undefined) {
-                categoryTitle = vm.posts[id].category.name;
-            }
-
-            return categoryTitle;
-        }
     }
 })();
 (function() {
