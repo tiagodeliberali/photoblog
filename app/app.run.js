@@ -2,6 +2,7 @@
     'use strict';
 
     var rootScope;
+    var location;
 
     angular
         .module('photoBlogApp')
@@ -21,7 +22,9 @@
     function RouteSuccess(event, current, previous) {
         rootScope.headerType = current.$$route.headerType;
 
-        ga('send', 'pageview', { page: location.url() });
+        if (ga !== undefined && location !== undefined) {
+            ga('send', 'pageview', { page: location.href });
+        }
 
         if (current.params.postId) {
             rootScope.headerValue = current.params.postId;
