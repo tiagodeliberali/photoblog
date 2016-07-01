@@ -13,14 +13,12 @@
         .module('photoBlogApp')
         .run(appRun);
 
-    appRun.$inject = ['$rootScope', '$location', '$window'];
+    appRun.$inject = ['$rootScope'];
 
-    function appRun($rootScope, $location, $window) {
+    function appRun($rootScope) {
         rootScope = $rootScope;
-        location = $location;
-        window = $window;
 
-        window.ga('create', 'UA-80122651-1', 'auto');
+        ga('create', 'UA-80122651-1', 'auto');
 
         rootScope.$on('$routeChangeSuccess', RouteSuccess);
     }
@@ -28,7 +26,7 @@
     function RouteSuccess(event, current, previous) {
         rootScope.headerType = current.$$route.headerType;
 
-        window.ga('send', 'pageview', { page: location.url() });
+        ga('send', 'pageview', { page: current.params });
 
         if (current.params.postId) {
             rootScope.headerValue = current.params.postId;
@@ -184,6 +182,41 @@
 (function () {
     'use strict';
 
+    angular
+        .module('photoBlogApp')
+        .controller('pageController', pageController);
+
+    pageController.$inject = ['dataService', 'urlService'];
+
+    function pageController(dataService, urlService) {
+        var vm = this;
+
+        vm.posts = dataService.getPosts();
+        vm.categories = dataService.getCategories();
+
+        vm.getCategoryTitle = getCategoryTitle;
+        vm.getCategoryUrl = urlService.getCategoryUrl;
+        vm.getPostUrl = urlService.getPostUrl;
+        vm.getHomeUrl = urlService.getHomeUrl;
+        
+        vm.getCategoryThumb = urlService.getCategoryThumb;
+        vm.getPostImage = urlService.getPostImage;
+        vm.getHomeSlideImage = urlService.getHomeSlideImage;
+
+        function getCategoryTitle(id) {
+            var categoryTitle = '<vazio>';
+
+            if (id != undefined && vm.posts[id] != undefined) {
+                categoryTitle = vm.posts[id].category.name;
+            }
+
+            return categoryTitle;
+        }
+    }
+})();
+(function () {
+    'use strict';
+
     /**
      * @desc order directive that is specific to the order module at a company named Acme
      * @example <div acme-order-calendar-range></div>
@@ -299,41 +332,6 @@
         };
 
         return directive;
-    }
-})();
-(function () {
-    'use strict';
-
-    angular
-        .module('photoBlogApp')
-        .controller('pageController', pageController);
-
-    pageController.$inject = ['dataService', 'urlService'];
-
-    function pageController(dataService, urlService) {
-        var vm = this;
-
-        vm.posts = dataService.getPosts();
-        vm.categories = dataService.getCategories();
-
-        vm.getCategoryTitle = getCategoryTitle;
-        vm.getCategoryUrl = urlService.getCategoryUrl;
-        vm.getPostUrl = urlService.getPostUrl;
-        vm.getHomeUrl = urlService.getHomeUrl;
-        
-        vm.getCategoryThumb = urlService.getCategoryThumb;
-        vm.getPostImage = urlService.getPostImage;
-        vm.getHomeSlideImage = urlService.getHomeSlideImage;
-
-        function getCategoryTitle(id) {
-            var categoryTitle = '<vazio>';
-
-            if (id != undefined && vm.posts[id] != undefined) {
-                categoryTitle = vm.posts[id].category.name;
-            }
-
-            return categoryTitle;
-        }
     }
 })();
 (function() {
