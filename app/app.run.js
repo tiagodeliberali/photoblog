@@ -7,14 +7,14 @@
         .module('photoBlogApp')
         .run(appRun);
 
-    appRun.$inject = ['$rootScope'];
+    appRun.$inject = ['$rootScope', '$location', '$window'];
 
-    function appRun($rootScope) {
+    function appRun($rootScope, $location, $window) {
         rootScope = $rootScope;
-        //location = $location;
-        //window = $window;
+        location = $location;
+        window = $window;
 
-        //window.ga('create', 'UA-80122651-1', 'auto');
+        window.ga('create', 'UA-80122651-1', 'auto');
 
         rootScope.$on('$routeChangeSuccess', RouteSuccess);
     }
@@ -22,7 +22,7 @@
     function RouteSuccess(event, current, previous) {
         rootScope.headerType = current.$$route.headerType;
 
-        //window.ga('send', 'pageview', { page: location.url() });
+        window.ga('send', 'pageview', { page: location.url() });
 
         if (current.params.postId) {
             rootScope.headerValue = current.params.postId;
