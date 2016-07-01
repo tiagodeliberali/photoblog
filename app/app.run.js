@@ -7,10 +7,11 @@
         .module('photoBlogApp')
         .run(appRun);
 
-    appRun.$inject = ['$rootScope'];
+    appRun.$inject = ['$rootScope', '$location'];
 
-    function appRun($rootScope) {
+    function appRun($rootScope, $location) {
         rootScope = $rootScope;
+        location = $location;
 
         ga('create', 'UA-80122651-1', 'auto');
 
@@ -20,7 +21,7 @@
     function RouteSuccess(event, current, previous) {
         rootScope.headerType = current.$$route.headerType;
 
-        ga('send', 'pageview', { page: current.params });
+        ga('send', 'pageview', { page: location.url() });
 
         if (current.params.postId) {
             rootScope.headerValue = current.params.postId;
