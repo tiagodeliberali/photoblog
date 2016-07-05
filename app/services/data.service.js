@@ -89,7 +89,7 @@
                     }, {
                         description: 'Sun is coming'
                     }, {
-                        description: 'Almost there'
+                        description: 'Reflections in the water'
                     }, {
                         description: 'Spectators waiting'
                     }, {
@@ -106,7 +106,7 @@
                     }, {
                         description: 'O sol está vindo'
                     }, {
-                        description: 'Quase lá'
+                        description: 'Reflexos na água'
                     }, {
                         description: 'Expectadores esperando'
                     }, {
