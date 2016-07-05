@@ -4,8 +4,8 @@
         <div class="flex-caption">
             <ul class="post-categories">
                 <li><a href="{{ page.getCategoryUrl(post.category.id) }}" rel="category tag">{{ post.category.name }}</a></li>
-            </ul><a href="{{ page.getPostUrl(post.id) }}"><h2 class="entry-title">{{ post.title }}</h2></a>
-            <div class="read-more"><a href="{{ page.getPostUrl(post.id) }}">{{'SEEPHOTOS' | translate}}</a></div>
+            </ul><a href="{{ page.getPostUrl(post.link) }}"><h2 class="entry-title">{{ post.title }}</h2></a>
+            <div class="read-more"><a href="{{ page.getPostUrl(post.link) }}">{{'SEEPHOTOS' | translate}}</a></div>
         </div>
     </li>
 </ul>

@@ -12,7 +12,7 @@
 
         var vm = this;
 
-        vm.post = dataService.getPosts()[postId];
+        vm.post = dataService.getPost(postId);
         vm.gallery = getGallery();
         vm.getCurrentUrl = urlService.getCurrentUrl;
 

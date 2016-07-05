@@ -5,19 +5,28 @@
         .module('photoBlogApp')
         .service('dataService', dataService);
 
-    dataService.$inject = ['$translate'];
+    dataService.$inject = ['$translate', '$filter'];
 
-    function dataService($translate) {
+    function dataService($translate, $filter) {
         return {
+            getPost: getPost,
             getPosts: getPosts,
             getCategories: getCategories
+        };
+
+        function getPost(id) {
+            var posts = getPosts();
+
+            return $filter('filter')(posts, {link: id})[0];
         };
 
         function getPosts() {
             var posts = new Array();
             var categories = getCategories();
 
-            posts.push({
+            var post001 = {
+                id: 0,
+                link: 'alice_world',
                 en: {
                     title: 'Alice´s world',
                     description: 'What is important on the life of a baby? Here is a small overview about some important moments for Alice, shared by myself as father and photographer',
@@ -52,7 +61,6 @@
                         description: 'Pausa'
                     }]
                 },
-                id: 0,
                 category: categories[0],
                 date: new Date(2016, 6, 13),
                 images: [{
@@ -68,7 +76,64 @@
                 }, {
                     img: 'v1466538127/p001_alice_01.jpg',
                 }]
-            });
+            };
+
+            var post002 = {
+                id: 1,
+                link: 'landscapes',
+                en: {
+                    title: 'Landscapes at the edges of the day',
+                    description: 'Photos from the beggining and end of the day',
+                    images: [{
+                        description: 'Before the sun'
+                    }, {
+                        description: 'Sun is coming'
+                    }, {
+                        description: 'Almost there'
+                    }, {
+                        description: 'Spectators waiting'
+                    }, {
+                        description: 'The sunshine'
+                    }, {
+                        description: 'End of the day'
+                    }]
+                },
+                pt: {
+                    title: 'Paisagens na beira do dia',
+                    description: 'Capturas de imagens no início e fim do dia',
+                    images: [{
+                        description: 'Antes do sol'
+                    }, {
+                        description: 'O sol está vindo'
+                    }, {
+                        description: 'Quase lá'
+                    }, {
+                        description: 'Expectadores esperando'
+                    }, {
+                        description: 'O nascer do sol'
+                    }, {
+                        description: 'Fim do dia'
+                    }]
+                },
+                category: categories[1],
+                date: new Date(2016, 7, 13),
+                images: [{
+                    img: 'v1467588762/p002_landscape_01.jpg',
+                }, {
+                    img: 'v1467589030/p002_landscape_02.jpg',
+                }, {
+                    img: 'v1467588762/p002_landscape_04.jpg',
+                }, {
+                    img: 'v1467589030/p002_landscape_05.jpg',
+                }, {
+                    img: 'v1467588782/p002_landscape_06.jpg',
+                }, {
+                    img: 'v1467588763/p002_landscape_03.jpg',
+                }]
+            };
+
+            posts.push(post001);
+            posts.push(post002);
 
             return getTranslatedEntityList(posts);
         }
@@ -89,6 +154,19 @@
                 posts: 1
             });
 
+            categories.push({
+                en: {
+                    name: 'Travel',
+                    description: 'Inspired by travels I did',
+                },
+                pt: {
+                    name: 'Viagem',
+                    description: 'Inspirado em minhas viagens',
+                },
+                id: 1,
+                posts: 1
+            });
+
             // categories.push({
             //     en: {
             //         name: 'Portraits',
@@ -99,19 +177,6 @@
             //         description: 'Pessoas e seus mundos',
             //     },
             //     id: 1,
-            //     posts: 0
-            // });
-
-            // categories.push({
-            //     en: {
-            //         name: 'Travel',
-            //         description: 'Inspired by travels I did',
-            //     },
-            //     pt: {
-            //         name: 'Viagem',
-            //         description: 'Inspirado em minhas viagens',
-            //     },
-            //     id: 2,
             //     posts: 0
             // });
 

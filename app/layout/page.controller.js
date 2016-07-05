@@ -25,8 +25,10 @@
         function getCategoryTitle(id) {
             var categoryTitle = '<vazio>';
 
-            if (id != undefined && vm.posts[id] != undefined) {
-                categoryTitle = vm.posts[id].category.name;
+            var post = dataService.getPost(id);
+
+            if (id != undefined && post != undefined) {
+                categoryTitle = post.category.name;
             }
 
             return categoryTitle;
