@@ -21,7 +21,8 @@
         };
 
         function getCategoryUrl(id) {
-            return '/#/category/' + id;
+            //return '/#/category/' + id;
+            return '/#/';
         }
 
         function getPostUrl(id) {
