@@ -22,6 +22,13 @@
             templateUrl: 'app/blog/post.html',
             controller: 'postController',
             controllerAs: 'post'
+        })
+
+        .when('/category/:categoryId', {
+            headerType: 'pagetitle',
+            templateUrl: 'app/blog/category.html',
+            controller: 'categoryController',
+            controllerAs: 'category'
         });
     }
 })();

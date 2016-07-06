@@ -11,8 +11,15 @@
         return {
             getPost: getPost,
             getPosts: getPosts,
-            getCategories: getCategories
+            getCategories: getCategories,
+            getPostsByCategory: getPostsByCategory
         };
+
+        function getPostsByCategory(id) {
+            var posts = getPosts();
+
+            return $filter('filter')(posts, {categoryId: id});
+        }
 
         function getPost(id) {
             var posts = getPosts();
@@ -61,6 +68,7 @@
                         description: 'Pausa'
                     }]
                 },
+                categoryId: 0,
                 category: categories[0],
                 date: new Date(2016, 6, 13),
                 images: [{
@@ -115,6 +123,7 @@
                         description: 'Fim do dia'
                     }]
                 },
+                categoryId: 1,
                 category: categories[1],
                 date: new Date(2016, 7, 13),
                 images: [{
