@@ -22,15 +22,15 @@
 
         function getCategoryUrl(id) {
             //return '/#/category/' + id;
-            return '/#/';
+            return '/';
         }
 
         function getPostUrl(id) {
-            return '/#/post/' + id;
+            return '/post/' + id;
         }
 
         function getHomeUrl() {
-            return '/#/';
+            return '/';
         }
 
         function getCategoryThumb(imageId) {
