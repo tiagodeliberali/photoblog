@@ -125,7 +125,7 @@
                 },
                 categoryId: 1,
                 category: categories[1],
-                date: new Date(2016, 7, 13),
+                date: new Date(2016, 6, 23),
                 images: [{
                     img: 'v1467588762/p002_landscape_01.jpg',
                 }, {
@@ -141,8 +141,64 @@
                 }]
             };
 
+            var post003 = {
+                id: 2,
+                link: 'glamour',
+                en: {
+                    title: 'Glamour',
+                    description: 'Dresses for a wedding, setting the final details before the party.',
+                    images: [{
+                        description: 'Soft light over the face'
+                    }, {
+                        description: 'Adjusting the necktie'
+                    }, {
+                        description: 'Finishing the makeup'
+                    }, {
+                        description: 'Wearing the shoe'
+                    }, {
+                        description: 'Ready'
+                    }, {
+                        description: 'Flowers near the face'
+                    }]
+                },
+                pt: {
+                    title: 'Glamour',
+                    description: 'Vestidos para um casamento, ajustando os últimos detalhes antes da festa.',
+                    images: [{
+                        description: 'Luz suave sobre o rosto'
+                    }, {
+                        description: 'Ajustando a gravata'
+                    }, {
+                        description: 'Terminando a maquiagem'
+                    }, {
+                        description: 'Calçando o sapato'
+                    }, {
+                        description: 'Prontos'
+                    }, {
+                        description: 'Flores próximas ao rosto'
+                    }]
+                },
+                categoryId: 2,
+                category: categories[2],
+                date: new Date(2016, 7, 7),
+                images: [{
+                    img: 'v1467937826/p003_glamour_01.jpg',
+                }, {
+                    img: 'v1467938085/p003_glamour_02.jpg',
+                }, {
+                    img: 'v1467937849/p003_glamour_03.jpg',
+                }, {
+                    img: 'v1467937848/p003_glamour_04.jpg',
+                }, {
+                    img: 'v1467937851/p003_glamour_05.jpg',
+                }, {
+                    img: 'v1467937835/p003_glamour_06.jpg',
+                }]
+            };
+
             posts.push(post001);
             posts.push(post002);
+            posts.push(post003);
 
             return getTranslatedEntityList(posts);
         }
@@ -176,18 +232,18 @@
                 posts: 1
             });
 
-            // categories.push({
-            //     en: {
-            //         name: 'Portraits',
-            //         description: 'People and their worlds',
-            //     },
-            //     pt: {
-            //         name: 'Retratos',
-            //         description: 'Pessoas e seus mundos',
-            //     },
-            //     id: 1,
-            //     posts: 0
-            // });
+            categories.push({
+                en: {
+                    name: 'Portraits',
+                    description: 'People and their worlds',
+                },
+                pt: {
+                    name: 'Retratos',
+                    description: 'Pessoas e seus mundos',
+                },
+                id: 2,
+                posts: 1
+            });
 
             return getTranslatedEntityList(categories);
         }
