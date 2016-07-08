@@ -148,7 +148,7 @@
                     title: 'Glamour',
                     description: 'Dresses for a wedding, setting the final details before the party.',
                     images: [{
-                        description: 'Soft light over the face'
+                        description: 'Flowers near the face'
                     }, {
                         description: 'Adjusting the necktie'
                     }, {
@@ -158,14 +158,14 @@
                     }, {
                         description: 'Ready'
                     }, {
-                        description: 'Flowers near the face'
+                        description: 'Soft light over the face'
                     }]
                 },
                 pt: {
                     title: 'Glamour',
                     description: 'Vestidos para um casamento, ajustando os últimos detalhes antes da festa.',
                     images: [{
-                        description: 'Luz suave sobre o rosto'
+                        description: 'Flores próximas ao rosto'
                     }, {
                         description: 'Ajustando a gravata'
                     }, {
@@ -175,14 +175,14 @@
                     }, {
                         description: 'Prontos'
                     }, {
-                        description: 'Flores próximas ao rosto'
+                        description: 'Luz suave sobre o rosto'
                     }]
                 },
                 categoryId: 2,
                 category: categories[2],
                 date: new Date(2016, 7, 7),
                 images: [{
-                    img: 'v1467937826/p003_glamour_01.jpg',
+                    img: 'v1467937835/p003_glamour_06.jpg',
                 }, {
                     img: 'v1467938085/p003_glamour_02.jpg',
                 }, {
@@ -192,7 +192,7 @@
                 }, {
                     img: 'v1467937851/p003_glamour_05.jpg',
                 }, {
-                    img: 'v1467937835/p003_glamour_06.jpg',
+                    img: 'v1467937826/p003_glamour_01.jpg',
                 }]
             };
 
