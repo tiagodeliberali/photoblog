@@ -18,13 +18,17 @@
         function getPostsByCategory(id) {
             var posts = getPosts();
 
-            return $filter('filter')(posts, {categoryId: id});
+            return $filter('filter')(posts, {
+                categoryId: id
+            });
         }
 
         function getPost(id) {
             var posts = getPosts();
 
-            return $filter('filter')(posts, {link: id})[0];
+            return $filter('filter')(posts, {
+                link: id
+            })[0];
         };
 
         function getPosts() {
@@ -195,6 +199,23 @@
                     img: 'v1467937826/p003_glamour_01.jpg',
                 }]
             };
+
+            /*
+            http://res.cloudinary.com/drzxualok/image/upload/v1468086038/p004_kids_01.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468086037/p004_kids_02.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468086036/p004_kids_03.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468086039/p004_kids_04.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468086032/p004_kids_05.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468086027/p004_kids_06.jpg
+
+
+            http://res.cloudinary.com/drzxualok/image/upload/v1468084933/p005_lowkey_01.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468084928/p005_lowkey_02.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468084925/p005_lowkey_03.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468084924/p005_lowkey_04.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468084930/p005_lowkey_05.jpg
+            http://res.cloudinary.com/drzxualok/image/upload/v1468084933/p005_lowkey_06.jpg
+            */
 
             posts.push(post001);
             posts.push(post002);
