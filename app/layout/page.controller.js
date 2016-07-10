@@ -25,6 +25,6 @@
 
         var timeoutId = $interval(function() {
             vm.currentSlide = (vm.currentSlide + 1) % vm.posts.length;
-        }, 7000);
+        }, 5000);
     }
 })();
