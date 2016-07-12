@@ -200,15 +200,62 @@
                 }]
             };
 
+            var post004 = {
+                id: 3,
+                link: 'kids',
+                en: {
+                    title: 'Kids portraits',
+                    description: 'Candid portraits of kids while involved in their own world',
+                    images: [{
+                        description: 'Enchanted'
+                    }, {
+                        description: 'Assembling a house'
+                    }, {
+                        description: 'Enjoying the puffp'
+                    }, {
+                        description: 'Daydreaming'
+                    }, {
+                        description: 'My car'
+                    }, {
+                        description: 'Playing in the cradle'
+                    }]
+                },
+                pt: {
+                    title: 'Retratos de crianças',
+                    description: 'Retratos de crianças envolvidas em seus próprios mundos',
+                    images: [{
+                        description: 'Encantada'
+                    }, {
+                        description: 'Montando uma casinha'
+                    }, {
+                        description: 'Aproveitando o puff'
+                    }, {
+                        description: 'Sonhando acordada'
+                    }, {
+                        description: 'Meu carro'
+                    }, {
+                        description: 'Brincando no berço'
+                    }]
+                },
+                categoryId: 0,
+                category: categories[0],
+                date: new Date(2016, 7, 14),
+                images: [{
+                    img: 'v1468086036/p004_kids_03.jpg',
+                }, {
+                    img: 'v1468086037/p004_kids_02.jpg',
+                }, {
+                    img: 'v1468086032/p004_kids_05.jpg',
+                }, {
+                    img: 'v1468086039/p004_kids_04.jpg',
+                }, {
+                    img: 'v1468086038/p004_kids_01.jpg',
+                }, {
+                    img: 'v1468086027/p004_kids_06.jpg',
+                }]
+            };
+
             /*
-            http://res.cloudinary.com/drzxualok/image/upload/v1468086038/p004_kids_01.jpg
-            http://res.cloudinary.com/drzxualok/image/upload/v1468086037/p004_kids_02.jpg
-            http://res.cloudinary.com/drzxualok/image/upload/v1468086036/p004_kids_03.jpg
-            http://res.cloudinary.com/drzxualok/image/upload/v1468086039/p004_kids_04.jpg
-            http://res.cloudinary.com/drzxualok/image/upload/v1468086032/p004_kids_05.jpg
-            http://res.cloudinary.com/drzxualok/image/upload/v1468086027/p004_kids_06.jpg
-
-
             http://res.cloudinary.com/drzxualok/image/upload/v1468084933/p005_lowkey_01.jpg
             http://res.cloudinary.com/drzxualok/image/upload/v1468084928/p005_lowkey_02.jpg
             http://res.cloudinary.com/drzxualok/image/upload/v1468084925/p005_lowkey_03.jpg
@@ -220,6 +267,7 @@
             posts.push(post001);
             posts.push(post002);
             posts.push(post003);
+            posts.push(post004);
 
             return getTranslatedEntityList(posts);
         }

@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -49,7 +49,7 @@
         }
 
         function getHomeSlideImage(imageId) {
-            return 'http://res.cloudinary.com/drzxualok/image/upload/c_thumb,g_face:center,h_550,w_1920/' + imageId;
+            return 'http://res.cloudinary.com/drzxualok/image/upload/c_thumb,h_550,w_1920/' + imageId;
         }
 
         function getCurrentUrl() {
