@@ -285,7 +285,7 @@
                     description: 'O universo infantil',
                 },
                 id: 0,
-                posts: 1
+                posts: 2
             });
 
             categories.push({
