@@ -310,11 +310,67 @@
                 }]
             };
 
+            var post006 = {
+                id: 5,
+                link: 'theater',
+                en: {
+                    title: 'Interior of São Paulo Municipal Theater',
+                    description: 'Travel to Sao Paulo to visit the Sao Paulo Municipal Museum.',
+                    images: [{
+                        description: 'Main stair'
+                    }, {
+                        description: 'Windows'
+                    }, {
+                        description: 'Mirror'
+                    }, {
+                        description: 'Chairs'
+                    }, {
+                        description: 'Main entrance roof'
+                    }, {
+                        description: 'Stair detail'
+                    }]
+                },
+                pt: {
+                    title: 'Interior do Teatro Municipal de São Paulo',
+                    description: 'Viagem para São Paulo para visitar o Teatro Municipal.',
+                    images: [{
+                        description: 'Escada principal'
+                    }, {
+                        description: 'Janelas'
+                    }, {
+                        description: 'Espelho'
+                    }, {
+                        description: 'Cadeiras'
+                    }, {
+                        description: 'Teto da entrada principal'
+                    }, {
+                        description: 'Detalhes da escada'
+                    }]
+                },
+                categoryId: 1,
+                category: categories[1],
+                date: new Date(2016, 6, 22),
+                images: [{
+                    img: 'v1469227618/p006_teatro_01.jpg',
+                }, {
+                    img: 'v1469227607/p006_teatro_02.jpg',
+                }, {
+                    img: 'v1469227614/p006_teatro_03.jpg',
+                }, {
+                    img: 'v1469227618/p006_teatro_04.jpg',
+                }, {
+                    img: 'v1469227623/p006_teatro_05.jpg',
+                }, {
+                    img: 'v1469227614/p006_teatro_06.jpg',
+                }]
+            };
+
             posts.push(post001);
             posts.push(post002);
             posts.push(post003);
             posts.push(post004);
             posts.push(post005);
+            posts.push(post006);
 
             return getTranslatedEntityList(posts);
         }
@@ -345,7 +401,7 @@
                     description: 'Inspirado em minhas viagens',
                 },
                 id: 1,
-                posts: 1
+                posts: 2
             });
 
             categories.push({
