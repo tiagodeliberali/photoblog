@@ -319,15 +319,15 @@
                     images: [{
                         description: 'Main stair'
                     }, {
-                        description: 'Windows'
-                    }, {
-                        description: 'Mirror'
-                    }, {
-                        description: 'Chairs'
+                        description: 'Stair detail'
                     }, {
                         description: 'Main entrance roof'
                     }, {
-                        description: 'Stair detail'
+                        description: 'Chairs'
+                    }, {
+                        description: 'Mirror'
+                    }, {
+                        description: 'Windows'
                     }]
                 },
                 pt: {
@@ -336,15 +336,15 @@
                     images: [{
                         description: 'Escada principal'
                     }, {
-                        description: 'Janelas'
-                    }, {
-                        description: 'Espelho'
-                    }, {
-                        description: 'Cadeiras'
+                        description: 'Detalhes da escada'
                     }, {
                         description: 'Teto da entrada principal'
                     }, {
-                        description: 'Detalhes da escada'
+                        description: 'Cadeiras'
+                    }, {
+                        description: 'Espelho'
+                    }, {
+                        description: 'Janelas'
                     }]
                 },
                 categoryId: 1,
