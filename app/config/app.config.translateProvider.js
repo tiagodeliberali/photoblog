@@ -32,6 +32,10 @@
                 SEEPHOTOS: 'See Photos',
                 POSTEDON: 'Posted on',
                 SHARETHIS: 'Share this',
+                SUBSCRIBE: 'Subscribe to Blog via Email',
+                SUBSCRIBEMESSAGE: 'Enter your email address to subscribe to this blog and receive notifications of new posts by email.',
+                SUBSCRIBEPLACEHOLDER: 'Your email address',
+                SUBSCRIBEBUTTON: 'Subscribe',
             };
         };
 
@@ -47,6 +51,10 @@
                 SEEPHOTOS: 'Ver Fotos',
                 POSTEDON: 'Postado em',
                 SHARETHIS: 'Compartilhe',
+                SUBSCRIBE: 'Receba as novidades por Email',
+                SUBSCRIBEMESSAGE: 'Preencha seu email para se inscrever nesse blog e receber notificações de novos posts por email.',
+                SUBSCRIBEPLACEHOLDER: 'Seu email',
+                SUBSCRIBEBUTTON: 'Inscreva-se já!',
             };
         };
     }
