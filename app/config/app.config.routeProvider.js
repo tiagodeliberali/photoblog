@@ -18,7 +18,7 @@
         })
 
         .when('/post/:postId', {
-            headerType: 'pagetitle',
+            headerType: 'none',
             templateUrl: 'app/blog/post.html',
             controller: 'postController',
             controllerAs: 'post'

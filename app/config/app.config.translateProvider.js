@@ -22,10 +22,10 @@
 
         function getEN() {
             return {
-                BLOGTITLE: 'Six Photo Project',
-                BLOGDESCRIPTION: 'A six photos theme project, inspired by LensWork.com',
+                BLOGTITLE: 'Portraits',
+                BLOGDESCRIPTION: 'Portraits that inspires',
                 ABOUTME: 'About Me',
-                ABOUTMEDESCRIPTION: 'My name is Tiago Santos and I am an amateur photographer, specially pationated about people\'s portrait and urban photography.',
+                ABOUTMEDESCRIPTION: 'My name is Tiago Santos and I am a photographer, specially pationated about people\'s portrait and urban photography.',
                 CATEGORIES: 'Categories',
                 FOLLOWME: 'Follow Me',
                 RECENTPOSTS: 'Recent Posts',
@@ -41,10 +41,10 @@
 
         function getPT() {
             return {
-                BLOGTITLE: 'Projeto Seis Fotos',
-                BLOGDESCRIPTION: 'Um projeto de temas em seis fotos, inspirado por LensWork.com',
+                BLOGTITLE: 'Retratos',
+                BLOGDESCRIPTION: 'Retratos que inspiram',
                 ABOUTME: 'Sobre',
-                ABOUTMEDESCRIPTION: 'Meu nome é Tiago Santos e sou fotógrafo amador, apaixonado por retratos e fotografia urbana.',
+                ABOUTMEDESCRIPTION: 'Meu nome é Tiago Santos e sou fotógrafo, apaixonado por retratos e poesia da fotografia.',
                 CATEGORIES: 'Categorias',
                 FOLLOWME: 'Siga-me',
                 RECENTPOSTS: 'Posts Recentes',
