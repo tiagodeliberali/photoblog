@@ -47,7 +47,7 @@ namespace Photoblog
 
             services.Configure<BlogSettings>(Configuration.GetSection("BlogSettings"));
 
-            // Add framework services.
+            services.AddMemoryCache();
             services.AddMvc();
 
             services.AddTransient<IEmailSender, AuthMessageSender>();

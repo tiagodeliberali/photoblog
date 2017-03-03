@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Photoblog.Model;
@@ -15,9 +16,11 @@ namespace Photoblog.Controllers
     public class DataController : Controller
     {
         private BlogDbContext dbContext;
+        private IMemoryCache memoryCache;
 
-        public DataController(BlogDbContext dbContext)
+        public DataController(IMemoryCache memoryCache, BlogDbContext dbContext)
         {
+            this.memoryCache = memoryCache;
             this.dbContext = dbContext;
         }
 
@@ -25,16 +28,28 @@ namespace Photoblog.Controllers
         [HttpGet]
         public string Get()
         {
-            var posts = dbContext
-                .Posts
-                .Include(x => x.Category)
-                .Include(x => x.Images)
-                .OrderByDescending(x => x.Date)
-                .ToList();
+            string cacheKey = "AllPosts";
+            string result;
 
-            var serialized = Serialize(posts);
+            if (!memoryCache.TryGetValue(cacheKey, out result))
+            {
+                var posts = dbContext
+                    .Posts
+                    .Include(x => x.Category)
+                    .Include(x => x.Images)
+                    .OrderByDescending(x => x.Date)
+                    .ToList();
 
-            return serialized;
+                result = Serialize(posts);
+
+                var cacheEntryOptions = new MemoryCacheEntryOptions()
+                    .SetSlidingExpiration(TimeSpan.FromDays(3));
+
+                // Save data in cache.
+                memoryCache.Set(cacheKey, result, cacheEntryOptions);
+            }
+
+            return result;
         }
 
         public static string Serialize(object obj, Formatting formating = Formatting.Indented)
