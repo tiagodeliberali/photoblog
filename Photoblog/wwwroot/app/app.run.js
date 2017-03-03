@@ -35,7 +35,9 @@
         }
 
         if (current.params.categoryId) {
-            rootScope.headerValue = service.getCategories()[current.params.categoryId].name;
+            service.getCategories(function (data) {
+                rootScope.headerValue = data[current.params.categoryId].name;
+            });
         }
     }
 })();

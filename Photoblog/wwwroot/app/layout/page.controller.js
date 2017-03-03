@@ -10,7 +10,9 @@
     function pageController(dataService, urlService, $interval) {
         var vm = this;
 
-        vm.categories = dataService.getCategories();
+        dataService.getCategories(function (data) {
+            vm.categories = data;
+        });
 
         vm.getCategoryUrl = urlService.getCategoryUrl;
         vm.getPostUrl = urlService.getPostUrl;

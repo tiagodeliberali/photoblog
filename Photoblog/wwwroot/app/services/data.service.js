@@ -5,9 +5,9 @@
         .module('photoBlogApp')
         .service('dataService', dataService);
 
-    dataService.$inject = ['$translate', '$filter', '$http'];
+    dataService.$inject = ['$translate', '$http'];
 
-    function dataService($translate, $filter, $http) {
+    function dataService($translate, $http) {
         return {
             getPost: getPost,
             getPosts: getPosts,
@@ -15,12 +15,11 @@
             getPostsByCategory: getPostsByCategory
         };
 
-        function getPostsByCategory(id) {
-            var posts = getPosts();
-
-            return $filter('filter')(posts, {
-                categoryId: id
-            });
+        function getPostsByCategory(id, updatePostsByCategory) {
+            $http.get('/api/datacategories/' + id)
+                .success(function (response) {
+                    updatePostsByCategory(response.posts);
+                });
         }
 
         function getPost(id, updatePost) {
@@ -37,86 +36,11 @@
                 });
         }
 
-        function getCategories() {
-            var categories = new Array();
-
-            categories.push({
-                en: {
-                    name: 'Baby and children',
-                    description: 'Childhood universe',
-                },
-                pt: {
-                    name: 'Bebês e crianças',
-                    description: 'O universo infantil',
-                },
-                id: 0,
-                posts: 2
-            });
-
-            categories.push({
-                en: {
-                    name: 'Travel',
-                    description: 'Inspired by travels I did',
-                },
-                pt: {
-                    name: 'Viagem',
-                    description: 'Inspirado em minhas viagens',
-                },
-                id: 1,
-                posts: 2
-            });
-
-            categories.push({
-                en: {
-                    name: 'Portraits',
-                    description: 'People and their worlds',
-                },
-                pt: {
-                    name: 'Retratos',
-                    description: 'Pessoas e seus mundos',
-                },
-                id: 2,
-                posts: 2
-            });
-
-            return getTranslatedEntityList(categories);
-        }
-
-        function getTranslatedEntityList(entityList) {
-            var language = getLanguage();
-
-            for (var i in entityList) {
-                var entity = entityList[i];
-                var translatedInfo = entity[language];
-
-                copyProperties(translatedInfo, entity);
-            }
-
-            return entityList;
-        }
-
-        function copyProperties(fromEntity, toEntity) {
-            for (var key in fromEntity) {
-                if (fromEntity[key] === undefined) {
-                    continue;
-                }
-
-                if (fromEntity[key] instanceof Array) {
-                    copyArrayProperties(fromEntity[key], toEntity[key]);
-                } else {
-                    toEntity[key] = fromEntity[key];
-                }
-            }
-        }
-
-        function copyArrayProperties(fromEntityArray, toEntityArray) {
-            for (var i in fromEntityArray) {
-                if (fromEntityArray[i] === undefined) {
-                    continue;
-                }
-
-                copyProperties(fromEntityArray[i], toEntityArray[i]);
-            }
+        function getCategories(updateCategories) {
+            $http.get('/api/datacategories')
+                .success(function (response) {
+                    updateCategories(response);
+                });
         }
 
         function getLanguage() {

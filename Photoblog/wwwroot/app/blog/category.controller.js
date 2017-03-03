@@ -12,6 +12,8 @@
 
         var vm = this;
 
-        vm.posts = dataService.getPostsByCategory(categoryId);
+        dataService.getPostsByCategory(categoryId, function (data) {
+            vm.posts = data;
+        });
     }
 })();
