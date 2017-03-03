@@ -1,6 +1,6 @@
 <ul class="slides">
     <li ng-repeat="post in page.posts | orderBy:'-id'" ng-style="page.currentSlide == $index && {'display':'block'}">
-        <img width="1920" height="550" ng-src="{{ page.getHomeSlideImage(post.images[0].img) }}" class="attachment-activello-slider size-activello-slider wp-post-image" alt="{{ post.title }}" />
+        <img width="1920" height="550" ng-src="{{ page.getHomeSlideImage(post.images[0].url) }}" class="attachment-activello-slider size-activello-slider wp-post-image" alt="{{ post.title }}" />
         <div class="flex-caption">
             <ul class="post-categories">
                 <li><a href="{{ page.getCategoryUrl(post.category.id) }}" rel="category tag">{{ post.category.name }}</a></li>

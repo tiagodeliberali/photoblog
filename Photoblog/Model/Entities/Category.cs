@@ -10,6 +10,6 @@ namespace Photoblog.Model.Entities
 
         public string Description { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
     }
 }

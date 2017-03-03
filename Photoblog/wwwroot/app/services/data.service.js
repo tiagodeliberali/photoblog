@@ -5,9 +5,9 @@
         .module('photoBlogApp')
         .service('dataService', dataService);
 
-    dataService.$inject = ['$translate', '$filter'];
+    dataService.$inject = ['$translate', '$filter', '$http'];
 
-    function dataService($translate, $filter) {
+    function dataService($translate, $filter, $http) {
         return {
             getPost: getPost,
             getPosts: getPosts,
@@ -31,7 +31,14 @@
             })[0];
         };
 
-        function getPosts() {
+        function getPosts(updatePosts) {
+            $http.get('/api/data')
+                .success(function (response) {
+                    updatePosts(response);
+                });
+        }
+
+        function getPosts_old() {
             var posts = new Array();
             var categories = getCategories();
 

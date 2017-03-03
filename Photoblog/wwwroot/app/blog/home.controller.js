@@ -10,6 +10,8 @@
     function homeController(dataService) {
         var vm = this;
         
-        vm.posts = dataService.getPosts();
+        dataService.getPosts(function (data) {
+            vm.posts = data;
+        });
     }
 })();

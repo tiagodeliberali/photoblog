@@ -10,7 +10,6 @@
     function pageController(dataService, urlService, $interval) {
         var vm = this;
 
-        vm.posts = dataService.getPosts();
         vm.categories = dataService.getCategories();
 
         vm.getCategoryUrl = urlService.getCategoryUrl;
@@ -23,8 +22,12 @@
 
         vm.currentSlide = 0;
 
-        var timeoutId = $interval(function() {
-            vm.currentSlide = (vm.currentSlide + 1) % vm.posts.length;
-        }, 15000);
+        dataService.getPosts(function (data) {
+            vm.posts = data;
+
+            var timeoutId = $interval(function () {
+                vm.currentSlide = (vm.currentSlide + 1) % vm.posts.length;
+            }, 15000);
+        });
     }
 })();

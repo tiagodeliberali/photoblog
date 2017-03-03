@@ -5,21 +5,21 @@ var uglify = require('gulp-uglify');
 var cleanCSS = require('gulp-clean-css');
 
 gulp.task('concat', function() {
-    return gulp.src(['./app/app.module.js', 'app/**/*.js', './script/primary_load/ngGallery.js'])
+    return gulp.src(['./wwwroot/app/app.module.js', 'wwwroot/app/**/*.js', './wwwroot/script/primary_load/ngGallery.js'])
         .pipe(concat('app.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./script/'));
+        .pipe(gulp.dest('./wwwroot/script/'));
 });
 
 gulp.task('concat-debug', function() {
-    return gulp.src(['./app/app.module.js', 'app/**/*.js', './script/primary_load/ngGallery.js'])
+    return gulp.src(['./wwwroot/app/app.module.js', 'wwwroot/app/**/*.js', './wwwroot/script/primary_load/ngGallery.js'])
         .pipe(concat('app.js'))
-        .pipe(gulp.dest('./script/'));
+        .pipe(gulp.dest('./wwwroot/script/'));
 });
 
 gulp.task('css', function() {
-    return gulp.src('./style/third_party/*.css')
-        .pipe(concat('./style/main.css'))
+    return gulp.src('./wwwroot/style/third_party/*.css')
+        .pipe(concat('./wwwroot/style/main.css'))
         .pipe(cleanCSS({
             compatibility: 'ie8'
         }))
