@@ -37,7 +37,45 @@
     </dl>
 </div>
 <div>
-    <a href="/Images/Index?postId=@(Model.Id)">Images</a> |
+    <a href="/admin/Images/Index?postId=@(Model.Id)">Images</a> |
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Url
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Images)
+        {
+            <tr>
+                <td>
+                    <img src="http://res.cloudinary.com/drzxualok/image/upload/c_lfill,h_80,w_80/@(item.Url)" alt="@(item.Description)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+                <td>
+                    <a asp-controller="Images" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-controller="Images" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Images" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
