@@ -12,6 +12,7 @@
             getPost: getPost,
             getPosts: getPosts,
             getCategories: getCategories,
+            getCategory: getCategory,
             getPostsByCategory: getPostsByCategory
         };
 
@@ -19,6 +20,13 @@
             $http.get('/api/datacategories/' + id)
                 .success(function (response) {
                     updatePostsByCategory(response.posts);
+                });
+        }
+
+        function getCategory(id, updatePostsByCategory) {
+            $http.get('/api/datacategories/' + id)
+                .success(function (response) {
+                    updatePostsByCategory(response);
                 });
         }
 

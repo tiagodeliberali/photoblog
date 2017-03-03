@@ -35,8 +35,8 @@
         }
 
         if (current.params.categoryId) {
-            service.getCategories(function (data) {
-                rootScope.headerValue = data[current.params.categoryId].name;
+            service.getCategory(current.params.categoryId, function (data) {
+                rootScope.headerValue = data.name;
             });
         }
     }
