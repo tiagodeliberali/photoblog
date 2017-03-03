@@ -80,8 +80,13 @@ namespace Photoblog
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "admin_pages",
+                    template: "admin/{controller=Posts}/{action=Index}/{id?}");
+
+                routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{*.}",
+                    defaults: new { controller = "Home", action = "Index" });
             });
         }
     }
