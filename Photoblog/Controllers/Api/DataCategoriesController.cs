@@ -6,15 +6,13 @@ using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Photoblog.Model;
+using Photoblog.Model.Extensions;
 
 namespace Photoblog.Controllers
 {
     [Route("api/[controller]")]
     public class DataCategoriesController : Controller
     {
-        private const string AllCategoriesCacheKey = "AllCategories";
-        private const string PostsByCategoryIDCacheKey = "PostsByCategoryID";
-
         private BlogDbContext dbContext;
         private IMemoryCache memoryCache;
 
@@ -29,11 +27,11 @@ namespace Photoblog.Controllers
         {
             string result;
 
-            if (!memoryCache.TryGetValue(AllCategoriesCacheKey, out result))
+            if (!memoryCache.TryGetValue(MemoryCacheExtensions.AllCategoriesCacheKey, out result))
             {
                 var categories = dbContext
                     .Categories
-                    //.Include(x => x.Posts)
+                    .Include(x => x.Posts)
                     .OrderBy(x => x.Name)
                     .ToList();
 
@@ -43,7 +41,7 @@ namespace Photoblog.Controllers
                     .SetSlidingExpiration(TimeSpan.FromDays(3));
 
                 // Save data in cache.
-                memoryCache.Set(AllCategoriesCacheKey, result, cacheEntryOptions);
+                memoryCache.Set(MemoryCacheExtensions.AllCategoriesCacheKey, result, cacheEntryOptions);
             }
 
             return result;
@@ -52,7 +50,7 @@ namespace Photoblog.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            string cacheKey = string.Format("{0}:{1}", PostsByCategoryIDCacheKey, id);
+            string cacheKey = MemoryCacheExtensions.GetCategoryCacheKey(id);
 
             string result;
 
