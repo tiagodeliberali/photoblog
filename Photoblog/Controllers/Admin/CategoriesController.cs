@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Photoblog.Model;
 using Photoblog.Model.Entities;
+using Photoblog.Model.Extensions;
 
 namespace Photoblog.Controllers
 {
@@ -12,10 +14,12 @@ namespace Photoblog.Controllers
     public class CategoriesController : Controller
     {
         private readonly BlogDbContext _context;
+        private IMemoryCache _memoryCache;
 
-        public CategoriesController(BlogDbContext context)
+        public CategoriesController(BlogDbContext context, IMemoryCache memoryCache)
         {
-            _context = context;    
+            _context = context;
+            _memoryCache = memoryCache;
         }
 
         // GET: Categories
@@ -58,6 +62,9 @@ namespace Photoblog.Controllers
             {
                 _context.Add(category);
                 await _context.SaveChangesAsync();
+
+                _memoryCache.ClearAllCategoriesCache();
+
                 return RedirectToAction("Index");
             }
             return View(category);
@@ -97,6 +104,8 @@ namespace Photoblog.Controllers
                 {
                     _context.Update(category);
                     await _context.SaveChangesAsync();
+
+                    _memoryCache.ClearCategoryCache(category.Id);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -139,6 +148,9 @@ namespace Photoblog.Controllers
             var category = await _context.Categories.SingleOrDefaultAsync(m => m.Id == id);
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
+
+            _memoryCache.ClearCategoryCache(category.Id);
+
             return RedirectToAction("Index");
         }
 

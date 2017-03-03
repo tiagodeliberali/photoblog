@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Photoblog.Model;
 using Photoblog.Model.Entities;
+using Photoblog.Model.Extensions;
 
 namespace Photoblog.Controllers
 {
@@ -13,10 +15,12 @@ namespace Photoblog.Controllers
     public class PostsController : Controller
     {
         private readonly BlogDbContext _context;
+        private IMemoryCache _memoryCache;
 
-        public PostsController(BlogDbContext context)
+        public PostsController(BlogDbContext context, IMemoryCache memoryCache)
         {
-            _context = context;    
+            _context = context;
+            _memoryCache = memoryCache;
         }
 
         // GET: Posts
@@ -34,7 +38,8 @@ namespace Photoblog.Controllers
                 return NotFound();
             }
 
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.Id == id);
+            var post = await _context.Posts.Include(x => x.Images).SingleOrDefaultAsync(m => m.Id == id);
+
             if (post == null)
             {
                 return NotFound();
@@ -61,9 +66,14 @@ namespace Photoblog.Controllers
             {
                 _context.Add(post);
                 await _context.SaveChangesAsync();
+
+                _memoryCache.ClearAllPostsCache(post.CategoryId);
+
                 return RedirectToAction("Index");
             }
+
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", post.CategoryId);
+
             return View(post);
         }
 
@@ -76,11 +86,14 @@ namespace Photoblog.Controllers
             }
 
             var post = await _context.Posts.SingleOrDefaultAsync(m => m.Id == id);
+
             if (post == null)
             {
                 return NotFound();
             }
+
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", post.CategoryId);
+
             return View(post);
         }
 
@@ -101,6 +114,9 @@ namespace Photoblog.Controllers
                 try
                 {
                     _context.Update(post);
+
+                    _memoryCache.ClearPostCache(post.Link, post.CategoryId);
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -145,6 +161,9 @@ namespace Photoblog.Controllers
             var post = await _context.Posts.SingleOrDefaultAsync(m => m.Id == id);
             _context.Posts.Remove(post);
             await _context.SaveChangesAsync();
+
+            _memoryCache.ClearPostCache(post.Link, post.CategoryId);
+
             return RedirectToAction("Index");
         }
 

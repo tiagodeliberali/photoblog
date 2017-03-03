@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Photoblog.Model;
 using Photoblog.Model.Entities;
+using Photoblog.Model.Extensions;
 
 namespace Photoblog.Controllers
 {
@@ -13,10 +15,12 @@ namespace Photoblog.Controllers
     public class ImagesController : Controller
     {
         private readonly BlogDbContext _context;
+        private IMemoryCache _memoryCache;
 
-        public ImagesController(BlogDbContext context)
+        public ImagesController(BlogDbContext context, IMemoryCache memoryCache)
         {
-            _context = context;    
+            _context = context;
+            _memoryCache = memoryCache;
         }
 
         // GET: Images
@@ -68,6 +72,10 @@ namespace Photoblog.Controllers
             {
                 _context.Add(image);
                 await _context.SaveChangesAsync();
+
+                var post = _context.Posts.First(x => x.Id == image.PostId);
+                _memoryCache.ClearPostCache(post.Link, post.CategoryId);
+
                 return RedirectToAction("Index", new { postId = image.PostId });
             }
             ViewData["PostId"] = new SelectList(_context.Posts, "Id", "Title", image.PostId);
@@ -109,6 +117,9 @@ namespace Photoblog.Controllers
                 {
                     _context.Update(image);
                     await _context.SaveChangesAsync();
+
+                    var post = _context.Posts.First(x => x.Id == image.PostId);
+                    _memoryCache.ClearPostCache(post.Link, post.CategoryId);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -152,6 +163,10 @@ namespace Photoblog.Controllers
             var image = await _context.Images.SingleOrDefaultAsync(m => m.Id == id);
             _context.Images.Remove(image);
             await _context.SaveChangesAsync();
+
+            var post = _context.Posts.First(x => x.Id == image.PostId);
+            _memoryCache.ClearPostCache(post.Link, post.CategoryId);
+
             return RedirectToAction("Index", new { postId = image.PostId });
         }
 
