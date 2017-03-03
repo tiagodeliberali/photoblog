@@ -3,7 +3,7 @@
     <!-- recent posts -->
     <div class="recent-posts-wrapper">
         <!-- post -->
-        <div class="post" ng-repeat="post in page.posts | orderBy:'-id'">
+        <div class="post" ng-repeat="post in page.posts">
             <!-- image -->
             <div class="post-image gallery">
                 <a href="{{ page.getPostUrl(post.link) }}">
