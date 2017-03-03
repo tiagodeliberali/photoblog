@@ -29,7 +29,9 @@
         }
 
         if (current.params.postId) {
-            rootScope.headerValue = service.getPost(current.params.postId).category.name;
+            service.getPost(current.params.postId, function (result) {
+                rootScope.headerValue = result.category.name;
+            });
         }
 
         if (current.params.categoryId) {
