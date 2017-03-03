@@ -3,7 +3,7 @@
     <div class="cats-widget">
         <ul>
             <li class="cat-item cat-item-38" ng-repeat="category in page.categories">
-                <a href="{{ page.getCategoryUrl(category.id) }}" title="{{ category.description }}">{{ category.name }}</a> <span>{{ category.posts }}</span>
+                <a href="{{ page.getCategoryUrl(category.id) }}" title="{{ category.description }}">{{ category.name }}</a> <span>{{ category.posts.length }}</span>
             </li>
         </ul>
     </div>
