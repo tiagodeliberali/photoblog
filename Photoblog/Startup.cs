@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -53,6 +54,9 @@ namespace Photoblog
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseRewriter(new RewriteOptions()
+                .AddIISUrlRewrite(env.ContentRootFileProvider, "IISUrlRewrite.xml"));
+
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -80,7 +84,7 @@ namespace Photoblog
 
                 routes.MapRoute(
                     name: "metadata",
-                    template: "metadata/{id?}",
+                    template: "metadata/{link?}",
                     defaults: new { controller = "Home", action = "Metadata" });
 
                 routes.MapRoute(
