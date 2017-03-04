@@ -34,6 +34,7 @@ namespace Photoblog.Controllers
                     .Include(x => x.Category)
                     .Include(x => x.Images)
                     .OrderByDescending(x => x.Date)
+                    .Where(x => x.Date <= DateTime.Today)
                     .ToList();
 
                 result = Serialize(posts);
