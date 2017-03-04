@@ -1,5 +1,5 @@
+/// <binding AfterBuild='concat' />
 var gulp = require('gulp');
-var uncss = require('gulp-uncss');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var cleanCSS = require('gulp-clean-css');
@@ -23,8 +23,5 @@ gulp.task('css', function() {
         .pipe(cleanCSS({
             compatibility: 'ie8'
         }))
-        //.pipe(uncss({
-        //    html: ['index.html', 'app/**/*.html']
-        //}))
         .pipe(gulp.dest('.'));
 });
