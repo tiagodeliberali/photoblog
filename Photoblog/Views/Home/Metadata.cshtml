@@ -1,0 +1,20 @@
+@model Photoblog.Model.ViewModels.MetadataInformation
+
+@{
+    Layout = string.Empty;
+    IgnoreBody();
+}
+
+<!doctype html>
+<html>
+<head>
+    <meta property="fb:app_id" content="1643932782590470" />
+    <meta name="author" content="Tiago Deliberali Santos" />
+    <meta property="og:title" content="@(Model.Title)" />
+    <meta property="og:description" content="@(Model.Description)" />
+    <meta property="og:image" content="http://res.cloudinary.com/drzxualok/image/upload/c_limit,h_550,w_1170/@(Model.ImageUrl)" />
+    <meta property="og:url" content="http://www.tiagophotoblog.com.br/post/@(Model.Link)" />
+</head>
+<body>
+</body>
+</html>

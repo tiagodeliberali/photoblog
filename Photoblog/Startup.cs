@@ -79,6 +79,11 @@ namespace Photoblog
                     template: "admin/{controller=Posts}/{action=Index}/{id?}");
 
                 routes.MapRoute(
+                    name: "metadata",
+                    template: "metadata/{id?}",
+                    defaults: new { controller = "Home", action = "Metadata" });
+
+                routes.MapRoute(
                     name: "default",
                     template: "{*.}",
                     defaults: new { controller = "Home", action = "Index" });
