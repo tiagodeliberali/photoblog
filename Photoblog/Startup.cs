@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Photoblog.Data;
 using Photoblog.Model;
+using Photoblog.Model.Extensions;
 using Photoblog.Models;
 using Photoblog.Services;
 
@@ -72,9 +73,7 @@ namespace Photoblog
 
             app.UseStaticFiles();
 
-            app.UseIdentity();
-
-            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+            app.UseCustomIdentity();
 
             app.UseMvc(routes =>
             {
