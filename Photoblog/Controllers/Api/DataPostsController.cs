@@ -1,91 +1,28 @@
-﻿using System;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using Microsoft.AspNetCore.Mvc;
 using Photoblog.Model;
-using Photoblog.Model.Extensions;
 
 namespace Photoblog.Controllers
 {
     [Route("api/[controller]")]
     public class DataPostsController : Controller
     {
-        private BlogDbContext dbContext;
-        private IMemoryCache memoryCache;
+        private IBlogStore blogStore;
 
-        public DataPostsController(IMemoryCache memoryCache, BlogDbContext dbContext)
+        public DataPostsController(IBlogStore blogStore)
         {
-            this.memoryCache = memoryCache;
-            this.dbContext = dbContext;
+            this.blogStore = blogStore;
         }
 
         [HttpGet]
         public string Get()
         {
-            string result;
-
-            if (!memoryCache.TryGetValue(MemoryCacheExtensions.AllPostsCacheKey, out result))
-            {
-                var posts = dbContext
-                    .Posts
-                    .Include(x => x.Category)
-                    .Include(x => x.Images)
-                    .OrderByDescending(x => x.Date)
-                    .Where(x => x.Date <= DateTime.Today)
-                    .ToList();
-
-                result = Serialize(posts);
-
-                var cacheEntryOptions = new MemoryCacheEntryOptions()
-                    .SetSlidingExpiration(TimeSpan.FromDays(3));
-
-                // Save data in cache.
-                memoryCache.Set(MemoryCacheExtensions.AllPostsCacheKey, result, cacheEntryOptions);
-            }
-
-            return result;
+            return blogStore.Serialize(blogStore.GetAllPosts());
         }
 
         [HttpGet("{id}")]
         public string Get(string id)
         {
-            string cacheKey = MemoryCacheExtensions.GetPostCacheKey(id);
-
-            string result;
-
-            if (!memoryCache.TryGetValue(cacheKey, out result))
-            {
-                var posts = dbContext
-                    .Posts
-                    .Include(x => x.Category)
-                    .Include(x => x.Images)
-                    .FirstOrDefault(x => x.Link == id);
-
-                result = Serialize(posts);
-
-                var cacheEntryOptions = new MemoryCacheEntryOptions()
-                    .SetSlidingExpiration(TimeSpan.FromDays(3));
-
-                // Save data in cache.
-                memoryCache.Set(cacheKey, result, cacheEntryOptions);
-            }
-
-            return result;
-        }
-
-        private string Serialize(object obj, Formatting formating = Formatting.Indented)
-        {
-            var settings = new JsonSerializerSettings()
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-                Formatting = formating,
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            };
-
-            return JsonConvert.SerializeObject(obj, settings);
+            return blogStore.Serialize(blogStore.GetPostByLink(id));
         }
     }
 }

@@ -1,162 +1,79 @@
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
+using Photoblog.Controllers.Admin;
 using Photoblog.Model;
 using Photoblog.Model.Entities;
-using Photoblog.Model.Extensions;
 
 namespace Photoblog.Controllers
 {
     [Authorize]
-    public class CategoriesController : Controller
+    public class CategoriesController : AdminBaseController
     {
-        private readonly BlogDbContext _context;
-        private IMemoryCache _memoryCache;
+        public CategoriesController(IBlogStore blogStore) : base(blogStore)
+        { }
 
-        public CategoriesController(BlogDbContext context, IMemoryCache memoryCache)
+        public IActionResult Index()
         {
-            _context = context;
-            _memoryCache = memoryCache;
+            return View(blogStore.GetAllCategories(false));
         }
 
-        // GET: Categories
-        public async Task<IActionResult> Index()
+        public IActionResult Details(int id)
         {
-            return View(await _context.Categories.ToListAsync());
+            return GetCategory(id);
         }
 
-        // GET: Categories/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Categories.SingleOrDefaultAsync(m => m.Id == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
-        }
-
-        // GET: Categories/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,Name")] Category category)
+        public IActionResult Create([Bind("Id,Description,Name")] Category category)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
-
-                _memoryCache.ClearAllCategoriesCache();
-
-                return RedirectToAction("Index");
-            }
-            return View(category);
+            return CreateEntity(category, 
+                () => RedirectToAction("Index"));
         }
 
-        // GET: Categories/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Categories.SingleOrDefaultAsync(m => m.Id == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            return View(category);
+            return GetCategory(id);
         }
 
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Name")] Category category)
+        public IActionResult Edit(int id, [Bind("Id,Description,Name")] Category category)
         {
             if (id != category.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(category);
-                    await _context.SaveChangesAsync();
-
-                    _memoryCache.ClearCategoryCache(category.Id);
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoryExists(category.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction("Index");
-            }
-            return View(category);
+            return UpdateEntity(category, 
+                () => RedirectToAction("Index"));
         }
 
-        // GET: Categories/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var category = await _context.Categories.SingleOrDefaultAsync(m => m.Id == id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            return View(category);
+            return GetCategory(id);
         }
 
-        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var category = await _context.Categories.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
+            var category = blogStore.GetCategory(id, false);
 
-            _memoryCache.ClearCategoryCache(category.Id);
+            blogStore.Delete(category);
 
             return RedirectToAction("Index");
         }
 
-        private bool CategoryExists(int id)
+        private IActionResult GetCategory(int id)
         {
-            return _context.Categories.Any(e => e.Id == id);
+            var category = blogStore.GetCategory(id, false);
+
+            return NotNullView(category);
         }
     }
 }

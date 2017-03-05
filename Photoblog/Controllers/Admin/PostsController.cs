@@ -1,175 +1,95 @@
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
+using Photoblog.Controllers.Admin;
 using Photoblog.Model;
 using Photoblog.Model.Entities;
-using Photoblog.Model.Extensions;
 
 namespace Photoblog.Controllers
 {
     [Authorize]
-    public class PostsController : Controller
+    public class PostsController : AdminBaseController
     {
-        private readonly BlogDbContext _context;
-        private IMemoryCache _memoryCache;
+        public PostsController(IBlogStore blogStore) : base(blogStore)
+        { }
 
-        public PostsController(BlogDbContext context, IMemoryCache memoryCache)
+        public IActionResult Index()
         {
-            _context = context;
-            _memoryCache = memoryCache;
+            return View(blogStore.GetAllPosts(false));
         }
 
-        // GET: Posts
-        public async Task<IActionResult> Index()
+        public IActionResult Details(int id)
         {
-            var blogDbContext = _context.Posts.Include(p => p.Category);
-            return View(await blogDbContext.ToListAsync());
+            return GetPost(id);
         }
 
-        // GET: Posts/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var post = await _context.Posts.Include(x => x.Images).SingleOrDefaultAsync(m => m.Id == id);
-
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            return View(post);
-        }
-
-        // GET: Posts/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
+            LoadCategorySelectList();
+
             return View();
         }
 
-        // POST: Posts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CategoryId,Date,Description,Link,Title")] Post post)
+        public IActionResult Create([Bind("Id,CategoryId,Date,Description,Link,Title")] Post post)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(post);
-                await _context.SaveChangesAsync();
+            LoadCategorySelectList(post.CategoryId);
 
-                _memoryCache.ClearAllPostsCache(post.CategoryId);
-
-                return RedirectToAction("Create", "Images", new { postId = post.Id });
-            }
-
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", post.CategoryId);
-
-            return View(post);
+            return CreateEntity(post,
+                () => RedirectToAction("Create", "Images", new { postId = post.Id }));
         }
 
-        // GET: Posts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var post = blogStore.GetPost(id, false);
 
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.Id == id);
+            LoadCategorySelectList(post.CategoryId);
 
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", post.CategoryId);
-
-            return View(post);
+            return NotNullView(post);
         }
 
-        // POST: Posts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoryId,Date,Description,Link,Title")] Post post)
+        public IActionResult Edit(int id, [Bind("Id,CategoryId,Date,Description,Link,Title")] Post post)
         {
             if (id != post.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(post);
+            LoadCategorySelectList(post.CategoryId);
 
-                    _memoryCache.ClearPostCache(post.Link, post.CategoryId);
-
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PostExists(post.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction("Index");
-            }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", post.CategoryId);
-            return View(post);
+            return UpdateEntity(post,
+                () => RedirectToAction("Index"));
         }
 
-        // GET: Posts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.Id == id);
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            return View(post);
+            return GetPost(id);
         }
 
-        // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var post = await _context.Posts.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Posts.Remove(post);
-            await _context.SaveChangesAsync();
+            var post = blogStore.GetPost(id, false);
 
-            _memoryCache.ClearPostCache(post.Link, post.CategoryId);
+            blogStore.Delete(post);
 
             return RedirectToAction("Index");
         }
 
-        private bool PostExists(int id)
+        private IActionResult GetPost(int id)
         {
-            return _context.Posts.Any(e => e.Id == id);
+            var post = blogStore.GetPost(id, false);
+
+            return NotNullView(post);
+        }
+
+        private void LoadCategorySelectList(int categoryId = 0)
+        {
+            ViewData["CategoryId"] = new SelectList(blogStore.GetAllCategories(false), "Id", "Name", categoryId);
         }
     }
 }
