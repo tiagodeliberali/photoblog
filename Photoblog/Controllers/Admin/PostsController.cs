@@ -69,7 +69,7 @@ namespace Photoblog.Controllers
 
                 _memoryCache.ClearAllPostsCache(post.CategoryId);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Images", new { postId = post.Id });
             }
 
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", post.CategoryId);

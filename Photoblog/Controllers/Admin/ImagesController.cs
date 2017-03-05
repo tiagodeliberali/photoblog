@@ -76,7 +76,7 @@ namespace Photoblog.Controllers
                 var post = _context.Posts.First(x => x.Id == image.PostId);
                 _memoryCache.ClearPostCache(post.Link, post.CategoryId);
 
-                return RedirectToAction("Index", new { postId = image.PostId });
+                return RedirectToAction("Create", new { postId = image.PostId });
             }
             ViewData["PostId"] = new SelectList(_context.Posts, "Id", "Title", image.PostId);
             return View(image);
