@@ -34,14 +34,14 @@ namespace Photoblog
         {
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration["BlogSettings:DbConnectionString"]));
+                options.UseSqlServer(Configuration.GetConnectionString("Blog")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddDbContext<BlogDbContext>(options => 
-                options.UseSqlServer(Configuration["BlogSettings:DbConnectionString"]));
+            services.AddDbContext<BlogDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("Blog")));
 
             services.Configure<BlogSettings>(Configuration.GetSection("BlogSettings"));
 
