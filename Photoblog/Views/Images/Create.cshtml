@@ -61,7 +61,7 @@
             // Upload button event
             uploadButton.on('click', function (e) {
                 // Initiate upload
-                cloudinary.openUploadWidget({ cloud_name: 'drzxualok', upload_preset: '@(Model.UploadPreset)', tags: ['tiagophotoblog'] },
+                cloudinary.openUploadWidget({ cloud_name: 'drzxualok', upload_preset: '@(Model.UploadPreset)', tags: ['tiagophotoblog', 'post_@(Model.Image.PostId)'] },
                     function (error, result) {
                         if (error) {
                             console.log(error);
