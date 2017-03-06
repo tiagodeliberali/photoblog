@@ -1,16 +1,23 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Photoblog.Controllers.Admin;
 using Photoblog.Model;
 using Photoblog.Model.Entities;
+using Photoblog.Model.ViewModels;
 
 namespace Photoblog.Controllers
 {
     [Authorize]
     public class ImagesController : AdminBaseController
     {
-        public ImagesController(IBlogStore blogStore) : base(blogStore)
-        { }
+        private BlogSettings blogSettings;
+
+        public ImagesController(IBlogStore blogStore, IOptions<BlogSettings> blogSettings) : base(blogStore)
+        {
+            this.blogSettings = blogSettings.Value;
+        }
 
         public IActionResult Index(int postId)
         {
@@ -31,7 +38,14 @@ namespace Photoblog.Controllers
 
         public IActionResult Create(int postId)
         {
-            return View(new Image() { PostId = postId });
+            var model = new ImageUploader()
+            {
+                Image = new Image() { PostId = postId },
+                ApiKey = blogSettings.ImageApiKey,
+                UploadPreset = blogSettings.ImageUploadPreset
+            };
+
+            return View(model);
         }
 
         [HttpPost]

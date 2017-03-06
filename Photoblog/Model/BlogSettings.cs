@@ -2,6 +2,7 @@
 {
     public class BlogSettings
     {
-        public string DbConnectionString { get; set; }
+        public string ImageApiKey { get; set; }
+        public string ImageUploadPreset { get; set; }
     }
 }

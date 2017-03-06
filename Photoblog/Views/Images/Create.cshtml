@@ -1,4 +1,4 @@
-@model Photoblog.Model.Entities.Image
+@model Photoblog.Model.ViewModels.ImageUploader
 
 @{
     ViewData["Title"] = "Create";
@@ -12,20 +12,18 @@
         <hr />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <input type="hidden" asp-for="PostId" />
+        @Html.HiddenFor(model => model.Image.PostId)
 
         <div class="form-group">
-            <label asp-for="Description" class="col-md-2 control-label"></label>
+            @Html.LabelFor(model => model.Image.Description, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger" />
+                @Html.TextBoxFor(model => model.Image.Description, "text", new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Url" class="col-md-2 control-label"></label>
+            @Html.LabelFor(model => model.Image.Url, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                <input asp-for="Url" class="form-control" />
-                <span asp-validation-for="Url" class="text-danger" />
+                @Html.TextBoxFor(model => model.Image.Url, "text", new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
@@ -42,7 +40,7 @@
 </form>
 
 <div>
-    <a href="/admin/Images/Index?postId=@(Model.PostId)">Back to List</a>
+    <a href="/admin/Images/Index?postId=@(Model.Image.PostId)">Back to List</a>
 </div>
 
 @section Scripts {
@@ -54,7 +52,7 @@
             // Configure Cloudinary
             // with credentials available on
             // your Cloudinary account dashboard
-            $.cloudinary.config({ cloud_name: 'drzxualok', api_key: '468641338473984' });
+            $.cloudinary.config({ cloud_name: 'drzxualok', api_key: '@(Model.ApiKey)' });
 
             // Upload button
             var uploadButton = $('#submit');
@@ -63,7 +61,7 @@
             // Upload button event
             uploadButton.on('click', function (e) {
                 // Initiate upload
-                cloudinary.openUploadWidget({ cloud_name: 'drzxualok', upload_preset: 'tiagophotoblog', tags: ['tiagophotoblog'] },
+                cloudinary.openUploadWidget({ cloud_name: 'drzxualok', upload_preset: '@(Model.UploadPreset)', tags: ['tiagophotoblog'] },
                     function (error, result) {
                         if (error) {
                             console.log(error);
