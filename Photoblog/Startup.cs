@@ -61,7 +61,12 @@ namespace Photoblog
         {
             app.UseCors(builder => 
                 builder
-                .WithOrigins("http://blog.tiagophotoblog.com.br")
+                .WithOrigins(
+                    "http://www.tiagophotoblog.com.br",
+                    "http://blog.tiagophotoblog.com.br",
+                    "http://apiweb.tiagophotoblog.com.br",
+                    "http://apimobile.tiagophotoblog.com.br",
+                    "http://tiagophotoblog.com.br")
                 .AllowAnyMethod());
 
             app.UseRewriter(new RewriteOptions()
@@ -86,6 +91,11 @@ namespace Photoblog
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "loadio",
+                    template: "loaderio-daaad4db55552c1550097bf56baba9ce/",
+                    defaults: new { controller = "Home", action = "Verify" });
+
                 routes.MapRoute(
                     name: "admin_pages",
                     template: "admin/{controller=Posts}/{action=Index}/{id?}");

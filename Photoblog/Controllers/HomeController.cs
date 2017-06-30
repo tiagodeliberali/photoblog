@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Photoblog.Model.ViewModels;
-using Photoblog.Model;
 using Microsoft.EntityFrameworkCore;
+using Photoblog.Model;
+using Photoblog.Model.ViewModels;
 
 namespace Photoblog.Controllers
 {
@@ -21,6 +18,11 @@ namespace Photoblog.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public string Verify()
+        {
+            return "loaderio-daaad4db55552c1550097bf56baba9ce";
         }
 
         public IActionResult Metadata(string link)
