@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  photoblog:
+    image: photoblog
+    build:
+      context: ./Photoblog
+      dockerfile: Dockerfile
