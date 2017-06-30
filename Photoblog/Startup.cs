@@ -69,9 +69,6 @@ namespace Photoblog
                     "http://tiagophotoblog.com.br")
                 .AllowAnyMethod());
 
-            app.UseRewriter(new RewriteOptions()
-                .AddIISUrlRewrite(env.ContentRootFileProvider, "IISUrlRewrite.xml"));
-
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
